@@ -62,7 +62,7 @@ export default function About() {
                             {[
                                 { value: '19', label: 'Years Old' },
                                 { value: 'India', label: 'Location' },
-                                { value: 'Backend', label: 'Focus' },
+                                { value: 'SDE', label: 'Focus' },
                                 { value: '2024', label: 'Started' },
                             ].map((stat) => (
                                 <div key={stat.label} className="px-5 sm:px-10 py-2 text-center">

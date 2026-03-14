@@ -27,10 +27,14 @@ function AppRoutes() {
     );
 }
 
+import { NotificationProvider } from './context/NotificationContext'
+
 export default function App() {
     return (
         <BrowserRouter>
-            <AppRoutes />
+            <NotificationProvider>
+                <AppRoutes />
+            </NotificationProvider>
         </BrowserRouter>
     );
 }
