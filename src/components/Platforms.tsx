@@ -144,7 +144,7 @@ export default function Platforms() {
                                 <span className="font-mono text-xs text-gray-300">03</span>
                             </div>
                             <h3 className="text-xl sm:text-2xl font-extrabold text-white uppercase tracking-tight mb-3">
-                                N/A
+                                coming soon
                             </h3>
                             <p className="text-gray-400 text-sm leading-relaxed">
                                 N/A.
