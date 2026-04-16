@@ -112,19 +112,19 @@ export default function Platforms() {
                         <div>
                             <div className="flex items-center justify-between mb-6">
                                 <span className="font-mono text-[10px] sm:text-xs tracking-wider text-gray-500 uppercase">
-                                    N/A
+                                    SaaS Platforms
                                 </span>
                                 <span className="font-mono text-xs text-gray-300">02</span>
                             </div>
                             <h3 className="text-xl sm:text-2xl font-extrabold text-white uppercase tracking-tight mb-3">
-                                N/A
+                                INVENTOXPRO
                             </h3>
                             <p className="text-gray-400 text-sm leading-relaxed">
-                                N/A.
+                                a smart business engine. Scan, track, update, and manage your entire stock in real-time using your phone and laptop together. Built for speed, accuracy, and modern businesses.
                             </p>
                         </div>
-                        <a href="#" className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
-                            N/A <span>→</span>
+                        <a href="https://inventoxpro.vercel.app/" className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
+                            View site <span>→</span>
                         </a>
                     </motion.div>
 
