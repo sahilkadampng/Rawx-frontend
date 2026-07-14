@@ -10,7 +10,7 @@ export default function Skills() {
             tag: "Core: Languages",
             tagColor: "text-[#685AFF]",
             image: clr,
-            title: "Languages & Runtime",
+            title: "Languages",
             skills: [
                 { name: "JavaScript", level: "Intermediate" },
                 { name: "TypeScript", level: "Basic" },
@@ -43,6 +43,17 @@ export default function Skills() {
                 { name: "Git & GitHub", level: "Advanced" },
                 { name: "Docker", level: "Not started" },
                 { name: "CI/CD", level: "Not started" },
+            ],
+        },
+        {
+            tag: "Core: logic building",
+            tagColor: "text-[#685AFF]",
+            title: "logic building & CS Fundamentals",
+            skills: [
+                { name: "Data Structures", level: "Intermediate" },
+                { name: "Algorithms", level: "Basic" },
+                { name: "Computer Science", level: "Basic" },
+                { name: "OOPs", level: "Basic" },
             ],
         },
     ];
@@ -98,8 +109,7 @@ export default function Skills() {
                         className="mt-6 text-gray-500 text-base sm:text-lg max-w-2xl mx-auto"
                     >
                         Every tool in the stack is chosen for production reliability. From
-                        database design to deployment pipelines — built to scale, secured by
-                        default.
+                        database design to deployment pipelines
                     </motion.p>
 
                     {/* Stats */}
@@ -111,9 +121,9 @@ export default function Skills() {
                         className="mt-12 flex flex-wrap justify-center divide-x divide-gray-800"
                     >
                         {[
-                            { value: "5", label: "Technologies" },
-                            { value: "Backend", label: "Coverage" },
-                            { value: "Production", label: "Grade" },
+                            { value: "", label: "" },
+                            // { value: "Backend", label: "Coverage" },
+                            // { value: "Production", label: "Grade" },
                         ].map((stat) => (
                             <div key={stat.label} className="px-10 sm:px-10 py-2 text-center">
                                 <p className="text-2xl sm:text-3xl font-bold text-gray-200">

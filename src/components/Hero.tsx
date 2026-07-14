@@ -71,9 +71,9 @@ export default function Hero() {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     className="text-3xl sm:text-5xl md:text-7xl font-extrabold leading-tight text-white tracking-tight"
                 >
-                    THE INFRASTRUCTURE
+                    BUILDING THE
                     <br />
-                    <span className="text-[#685AFF]">FOR MODERN APPs.</span>
+                    <span className="text-[#685AFF]">BACKEND OF TOMORROW.</span>
                 </motion.h1>
 
                 <div className="mt-6 relative z-10 flex justify-center">
@@ -111,8 +111,13 @@ export default function Hero() {
                     >
                         Get in touch
                     </button>
-                    <button onClick={() => window.location.href = '/infrastructure'} className="px-8 py-3 rounded-lg bg-white text-gray-800 font-medium border border-gray-300 hover:bg-gray-100 transition cursor-pointer">
-                        View infrastructure
+                    <button
+                        onClick={() => {
+                            document.getElementById('built-for-clients')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="px-8 py-3 rounded-lg bg-white text-gray-800 font-medium border border-gray-300 hover:bg-gray-100 transition cursor-pointer"
+                    >
+                        View Projects
                     </button>
                 </motion.div>
             </motion.div>
@@ -198,7 +203,7 @@ export default function Hero() {
                                     </div>
                                     <p className='text-white'>] ,</p>
                                     <p className='text-white'>
-                                        contact : <span className="text-green-600">"sahilkadam@gmial.com"</span>
+                                        contact : <span className="text-green-600">"sahilkadam@gmail.com"</span>
                                     </p>
                                 </div>
                                 <p className='text-white'>{'}'};</p>

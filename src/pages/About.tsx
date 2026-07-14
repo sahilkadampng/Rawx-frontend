@@ -8,7 +8,8 @@ const timeline = [
     { year: '2024', title: 'Started Web Development', desc: 'Began learning JavaScript, HTML & CSS — built first static sites and explored the fundamentals of frontend development.' },
     { year: '2024', title: 'Dove Into Backend', desc: 'Picked up Node.js and Express.js. Built REST APIs, connected MongoDB databases, and started thinking in systems.' },
     { year: '2025', title: 'First Full-Stack Project', desc: 'Shipped ResolvexPro — a complaint management SaaS platform with auth, dashboards, and real-time data pipelines.' },
-    { year: '2025', title: 'Building RAW', desc: 'Currently crafting RAW — a developer-first portfolio and infrastructure brand that reflects how I build: clean, scalable, and production-ready.' },
+    { year: '2025', title: 'Second Full-Stack Project', desc: 'Shipped Inventoxpro — a stock management system with inventory tracking, barcode scanning, and real-time updates.' },
+    { year: '2026', title: 'logic building', desc: 'Started learning data structures, algorithms, and computer science fundamentals to build scalable and efficient systems.' },
 ];
 
 const values = [
@@ -55,7 +56,7 @@ export default function About() {
                         >
                             The Developer
                             <br />
-                            <span className="text-[#685AFF]">Behind RAW.</span>
+                            <span className="text-[#685AFF]">Behind ME.</span>
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
@@ -63,8 +64,7 @@ export default function About() {
                             transition={{ duration: 0.6, delay: 0.2 }}
                             className="mt-6 text-gray-500 text-base sm:text-lg max-w-2xl mx-auto"
                         >
-                            19-year-old backend developer from India — building scalable systems,
-                            clean APIs, and production-grade infrastructure from the ground up.
+                            Engineering scalable backend systems and modern APIs that power reliable, high-performance web applications.
                         </motion.p>
 
                         {/* Stats */}
@@ -75,8 +75,8 @@ export default function About() {
                             className="mt-12 flex flex-wrap justify-center divide-x divide-gray-200"
                         >
                             {[
-                                { value: '19', label: 'Years Old' },
-                                { value: 'India', label: 'Location' },
+                                // { value: '19', label: 'Years Old' },
+                                // { value: 'India', label: 'Location' },
                                 { value: 'SDE', label: 'Focus' },
                                 { value: '2024', label: 'Started' },
                             ].map((stat) => (
@@ -121,13 +121,13 @@ export default function About() {
                             When I'm not coding, I'm studying system design patterns, exploring new technologies,
                             and working toward becoming a production-grade engineer who ships with confidence.
                         </p>
-                        <div className="mt-6 flex flex-wrap gap-2">
+                        {/* <div className="mt-6 flex flex-wrap gap-2">
                             {['Node.js', 'Express', 'MongoDB', 'React', 'TypeScript', 'Tailwind CSS', 'Git'].map((tag) => (
                                 <span key={tag} className="px-3 py-1 border border-gray-600 rounded-md font-mono text-[10px] sm:text-xs tracking-wider text-gray-600 uppercase">
                                     {tag}
                                 </span>
                             ))}
-                        </div>
+                        </div> */}
                     </motion.div>
                 </section>
 

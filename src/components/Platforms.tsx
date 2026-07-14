@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function Platforms() {
     return (
-        <section className="relative py-20 sm:py-28 px-4 overflow-hidden w-full sm:px-6 bg-[#111214]">
+        <section id="built-for-clients" className="relative py-20 sm:py-28 px-4 overflow-hidden w-full sm:px-6 bg-[#111214]">
             <div className="max-w-6xl mx-auto text-center">
                 <div className="max-w-6xl mx-auto text-center">
                     {/* <Noise /> */}
@@ -15,7 +15,7 @@ export default function Platforms() {
                         transition={{ duration: 0.6 }}
                         className="font-mono text-[10px] sm:text-xs tracking-[0.3em] text-[#685AFF] uppercase mb-6"
                     >
-                        ● Target Architectures ●
+                        ● WHO I BUILD FOR ●
                     </motion.p>
 
                     {/* Heading */}
@@ -26,9 +26,9 @@ export default function Platforms() {
                         transition={{ duration: 0.7, delay: 0.1 }}
                         className="text-xl sm:text-xl md:text-2xl xl:text-6xl font-arimo font-arimo text-white uppercase leading-tight tracking-tight"
                     >
-                        Built For{' '}
+                        Engineered For{' '}
                         <span className="text-gray-400 text-3xl sm:text-5xl md:text-6xl">→</span>{' '}
-                        <span className="text-[#685AFF]">Clients</span>
+                        <span className="text-[#685AFF]">Growth.</span>
                     </motion.h2>
 
                     {/* Description */}
@@ -39,7 +39,7 @@ export default function Platforms() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="mt-6 text-gray-500 text-base sm:text-[17px] max-w-2xl mx-auto"
                     >
-                        RAW reflects how I build: scalable, reliable, and intuitive. Whether you’re developing SaaS, fintech, or marketplace solutions, the infrastructure is designed so creators like me can ship confidently
+                        Clean architecture, secure APIs, and scalable systems built with modern technologies to support products from MVP to production.
                     </motion.p>
 
                     {/* Subtitle */}
@@ -50,7 +50,7 @@ export default function Platforms() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="mt-8 font-mono text-[10px] sm:text-xs tracking-[0.2em] text-gray-500 uppercase"
                     >
-                        Built for clients who don’t just dream — they build businesses that scale.
+                        Because great products deserve infrastructure that grows with them.
                     </motion.p>
 
                     {/* Tags */}
@@ -93,7 +93,7 @@ export default function Platforms() {
                                 ResolvexPro
                             </h3>
                             <p className="text-gray-400 text-sm leading-relaxed">
-                                A secure platform I built to manage public complaints effortlessly.
+                                A secure platform I built to manage <span className="text-[#685AFF]">college complaints</span> effortlessly.
                             </p>
                         </div>
                         <a href="https://resolvexpro.vercel.app/" className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
@@ -120,7 +120,7 @@ export default function Platforms() {
                                 INVENTOXPRO
                             </h3>
                             <p className="text-gray-400 text-sm leading-relaxed">
-                                a smart business engine. Scan, track, update, and manage your entire stock in real-time using your phone and laptop together. Built for speed, accuracy, and modern businesses.
+                                a smart business engine. Scan, track, update, and manage your entire stock in <span className="text-[#685AFF]">real-time</span> using your phone and laptop together. Built for speed, accuracy, and modern businesses.
                             </p>
                         </div>
                         <a href="https://inventoxpro.vercel.app/" className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
