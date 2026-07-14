@@ -134,7 +134,7 @@ export default function CTA() {
                     href="/docs"
                     className="mt-5 text-[#685AFF] text-sm font-medium font-arimo hover:underline flex items-center gap-1 transition"
                 >
-                    Explore Documentation
+                    Explore About me
                     <span className="text-xs">→</span>
                 </motion.a>
 

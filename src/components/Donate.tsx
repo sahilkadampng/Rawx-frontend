@@ -4,6 +4,8 @@ import Navbar from '../components/Navbar';
 import { useRazorpay } from '../hooks/useRazorpay';
 import supportimage from "../assets/support.png";
 import { getDonationTotal, getRecentSupporters, type Supporter, type DonationStats } from '../services/donationService';
+import VisibilityNotice from './VisibilityNotice';
+import { FeatureGate, useFeatureFlag } from '../context/FeatureFlagContext';
 
 // ──────────────────────────────────────────────
 // Constants
@@ -259,6 +261,7 @@ function Spinner() {
 // Main Donate Component
 // ──────────────────────────────────────────────
 export default function Donate() {
+    const pageVisible = useFeatureFlag('page.support');
     // Form state
     const [selectedAmount, setSelectedAmount] = useState<number>(10);
     const [customAmount, setCustomAmount] = useState('');
@@ -314,10 +317,29 @@ export default function Donate() {
         setSelectedAmount(0);
     };
 
+    if (!pageVisible) {
+        return (
+            <VisibilityNotice
+                title="Support "
+                description="The donation/support page is currently disabled by the site administrator."
+                backHref="/"
+                backLabel="Back to home"
+            />
+        );
+    }
+
     return (
         <>
             <Navbar />
-            <section id="donate" className="w-full bg-[#121212] py-20 md:py-28 px-4 flex flex-col items-center scroll-mt-32 relative overflow-hidden">
+            <FeatureGate flagKey="content.support.hero" fallback={
+                <VisibilityNotice
+                    title="Support content hidden"
+                    description="The donation experience is temporarily hidden by the site administrator."
+                    backHref="/"
+                    backLabel="Back to home"
+                />
+            }>
+                <section id="donate" className="w-full bg-[#121212] py-20 md:py-28 px-4 flex flex-col items-center scroll-mt-32 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-[0.05]" style={{
                     backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
                     backgroundSize: '60px 60px'
@@ -610,7 +632,8 @@ export default function Donate() {
                         />
                     )}
                 </AnimatePresence>
-            </section>
+                </section>
+            </FeatureGate>
         </>
     );
 }

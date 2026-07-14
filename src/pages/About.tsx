@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import VisibilityNotice from '../components/VisibilityNotice';
+import { FeatureGate, useFeatureFlag } from '../context/FeatureFlagContext';
 
 const timeline = [
     { year: '2024', title: 'Started Web Development', desc: 'Began learning JavaScript, HTML & CSS — built first static sites and explored the fundamentals of frontend development.' },
@@ -17,6 +19,19 @@ const values = [
 ];
 
 export default function About() {
+    const pageVisible = useFeatureFlag('page.about');
+
+    if (!pageVisible) {
+        return (
+            <VisibilityNotice
+                title="About"
+                description="The About page is currently disabled by the site administrator."
+                backHref="/"
+                backLabel="Back to home"
+            />
+        );
+    }
+
     return (
         <>
             <Navbar />
@@ -117,80 +132,84 @@ export default function About() {
                 </section>
 
                 {/* Timeline */}
-                <section className="pt-32 px-4 sm:px-6 pb-20 bg-[#1c1c1c]">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="text-center mb-12">
-                            <p className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase mb-8">
-                                Journey :: Timeline
-                            </p>
-                            <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-100 uppercase tracking-tight">
-                                The Path <span className="text-[#685AFF]">So Far.</span>
-                            </h2>
-                        </div>
+                <FeatureGate flagKey="content.about.timeline">
+                    <section className="pt-32 px-4 sm:px-6 pb-20 bg-[#1c1c1c]">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="text-center mb-12">
+                                <p className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase mb-8">
+                                    Journey :: Timeline
+                                </p>
+                                <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-100 uppercase tracking-tight">
+                                    The Path <span className="text-[#685AFF]">So Far.</span>
+                                </h2>
+                            </div>
 
-                        <div className="space-y-6">
-                            {timeline.map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: -30 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    className="bg-[#121212] border border-gray-700 rounded-xl p-6 sm:p-8 flex gap-6 items-start hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                                >
-                                    <div className="flex flex-col items-center shrink-0">
-                                        <span className={`w-3 h-3 rounded-full ${i === timeline.length - 1 ? 'bg-blue-600' : 'bg-gray-300'}`} />
-                                        {i < timeline.length - 1 && <span className="w-px h-full bg-gray-200 mt-1" />}
-                                    </div>
-                                    <div>
-                                        <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">{item.year}</span>
-                                        <h3 className="text-lg font-extrabold text-[#685AFF] tracking-tight mt-1 mb-2">{item.title}</h3>
-                                        <p className="text-gray-300 text-sm leading-relaxed">{item.desc}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
+                            <div className="space-y-6">
+                                {timeline.map((item, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, x: -30 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.5, delay: i * 0.1 }}
+                                        className="bg-[#121212] border border-gray-700 rounded-xl p-6 sm:p-8 flex gap-6 items-start hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                                    >
+                                        <div className="flex flex-col items-center shrink-0">
+                                            <span className={`w-3 h-3 rounded-full ${i === timeline.length - 1 ? 'bg-blue-600' : 'bg-gray-300'}`} />
+                                            {i < timeline.length - 1 && <span className="w-px h-full bg-gray-200 mt-1" />}
+                                        </div>
+                                        <div>
+                                            <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">{item.year}</span>
+                                            <h3 className="text-lg font-extrabold text-[#685AFF] tracking-tight mt-1 mb-2">{item.title}</h3>
+                                            <p className="text-gray-300 text-sm leading-relaxed">{item.desc}</p>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </FeatureGate>
 
                 {/* Values */}
-                <section className="pt-32 px-4 sm:px-6 pb-20 bg-[#121212]">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-12">
-                            <p className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-gray-400 uppercase mb-4">
-                                Core :: Principles
+                <FeatureGate flagKey="content.about.values">
+                    <section className="pt-32 px-4 sm:px-6 pb-20 bg-[#121212]">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-12">
+                                <p className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-gray-400 uppercase mb-4">
+                                    Core :: Principles
+                                </p>
+                                <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-100 uppercase tracking-tight">
+                                    How I <span className="text-[#685AFF]">Build.</span>
+                                </h2>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                {values.map((v, i) => (
+                                    <motion.div
+                                        key={v.label}
+                                        initial={{ opacity: 0, y: 40 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.5, delay: i * 0.1 }}
+                                        className="bg-[#1c1c1c] border border-gray-700 rounded-xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                                    >
+                                        <div className="flex items-center justify-between mb-4">
+                                            <span className="font-mono text-[10px] tracking-wider text-[#685AFF] uppercase">{v.label}</span>
+                                            <span className="font-mono text-xs text-gray-300">{String(i + 1).padStart(2, '0')}</span>
+                                        </div>
+                                        <p className="text-gray-200 text-sm leading-relaxed">{v.desc}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            {/* Divider */}
+                            {/* <div className="mt-16 h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent" /> */}
+                            <p className="mt-8 text-center font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
+                                Built from scratch. Shipping with intent.
                             </p>
-                            <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-100 uppercase tracking-tight">
-                                How I <span className="text-[#685AFF]">Build.</span>
-                            </h2>
                         </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            {values.map((v, i) => (
-                                <motion.div
-                                    key={v.label}
-                                    initial={{ opacity: 0, y: 40 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    className="bg-[#1c1c1c] border border-gray-700 rounded-xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                                >
-                                    <div className="flex items-center justify-between mb-4">
-                                        <span className="font-mono text-[10px] tracking-wider text-[#685AFF] uppercase">{v.label}</span>
-                                        <span className="font-mono text-xs text-gray-300">{String(i + 1).padStart(2, '0')}</span>
-                                    </div>
-                                    <p className="text-gray-200 text-sm leading-relaxed">{v.desc}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Divider */}
-                        {/* <div className="mt-16 h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent" /> */}
-                        <p className="mt-8 text-center font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
-                            Built from scratch. Shipping with intent.
-                        </p>
-                    </div>
-                </section>
+                    </section>
+                </FeatureGate>
             </main>
             <Footer />
         </>

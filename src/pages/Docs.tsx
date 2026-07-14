@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import VisibilityNotice from '../components/VisibilityNotice';
+import { useFeatureFlag } from '../context/FeatureFlagContext';
 
 type SectionKey = 'getting-started' | 'api-reference' | 'auth' | 'database' | 'deployment' | 'rate-limiting';
 
@@ -460,6 +462,18 @@ export default function Docs() {
     const [active, setActive] = useState<SectionKey>('getting-started');
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const section = sections[active];
+    const pageVisible = useFeatureFlag('page.docs');
+
+    if (!pageVisible) {
+        return (
+            <VisibilityNotice
+                title="Docs"
+                description="The documentation page is currently disabled by the site administrator."
+                backHref="/"
+                backLabel="Back to home"
+            />
+        );
+    }
 
     return (
         <>

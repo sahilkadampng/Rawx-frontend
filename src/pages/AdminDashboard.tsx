@@ -17,6 +17,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { API_URL } from '../config/api';
 import { useNotification } from '../context/NotificationContext';
 import ConfirmationModal from '../components/ConfirmationModal';
+import FeatureFlagsPanel from '../components/FeatureFlagsPanel';
 
 // --- Types ---
 
@@ -71,6 +72,7 @@ interface ActivityItem {
 }
 
 type Tab = 'overview' | 'emails' | 'visitors' | 'blocked';
+type ExtendedTab = Tab | 'flags';
 
 // --- Sub-Components ---
 
@@ -128,7 +130,7 @@ const StatsChart = ({ data, label, color = '#3b82f6' }: { data: number[], label:
 
 export default function AdminDashboard() {
     const navigate = useNavigate();
-    const [activeTab, setActiveTab] = useState<Tab>('overview');
+    const [activeTab, setActiveTab] = useState<ExtendedTab>('overview');
     const [adminEmail, setAdminEmail] = useState('');
     const token = localStorage.getItem('raw_token');
 
@@ -408,6 +410,7 @@ export default function AdminDashboard() {
     };
 
     const logout = () => { localStorage.removeItem('raw_token'); navigate('/'); };
+    const canExport = activeTab === 'emails' || activeTab === 'visitors';
 
     const statusColor: Record<string, string> = {
         new: 'text-green-600 bg-green-50 border-green-200',
@@ -418,11 +421,12 @@ export default function AdminDashboard() {
     const formatDate = (date: string) =>
         new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 
-    const tabs: { key: Tab; label: string; icon: any }[] = [
+    const tabs: { key: ExtendedTab; label: string; icon: any }[] = [
         { key: 'overview', label: 'Overview', icon: IoPulseOutline },
         { key: 'emails', label: 'Emails', icon: IoMailOutline },
         { key: 'visitors', label: 'Visitors', icon: IoPeopleOutline },
         { key: 'blocked', label: 'Blocked IPs', icon: IoShieldCheckmarkOutline },
+        { key: 'flags', label: 'Flags', icon: IoSettingsOutline },
     ];
 
     return (
@@ -466,7 +470,7 @@ export default function AdminDashboard() {
                             <span>Infrastructure :: v2.5 :: Secure</span>
                         </motion.div>
                         <h1 className="text-4xl sm:text-5xl font-black text-gray-900 uppercase tracking-tight leading-none">
-                            Admin <span className="text-blue-600 italic">Insights.</span>
+                            Admin <span className="text-blue-600">Insights.</span>
                         </h1>
                     </div>
 
@@ -479,10 +483,12 @@ export default function AdminDashboard() {
                             <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="font-mono text-[10px] uppercase outline-none text-gray-600 cursor-pointer bg-transparent" />
                             {(startDate || endDate) && <button onClick={() => { setStartDate(''); setEndDate(''); }} className="ml-2 text-red-500 hover:text-red-700 transition cursor-pointer">✕</button>}
                         </div>
-                        <button onClick={exportData} disabled={isExporting} className="flex items-center gap-2 px-6 py-2.5 bg-black text-white font-mono text-[10px] tracking-wider uppercase rounded-2xl hover:bg-gray-800 transition shadow-lg shadow-black/10 cursor-pointer disabled:opacity-50">
-                            <IoDownloadOutline className={`text-sm ${isExporting ? 'animate-bounce' : ''}`} />
-                            {isExporting ? 'Exporting...' : 'Export CSV'}
-                        </button>
+                        {canExport && (
+                            <button onClick={exportData} disabled={isExporting} className="flex items-center gap-2 px-6 py-2.5 bg-black text-white font-mono text-[10px] tracking-wider uppercase rounded-2xl hover:bg-gray-800 transition shadow-lg shadow-black/10 cursor-pointer disabled:opacity-50">
+                                <IoDownloadOutline className={`text-sm ${isExporting ? 'animate-bounce' : ''}`} />
+                                {isExporting ? 'Exporting...' : 'Export CSV'}
+                            </button>
+                        )}
                     </div>
                 </header>
 
@@ -803,6 +809,8 @@ export default function AdminDashboard() {
                         </div>
                     </motion.div>
                 )}
+
+                {activeTab === 'flags' && <FeatureFlagsPanel />}
 
                 {/* System Diagnostics Footer */}
                 <footer className="mt-20 border-t border-gray-200 pt-10">

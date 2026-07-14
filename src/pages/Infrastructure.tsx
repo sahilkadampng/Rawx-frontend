@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import VisibilityNotice from '../components/VisibilityNotice';
+import { FeatureGate, useFeatureFlag } from '../context/FeatureFlagContext';
 
 // ─── Reusable scroll-reveal wrapper ───────────────────
 function Reveal({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -379,13 +381,6 @@ const protect = async (req, res, next) => {
     },
 ];
 
-const metrics = [
-    { value: '<200ms', label: 'API Response', desc: 'Average latency' },
-    { value: '99.9%', label: 'Uptime SLA', desc: 'Monthly target' },
-    { value: '6', label: 'Stack Layers', desc: 'End to end' },
-    { value: '3-Tier', label: 'Rate Limiting', desc: 'Per endpoint' },
-];
-
 const techStack = [
     { name: 'Node.js', category: 'Runtime' },
     { name: 'Express.js', category: 'Framework' },
@@ -402,199 +397,139 @@ const techStack = [
 ];
 
 export default function Infrastructure() {
+    const pageVisible = useFeatureFlag('page.infrastructure');
     const heroRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
     const heroY = useTransform(scrollYProgress, [0, 1], [0, 200]);
     const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
     const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
 
+    if (!pageVisible) {
+        return (
+            <VisibilityNotice
+                title="Infrastructure"
+                description="The Infrastructure page is currently disabled by the site administrator."
+                backHref="/"
+                backLabel="Back to home"
+            />
+        );
+    }
+
     return (
         <>
             <Navbar />
             <main className="bg-[#121212] min-h-screen overflow-hidden">
+                <FeatureGate flagKey="content.infrastructure.hero">
+                    <section ref={heroRef} className="relative pt-32 pb-20 sm:pb-28 px-4 sm:px-6 overflow-hidden">
+                        <div className="absolute inset-0 opacity-[0.03]" style={{
+                            backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
+                            backgroundSize: '60px 60px',
+                        }} />
 
-                {/* ════════════ HERO — Parallax + Scale ════════════ */}
-                <section ref={heroRef} className="relative pt-32 pb-20 sm:pb-28 px-4 sm:px-6 overflow-hidden">
-                    {/* Floating grid background */}
-                    <div className="absolute inset-0 opacity-[0.03]" style={{
-                        backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
-                        backgroundSize: '60px 60px'
-                    }} />
-
-                    <motion.div
-                        style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
-                        className="max-w-6xl mx-auto text-center relative z-10"
-                    >
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                            className="font-mono text-[10px] sm:text-xs tracking-[0.3em] text-[#685AFF] uppercase mb-6"
-                        >
-                            ● Infrastructure :: Overview ●
-                        </motion.p>
-
-                        <motion.h1
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7, delay: 0.2 }}
-                            className="text-4xl sm:text-6xl md:text-8xl font-extrabold text-gray-100 uppercase leading-[0.95] tracking-tight"
-                        >
-                            The Stack
-                            <br />
-                            <span className="text-[#685AFF]">Under The Hood.</span>
-                        </motion.h1>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.4 }}
-                            className="mt-6 text-gray-500 text-base sm:text-lg max-w-2xl mx-auto"
-                        >
-                            A deep dive into every layer of the system — from API gateway to deployment
-                            pipeline. Real code. Real architecture. Production-grade.
-                        </motion.p>
-
-                        {/* Animated tags */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.55 }}
-                            className="flex flex-wrap justify-center gap-3 mt-8"
+                            style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
+                            className="max-w-6xl mx-auto text-center relative z-10"
                         >
-                            {['Express.js', 'MongoDB', 'React', 'TypeScript', 'JWT', 'Vercel'].map((tag, i) => (
-                                <motion.span
-                                    key={tag}
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
-                                    className="px-4 py-1.5 border border-gray-700 rounded-md font-mono text-[10px] sm:text-xs tracking-wider text-gray-600 uppercase hover:border-gray-500 hover:text-[#685AFF] transition-colors cursor-default"
-                                >
-                                    {tag}
-                                </motion.span>
-                            ))}
-                        </motion.div>
-                    </motion.div>
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.1 }}
+                                className="font-mono text-[10px] sm:text-xs tracking-[0.3em] text-[#685AFF] uppercase mb-6"
+                            >
+                                ● Infrastructure :: Overview ●
+                            </motion.p>
 
-                    {/* Scroll indicator */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1.2 }}
-                        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:block"
-                    >
-                        <motion.div
-                            animate={{ y: [0, 8, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                            className="w-5 h-8 border-2 border-gray-300 rounded-full flex items-start justify-center p-1"
-                        >
-                            <motion.span className="w-1 h-2 bg-gray-400 rounded-full" />
-                        </motion.div>
-                    </motion.div>
-                </section>
+                            <motion.h1
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.7, delay: 0.2 }}
+                                className="text-4xl sm:text-6xl md:text-8xl font-extrabold text-gray-100 uppercase leading-[0.95] tracking-tight"
+                            >
+                                The Stack
+                                <br />
+                                <span className="text-[#685AFF]">Under The Hood.</span>
+                            </motion.h1>
 
-                {/* ════════════ METRICS — Count-up style ════════════ */}
-                <section className="px-4 sm:px-6 pb-10 sm:pb-16">
-                    <div className="max-w-6xl mx-auto">
-                        <Reveal>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                                {metrics.map((m, i) => (
-                                    <motion.div
-                                        key={m.label}
-                                        initial={{ opacity: 0, y: 30 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: i * 0.1 }}
-                                        className="bg-[#1c1c1c] border border-gray-700 rounded-xl p-4 sm:p-6 text-center hover:shadow-lg"
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.4 }}
+                                className="mt-6 text-gray-500 text-base sm:text-lg max-w-2xl mx-auto"
+                            >
+                                A deep dive into every layer of the system — from API gateway to deployment pipeline.
+                                Real code. Real architecture. Production-grade.
+                            </motion.p>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.55 }}
+                                className="flex flex-wrap justify-center gap-3 mt-8"
+                            >
+                                {['Express.js', 'MongoDB', 'React', 'TypeScript', 'JWT', 'Vercel'].map((tag, index) => (
+                                    <motion.span
+                                        key={tag}
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.4, delay: 0.6 + index * 0.08 }}
+                                        className="px-4 py-1.5 border border-gray-700 rounded-md font-mono text-[10px] sm:text-xs tracking-wider text-gray-600 uppercase hover:border-gray-500 hover:text-[#685AFF] transition-colors cursor-default"
                                     >
-                                        <p className="text-2xl sm:text-3xl font-extrabold text-gray-300">{m.value}</p>
-                                        <p className="font-mono text-[10px] tracking-wider text-[#685AFF] uppercase mt-1">{m.label}</p>
-                                        <p className="text-[10px] text-gray-400 mt-0.5">{m.desc}</p>
-                                    </motion.div>
+                                        {tag}
+                                    </motion.span>
                                 ))}
-                            </div>
-                        </Reveal>
-                    </div>
-                </section>
+                            </motion.div>
+                        </motion.div>
 
-                {/* ════════════ STACK LAYERS — Alternating layout ════════════ */}
-                <section className="px-4 sm:px-6 pb-14 sm:pb-24">
-                    <div className="max-w-6xl mx-auto">
-                        <Reveal>
-                            <div className="text-center mb-10 sm:mb-16">
-                                <p className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase mb-4">
-                                    System :: Layers
-                                </p>
-                                <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-gray-100 uppercase tracking-tight">
-                                    Every <span className="text-[#685AFF]">Layer.</span>
-                                </h2>
-                                <p className="mt-4 text-gray-500 max-w-xl mx-auto">
-                                    From HTTP request to database write — every layer is documented with real, production code.
-                                </p>
-                            </div>
-                        </Reveal>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1.2 }}
+                            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:block"
+                        >
+                            <motion.div
+                                animate={{ y: [0, 8, 0] }}
+                                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                                className="w-5 h-8 border-2 border-gray-300 rounded-full flex items-start justify-center p-1"
+                            >
+                                <motion.span className="w-1 h-2 bg-gray-400 rounded-full" />
+                            </motion.div>
+                        </motion.div>
+                    </section>
+                </FeatureGate>
 
-                        <div className="space-y-12 sm:space-y-20">
-                            {stackLayers.map((layer, i) => {
-                                const isEven = i % 2 === 0;
-                                return (
-                                    <Reveal key={layer.title} delay={0.1}>
-                                        <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-start`}>
-                                            {/* Info card */}
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 30 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                viewport={{ once: true }}
-                                                transition={{ duration: 0.6, delay: 0.15 }}
-                                                className="w-full lg:w-5/12"
-                                            >
-                                                <div className="bg-[#1c1c1c] border border-gray-700 rounded-xl p-6 sm:p-8 hover:shadow-lg transition-shadow duration-300">
-                                                    <div className="flex items-center justify-between mb-4">
-                                                        <span className={`font-mono text-[10px] tracking-wider uppercase ${layer.tagColor}`}>
-                                                            {layer.tag}
-                                                        </span>
-                                                        <span className="font-mono text-xs text-gray-300">{String(i + 1).padStart(2, '0')}</span>
-                                                    </div>
-                                                    <h3 className="text-xl sm:text-2xl font-extrabold text-[#685AFF] uppercase tracking-tight mb-3">
-                                                        {layer.title}
-                                                    </h3>
-                                                    <p className="text-gray-500 text-sm leading-relaxed mb-5">
-                                                        {layer.desc}
-                                                    </p>
-                                                    <div className="flex flex-wrap gap-2">
-                                                        {layer.features.map((f) => (
-                                                            <span key={f} className="px-2.5 py-1 border border-gray-700 rounded-md font-mono text-[10px] tracking-wider text-gray-500 uppercase bg-[#1c1c1c]">
-                                                                {f}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                            {/* Code block */}
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 30 }}
-                                                whileInView={{ opacity: 1, y: 0 }}
-                                                viewport={{ once: true }}
-                                                transition={{ duration: 0.6, delay: 0.25 }}
-                                                className="w-full lg:w-7/12 flex justify-start items-start"
-                                            >
-                                                <div className="w-full text-left">
-                                                    <CodeBlock
-                                                        title={layer.codeTitle}
-                                                        code={layer.code}
-                                                        lang={layer.codeLang}
-                                                    />
-                                                </div>
-                                            </motion.div>
+                <FeatureGate flagKey="content.infrastructure.stack">
+                    <section className="px-4 sm:px-6 pb-20">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                {stackLayers.map((layer, index) => (
+                                    <Reveal key={layer.title} delay={index * 0.05} className="w-full">
+                                        <div className="bg-[#1c1c1c] border border-gray-700 rounded-2xl p-5 sm:p-7 h-full flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                                            <div className="flex items-center justify-between mb-5">
+                                                <span className={`font-mono text-[10px] tracking-wider uppercase ${layer.tagColor}`}>{layer.tag}</span>
+                                                <span className="font-mono text-xs text-gray-400">{String(index + 1).padStart(2, '0')}</span>
+                                            </div>
+                                            <h3 className="text-xl sm:text-2xl font-extrabold text-gray-100 uppercase tracking-tight mb-4">
+                                                {layer.title}
+                                            </h3>
+                                            <p className="text-gray-500 text-sm leading-relaxed mb-5">{layer.desc}</p>
+                                            <div className="flex flex-wrap gap-2 mb-6">
+                                                {layer.features.map((feature) => (
+                                                    <span key={feature} className="px-2.5 py-1 border border-gray-700 rounded-md font-mono text-[10px] tracking-wider text-gray-500 uppercase">
+                                                        {feature}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                            <div className="mt-auto">
+                                                <CodeBlock title={layer.codeTitle} code={layer.code} lang={layer.codeLang} />
+                                            </div>
                                         </div>
                                     </Reveal>
-                                );
-                            })}
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </FeatureGate>
 
-                {/* ════════════ TECH STACK GRID — Staggered reveal ════════════ */}
                 <section className="px-4 sm:px-6 pb-14 sm:pb-24 bg-[#1c1c1c] border-b border-gray-600">
                     <div className="max-w-6xl mx-auto py-12 sm:py-20">
                         <Reveal>
@@ -615,8 +550,6 @@ export default function Infrastructure() {
                                     initial={{ opacity: 0, scale: 0.85, y: 20 }}
                                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    // transition={{ duration: 0.4, delay: i * 0.05 }}
-                                    // whileHover={{ scale: 1.05, y: -4 }}
                                     className="bg-[#121212] border border-gray-800 rounded-xl p-4 text-center hover:border-gray-800 hover:shadow-md"
                                 >
                                     <p className="text-sm font-bold text-[#685AFF]">{tech.name}</p>
@@ -627,7 +560,6 @@ export default function Infrastructure() {
                     </div>
                 </section>
 
-                {/* ════════════ ARCHITECTURE DIAGRAM — Animated flow ════════════ */}
                 <section className="px-4 sm:px-6 py-14 sm:py-24 bg-[#1c1c1c]">
                     <div className="max-w-4xl mx-auto">
                         <Reveal>
@@ -644,37 +576,36 @@ export default function Infrastructure() {
                         <div className="space-y-0">
                             {[
                                 { step: '01', label: 'Client Request', detail: 'React app sends HTTP request with JWT token', color: 'bg-[#121212]' },
-                                // { step: '02', label: 'IP Block Check', detail: 'Middleware checks if IP is in the blocked list', color: 'border-red-200 bg-red-50' },
                                 { step: '02', label: 'Rate Limiter', detail: 'express-rate-limit enforces per-endpoint limits', color: 'bg-[#121212]' },
                                 { step: '03', label: 'Auth Middleware', detail: 'JWT verification and role-based access control', color: 'bg-[#121212]' },
                                 { step: '04', label: 'Route Handler', detail: 'Business logic execution with input validation', color: 'bg-[#121212]' },
                                 { step: '05', label: 'Database Query', detail: 'Mongoose ODM with indexed queries to MongoDB Atlas', color: 'bg-[#121212]' },
                                 { step: '06', label: 'JSON Response', detail: 'Structured response with status, data, and metadata', color: 'bg-[#121212]' },
-                            ].map((item, i) => (
+                            ].map((item, index) => (
                                 <motion.div
                                     key={item.step}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: i * 0.08 }}
+                                    transition={{ duration: 0.5, delay: index * 0.08 }}
                                     className="relative"
                                 >
                                     <div className={`flex items-center gap-4 pl-4 p-4 sm:p-5 rounded-xl border ${item.color} hover:shadow-md transition-all duration-200`}>
                                         <span className="w-10 h-10 shrink-0 rounded-lg bg-[#1c1c1c] border border-gray-200 flex items-center justify-center font-mono text-xs font-bold text-gray-500">
                                             {item.step}
                                         </span>
-                                        <div className='justify-start'>
+                                        <div className="justify-start">
                                             <p className="font-bold flex text-[#685AFF] text-sm uppercase tracking-tight">{item.label}</p>
                                             <p className="text-gray-500 text-xs mt-0.5">{item.detail}</p>
                                         </div>
                                     </div>
-                                    {i < 5 && (
+                                    {index < 5 && (
                                         <div className="flex justify-center py-1">
                                             <motion.div
                                                 initial={{ scaleY: 0 }}
                                                 whileInView={{ scaleY: 1 }}
                                                 viewport={{ once: true }}
-                                                transition={{ duration: 0.3, delay: i * 0.08 + 0.3 }}
+                                                transition={{ duration: 0.3, delay: index * 0.08 + 0.3 }}
                                                 className="w-px h-6 bg-gray-300 origin-top"
                                             />
                                         </div>
@@ -685,7 +616,6 @@ export default function Infrastructure() {
                     </div>
                 </section>
 
-                {/* ════════════ FOOTER CTA ════════════ */}
                 <section className="pt-20 px-4 sm:px-6 pb-20">
                     <div className="max-w-4xl mx-auto">
                         <Reveal>
@@ -717,7 +647,6 @@ export default function Infrastructure() {
                             </div>
                         </Reveal>
 
-                        {/* Divider */}
                         <div className="mt-16 h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent" />
                         <p className="mt-8 text-center font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
                             Every layer. Production grade. Open source.

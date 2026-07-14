@@ -9,6 +9,7 @@ import Donate from './components/Donate'
 import Login from './pages/Login'
 import AdminDashboard from './pages/AdminDashboard'
 import { useVisitorTracker } from './hooks/useVisitorTracker'
+import { FeatureFlagProvider } from './context/FeatureFlagContext'
 
 function AppRoutes() {
     useVisitorTracker();
@@ -33,7 +34,9 @@ export default function App() {
     return (
         <BrowserRouter>
             <NotificationProvider>
-                <AppRoutes />
+                <FeatureFlagProvider>
+                    <AppRoutes />
+                </FeatureFlagProvider>
             </NotificationProvider>
         </BrowserRouter>
     );
