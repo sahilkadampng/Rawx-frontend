@@ -56,7 +56,7 @@ export default function Navbar() {
 
             {/* MOBILE MENU */}
             {menuOpen && (
-                <div className="md:hidden backdrop-blur-sm bg-black/10 border-b border-gray-300">
+                <div className="md:hidden backdrop-blur-sm">
                     <ul className="flex flex-col gap-4 px-6 py-4">
                         {visibleLinks.map((link) => (
                             <li key={link.to}>
