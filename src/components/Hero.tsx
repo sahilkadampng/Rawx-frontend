@@ -71,9 +71,9 @@ export default function Hero() {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     className="text-3xl sm:text-5xl md:text-7xl font-extrabold leading-tight text-white tracking-tight"
                 >
-                    BUILDING THE
+                    BUILDING THE BACKEND OF
                     <br />
-                    <span className="text-[#685AFF]">BACKEND OF TOMORROW.</span>
+                    <span className="text-[#685AFF]">TOMORROW.</span>
                 </motion.h1>
 
                 <div className="mt-6 relative z-10 flex justify-center">
