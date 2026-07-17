@@ -152,7 +152,6 @@ export default function AdminDashboard() {
     const [trends, setTrends] = useState<{ visitors: number[], emails: number[] }>({ visitors: [], emails: [] });
     const [overviewStats, setOverviewStats] = useState<any>(null);
     const [activity, setActivity] = useState<ActivityItem[]>([]);
-    const [statsLoading, setStatsLoading] = useState(false);
 
     // --- Email state ---
     const [emails, setEmails] = useState<EmailEntry[]>([]);
@@ -169,13 +168,11 @@ export default function AdminDashboard() {
     const [visitorLoading, setVisitorLoading] = useState(false);
     const [visitorSearch, setVisitorSearch] = useState('');
     const [visitorPage, setVisitorPage] = useState(1);
-    const [visitorTotalPages, setVisitorTotalPages] = useState(1);
     const [visitorMenuOpen, setVisitorMenuOpen] = useState<string | null>(null);
     const visitorMenuRef = useRef<HTMLDivElement>(null);
 
     // --- Blocked state ---
     const [blocked, setBlocked] = useState<BlockedEntry[]>([]);
-    const [blockedStats, setBlockedStats] = useState({ total: 0, active: 0 });
     const [blockedLoading, setBlockedLoading] = useState(false);
 
     // Auth verify
@@ -194,7 +191,6 @@ export default function AdminDashboard() {
 
     const fetchOverviewData = useCallback(async () => {
         if (!token) return;
-        setStatsLoading(true);
         try {
             const [overview, trendsRes, activityRes] = await Promise.all([
                 fetch(`${API_URL}/stats/overview`, { headers: { Authorization: `Bearer ${token}` } }).then(r => r.json()),
@@ -206,7 +202,6 @@ export default function AdminDashboard() {
             if (trendsRes.status === 'success') setTrends(trendsRes.data);
             if (activityRes.status === 'success') setActivity(activityRes.data);
         } catch (err) { console.error('Overview error:', err); }
-        finally { setStatsLoading(false); }
     }, [token]);
 
     const fetchEmails = useCallback(async () => {
@@ -248,7 +243,6 @@ export default function AdminDashboard() {
             if (data.status === 'success') {
                 setVisitors(data.data);
                 setVisitorStats(data.stats);
-                setVisitorTotalPages(data.meta.pages);
             }
         } catch (err) { console.error('Fetch visitors:', err); }
         finally { setVisitorLoading(false); }
@@ -262,7 +256,6 @@ export default function AdminDashboard() {
             const data = await res.json();
             if (data.status === 'success') {
                 setBlocked(data.data);
-                setBlockedStats(data.stats);
             }
         } catch (err) { console.error('Fetch blocked:', err); }
         finally { setBlockedLoading(false); }
@@ -391,22 +384,6 @@ export default function AdminDashboard() {
             notifySuccess('Block status updated.');
             fetchBlocked();
         } catch (err) { notifyError('Failed to update block status.'); }
-    };
-
-    const deleteBlock = (id: string) => {
-        setConfirmModal({
-            isOpen: true,
-            title: 'Remove Block',
-            message: 'Are you sure you want to remove this IP from the block list?',
-            variant: 'warning',
-            onConfirm: async () => {
-                try {
-                    await fetch(`${API_URL}/visitors/blocked/${id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token}` } });
-                    notifySuccess('IP removed from block list.');
-                    fetchBlocked();
-                } catch (err) { notifyError('Failed to remove block.'); }
-            }
-        });
     };
 
     const logout = () => { localStorage.removeItem('raw_token'); navigate('/'); };
