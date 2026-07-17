@@ -12,12 +12,12 @@ const timeline = [
     { year: '2026', title: 'logic building', desc: 'Started learning data structures, algorithms, and computer science fundamentals to build scalable and efficient systems.' },
 ];
 
-const values = [
-    { label: 'Simplicity First', desc: 'Clean architecture over clever hacks. Every system should be readable and maintainable.' },
-    { label: 'Ship & Iterate', desc: 'Launch early, learn fast. Production feedback beats theoretical perfection.' },
-    { label: 'Security by Default', desc: 'Auth, validation, and encryption aren\'t afterthoughts — they\'re built into the foundation.' },
-    { label: 'Scale-Ready', desc: 'From day one, code is structured for growth. Microservices, modular design, clean separation.' },
-];
+// const values = [
+//     { label: 'Simplicity First', desc: 'Clean architecture over clever hacks. Every system should be readable and maintainable.' },
+//     { label: 'Ship & Iterate', desc: 'Launch early, learn fast. Production feedback beats theoretical perfection.' },
+//     { label: 'Security by Default', desc: 'Auth, validation, and encryption aren\'t afterthoughts — they\'re built into the foundation.' },
+//     { label: 'Scale-Ready', desc: 'From day one, code is structured for growth. Microservices, modular design, clean separation.' },
+// ];
 
 export default function About() {
     const pageVisible = useFeatureFlag('page.about');
@@ -171,45 +171,6 @@ export default function About() {
                 </FeatureGate>
 
                 {/* Values */}
-                <FeatureGate flagKey="content.about.values">
-                    <section className="pt-32 px-4 sm:px-6 pb-20 bg-[#121212]">
-                        <div className="max-w-6xl mx-auto">
-                            <div className="text-center mb-12">
-                                <p className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-gray-400 uppercase mb-4">
-                                    Core :: Principles
-                                </p>
-                                <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-100 uppercase tracking-tight">
-                                    How I <span className="text-[#685AFF]">Build.</span>
-                                </h2>
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                {values.map((v, i) => (
-                                    <motion.div
-                                        key={v.label}
-                                        initial={{ opacity: 0, y: 40 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: i * 0.1 }}
-                                        className="bg-[#1c1c1c] border border-gray-700 rounded-xl p-6 sm:p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                                    >
-                                        <div className="flex items-center justify-between mb-4">
-                                            <span className="font-mono text-[10px] tracking-wider text-[#685AFF] uppercase">{v.label}</span>
-                                            <span className="font-mono text-xs text-gray-300">{String(i + 1).padStart(2, '0')}</span>
-                                        </div>
-                                        <p className="text-gray-200 text-sm leading-relaxed">{v.desc}</p>
-                                    </motion.div>
-                                ))}
-                            </div>
-
-                            {/* Divider */}
-                            {/* <div className="mt-16 h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent" /> */}
-                            <p className="mt-8 text-center font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
-                                Built from scratch. Shipping with intent.
-                            </p>
-                        </div>
-                    </section>
-                </FeatureGate>
             </main>
             <Footer />
         </>
