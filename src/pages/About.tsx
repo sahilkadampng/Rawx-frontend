@@ -113,7 +113,7 @@ export default function About() {
                             Sahil Kadam
                         </h3>
                         <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-4">
-                            I'm a self-taught developer who started from zero and built my way into backend engineering.
+                            I'm a self-taught developer who started from YouTube video's and built my way into backend engineering.
                             I think in systems — databases, APIs, auth layers, and deployment pipelines. My goal isn't
                             just to write code, but to build infrastructure that scales and lasts.
                         </p>
