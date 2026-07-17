@@ -131,7 +131,7 @@ export default function CTA() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.5 }}
-                    href="/docs"
+                    href="/about"
                     className="mt-5 text-[#685AFF] text-sm font-medium font-arimo hover:underline flex items-center gap-1 transition"
                 >
                     Explore About me
