@@ -73,7 +73,7 @@ export default function Footer() {
                             ))}
                         </div>
                         {/* RIGHT — PLATFORM (mobile) */}
-                        <div className="space-y-2 md:hidden">
+                        {/* <div className="space-y-2 md:hidden">
                             {visiblePlatformLinks.map((link) => (
                                 <Link
                                     key={link.label}
@@ -84,7 +84,7 @@ export default function Footer() {
                                 </Link>
                             ))}
                             <a href='#' className='flex items-center text-xl -mt-20 -ml-10 text-gray-400 hover:text-[#685AFF] transition font-arimo'>SAHIL</a>
-                        </div>
+                        </div> */}
                         {/* CENTER — LOGO (desktop only) */}
                         <div className="hidden md:flex flex-col items-center">
                             <a className="text-2xl font-extrabold tracking-[0.15em] text-gray-200 hover:text-[#685AFF] uppercase">
