@@ -19,10 +19,14 @@ const FeatureFlagContext = createContext<FeatureFlagContextValue | undefined>(un
 export function FeatureFlagProvider({ children }: { children: React.ReactNode }) {
     const [flags, setFlags] = useState<FeatureFlagState[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<Error | null>(null);
 
     const refreshFlags = useCallback(async () => {
         try {
             const res = await fetch(`${API_URL}/flags/public`);
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
             const data = await res.json();
 
             if (data.status === 'success' && data.data) {
@@ -32,9 +36,13 @@ export function FeatureFlagProvider({ children }: { children: React.ReactNode })
                     route: (value as { route?: string }).route,
                 }));
                 setFlags(nextFlags);
+                setError(null);
             }
         } catch (error) {
             console.error('Feature flag fetch error:', error);
+            setError(error as Error);
+            // Set default flags so app doesn't break
+            setFlags([]);
         } finally {
             setLoading(false);
         }
@@ -65,6 +73,11 @@ export function FeatureFlagProvider({ children }: { children: React.ReactNode })
         isEnabled,
         refreshFlags,
     }), [flags, loading, isEnabled, refreshFlags]);
+
+    // Show error notification but still render children
+    if (error) {
+        console.warn('Feature flags failed to load, using defaults:', error.message);
+    }
 
     return (
         <FeatureFlagContext.Provider value={contextValue}>

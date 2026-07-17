@@ -60,6 +60,9 @@ export function useVisitorTracker() {
                 // Fetch real public IP (so localhost doesn't show ::1)
                 const clientIP = await getPublicIP();
 
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
                 const res = await fetch(`${API_URL}/visitors/track`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -72,7 +75,15 @@ export function useVisitorTracker() {
                         visitorToken: existingToken,
                         clientIP,
                     }),
+                    signal: controller.signal,
                 });
+
+                clearTimeout(timeoutId);
+
+                if (!res.ok) {
+                    console.warn('Visitor tracking failed:', res.status);
+                    return;
+                }
 
                 const data = await res.json();
 
@@ -80,8 +91,9 @@ export function useVisitorTracker() {
                 if (data.token) {
                     localStorage.setItem(TOKEN_KEY, data.token);
                 }
-            } catch {
+            } catch (err) {
                 // Silently fail — don't break the app
+                console.debug('Visitor tracking error:', err instanceof Error ? err.message : 'Unknown error');
             } finally {
                 isTracking = false;
             }

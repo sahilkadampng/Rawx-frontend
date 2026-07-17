@@ -118,7 +118,7 @@ export function useRazorpay(): UseRazorpayReturn {
                     key: order.key_id,
                     amount: order.amount,
                     currency: order.currency,
-                    name: 'RAW',
+                    name: 'SAHIL',
                     description: 'Support Me ☕',
                     image: '/download.png',
                     order_id: order.order_id,

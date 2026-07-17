@@ -31,7 +31,7 @@ export default function CTA() {
     };
 
     return (
-        <section id="CTA" className="w-full bg-[#f4f6fb] py-16 md:py-24 px-4 flex items-center justify-center scroll-mt-32
+        <section id="CTA" className="w-full bg-[#f4f6fb] rounded-t-[50px] py-16 md:py-24 px-4 flex items-center justify-center scroll-mt-32
 ">
             <motion.div
                 initial={{ opacity: 0, y: 60, scale: 0.97 }}
@@ -46,18 +46,18 @@ export default function CTA() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.1 }}
-                    className="font-extrabold text-5xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight text-gray-900 uppercase"
+                    className="font-bebas text-5xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight text-gray-900"
                 >
-                    build empire
+                    Have a project in mind?
                 </motion.h2>
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="font-bebas text-5xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight text-[#685AFF] uppercase"
+                    className="font-extrabold text-5xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight text-[#685AFF]"
                 >
-                    With Confidence.
+                    Let's Talk
                 </motion.h2>
 
                 {/* Subtitle */}

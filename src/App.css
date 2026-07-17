@@ -42,3 +42,21 @@
 .read-the-docs {
     color: #888;
 }
+
+@keyframes skill-marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.skill-marquee-track {
+    animation: skill-marquee-scroll 28s linear infinite;
+}
+
+.skill-marquee:hover .skill-marquee-track {
+    animation-play-state: paused;
+}

@@ -1,215 +1,219 @@
-import { motion } from "framer-motion";
-import clr from "../assets/CLR.jpg";
-import db from "../assets/db.jpg";
-// import Noise from '../components/noise'
-// import support from "../assets/support.jpg";
+import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
+import {
+    FiBox,
+    FiCode,
+    FiCpu,
+    FiDatabase,
+    FiGlobe,
+    FiLayers,
+    FiMonitor,
+    FiServer,
+} from 'react-icons/fi';
+
+type Service = {
+    title: string;
+    description: string;
+    icon: ReactNode;
+};
+
+const services: Service[] = [
+    {
+        title: 'React / Next.js',
+        description: 'Building modern, responsive interfaces and full-stack web applications with component-driven architecture.',
+        icon: <FiMonitor />,
+    },
+    {
+        title: 'TypeScript',
+        description: 'Writing safer, more maintainable code with strong typing and scalable application architecture.',
+        icon: <FiCode />,
+    },
+    {
+        title: 'Node.js / Express',
+        description: 'Building scalable backend systems, REST APIs, authentication flows, and server-side applications.',
+        icon: <FiServer />,
+    },
+    {
+        title: 'MongoDB',
+        description: 'Designing flexible database structures and efficient data models for modern applications.',
+        icon: <FiDatabase />,
+    },
+    {
+        title: 'Python',
+        description: 'Using Python for backend development, automation, scripting, and problem-solving.',
+        icon: <FiCode />,
+    },
+    {
+        title: 'Docker / Kubernetes',
+        description: 'Containerizing applications and understanding the infrastructure behind scalable deployments.',
+        icon: <FiBox />,
+    },
+    {
+        title: 'DSA (C++)',
+        description: 'Solving problems using efficient algorithms, data structures, and optimized approaches.',
+        icon: <FiCpu />,
+    },
+    {
+        title: 'OOP',
+        description: 'Designing modular, reusable, and maintainable software using object-oriented principles.',
+        icon: <FiLayers />,
+    },
+    {
+        title: 'Computer Networking',
+        description: 'Understanding the protocols and architecture behind communication between clients, servers, and modern applications.',
+        icon: <FiGlobe />,
+    },
+];
+
+const marqueeItems = [
+    'React',
+    'Next.js',
+    'TypeScript',
+    'Node.js',
+    'Express',
+    'MongoDB',
+    'Python',
+    'Docker',
+    'Kubernetes',
+    'DSA',
+    'OOP',
+    'CN',
+];
+
+function ServiceCard({ service, index }: { service: Service; index: number }) {
+    return (
+        <motion.article
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.55, delay: index * 0.06 }}
+            className="group relative overflow-hidden rounded-[11px] border border-white/10 bg-[#161616] px-6 py-6 text-left transition-transform duration-300 hover:border-[#685AFF]/30"
+        >
+            <span className="absolute left-0 top-5 h-12 w-1 rounded-r-full bg-[#685AFF]" />
+            <div className="absolute inset-0 bg-linear-to-br from-white/[0.035] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+            <div className="relative flex items-start gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#1d1d1d] text-xl text-white">
+                    {service.icon}
+                </div>
+
+                <div className="min-w-0 flex-1">
+                    <h3 className="text-[1.05rem] font-semibold tracking-tight text-white">
+                        {service.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-white/58">
+                        {service.description}
+                    </p>
+
+                    {/* <a
+                        href="#contact"
+                        className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/78 transition-colors group-hover:text-[#685AFF]"
+                    >
+                        Learn more
+                        <span className="text-[#685AFF] transition-transform duration-300 group-hover:translate-x-1">
+                            →
+                        </span>
+                    </a> */}
+                </div>
+            </div>
+        </motion.article>
+    );
+}
 
 export default function Skills() {
-    const categories = [
-        {
-            tag: "Core: Languages",
-            tagColor: "text-[#685AFF]",
-            image: clr,
-            title: "Languages",
-            skills: [
-                { name: "JavaScript", level: "Intermediate" },
-                { name: "TypeScript", level: "Basic" },
-                { name: "Node.js", level: "Intermediate" },
-                { name: "Python", level: "Basic" },
-            ],
-        },
-        {
-            tag: "Core: Frameworks",
-            tagColor: "text-[#685AFF]",
-            title: "Frameworks & Libraries",
-            skills: [
-                { name: "React", level: "Basic" },
-                { name: "Express.js", level: "Intermediate" },
-                { name: "Tailwind CSS", level: "Intermediate" },
-            ],
-        },
-        {
-            tag: "Core: Database",
-            tagColor: "text-[#685AFF]",
-            image: db,
-            title: "Database & Storage",
-            skills: [{ name: "MongoDB", level: "Intermediate" }],
-        },
-        {
-            tag: "Core: DevOps",
-            tagColor: "text-[#685AFF]",
-            title: "DevOps & Tools",
-            skills: [
-                { name: "Git & GitHub", level: "Advanced" },
-                { name: "Docker", level: "Not started" },
-                { name: "CI/CD", level: "Not started" },
-            ],
-        },
-        {
-            tag: "Core: logic building",
-            tagColor: "text-[#685AFF]",
-            title: "logic building & CS Fundamentals",
-            skills: [
-                { name: "Data Structures", level: "Intermediate" },
-                { name: "Algorithms", level: "Basic" },
-                { name: "Computer Science", level: "Basic" },
-                { name: "OOPs", level: "Basic" },
-            ],
-        },
-    ];
-
-    const levelColor: Record<string, string> = {
-        Advanced: "text-gray-400 bg-transperent border-gray-700",
-        Intermediate: "text-gray-400 bg-transperent border-gray-700",
-        Basic: "text-gray-400 bg-transperent border-gray-700",
-        "Not started": "text-gray-400 bg-transperent border-gray-700",
-    };
-
     return (
-        <section className="relative overflow-hidden w-full py-20 sm:py-28 px-4 sm:px-6 bg-[#06080b]">
-            <div className="max-w-6xl mx-auto text-center">
-                <div className="max-w-6xl mx-auto text-center">
-                    {/* <Noise /> */}
-                    {/* Top badge */}
-                    <motion.div
+        <section className="relative overflow-hidden bg-[#050505] px-4 py-20 text-white sm:px-6 sm:py-28">
+            {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(80,255,59,0.14),transparent_34%),radial-gradient(circle_at_bottom,rgba(80,255,59,0.09),transparent_22%),linear-gradient(to_bottom,rgba(255,255,255,0.03),transparent_18%)]" /> */}
+            {/* <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[90px_90px] opacity-[0.12]" /> */}
+
+            <div className="relative mx-auto max-w-6xl">
+                <motion.div
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="flex items-center justify-center gap-3 text-center"
+                >
+                    <span className="h-px w-10 bg-[#685AFF]" />
+                    <span className="text-[10px] font-medium uppercase tracking-[0.34em] text-white/85 sm:text-xs">
+                        My Specialization
+                    </span>
+                    <span className="h-px w-10 bg-[#685AFF]" />
+                </motion.div>
+
+                <div className="relative mt-5 text-center">
+                    <p className="pointer-events-none absolute left-1/2 top-0 hidden -translate-x-1/2 -translate-y-2 select-none text-[clamp(3.75rem,10vw,7.25rem)] font-black uppercase tracking-[0.18em] text-white/2 sm:block">
+                        SKILL
+                    </p>
+
+                    <motion.h2
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.05 }}
+                        className="relative text-[clamp(2.2rem,5vw,4.2rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-white"
+                    >
+                        <span className="text-[#685AFF]">Skills</span>{' '}
+                        <span className="text-white">I Have</span>
+                    </motion.h2>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.55, delay: 0.12 }}
+                        className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/50 sm:text-base"
+                    >
+                        The technologies I use to build, scale, and ship modern backend systems.
+                    </motion.p>
+                </div>
+
+                <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                    {services.map((service, index) => (
+                        <ServiceCard key={service.title} service={service} index={index} />
+                    ))}
+                </div>
+
+                <div className="mt-16 border-t border-white/10 pt-14 text-center sm:pt-16">
+                    <motion.h3
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="flex items-center justify-center gap-3 mb-8"
+                        className="mx-auto max-w-4xl text-[clamp(2rem,4.6vw,4rem)] font-semibold leading-[1.05] tracking-[-0.05em] text-white"
                     >
-                        <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
-                            Stack :: Overview
-                        </span>
-                        <span className="w-12 h-px bg-gray-300" />
-                        <span className="font-mono text-[10px] sm:text-xs tracking-wider text-gray-400">
-                            Technical Proficiency
-                        </span>
-                    </motion.div>
+                        Let&apos;s Create an <span className="text-[#685AFF]">Amazing</span>{' '}
+                        <span className="text-[#685AFF]">Project Together!</span>
+                    </motion.h3>
 
-                    {/* Heading */}
-                    <motion.h2
-                        initial={{ opacity: 0, y: 30 }}
+                    <motion.a
+                        id="contact"
+                        initial={{ opacity: 0, y: 14 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.7, delay: 0.1 }}
-                        className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-white uppercase leading-tight tracking-tight"
+                        transition={{ duration: 0.5, delay: 0.08 }}
+                        href="#CTA"
+                        className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-black"
                     >
-                        Technical
-                        <br />
-                        <span className="text-[#685AFF]">Skills</span>
-                    </motion.h2>
+                        Contact Us
+                    </motion.a>
+                </div>
 
-                    {/* Description */}
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="mt-6 text-gray-500 text-base sm:text-lg max-w-2xl mx-auto"
-                    >
-                        Every tool in the stack is chosen for production reliability. From
-                        database design to deployment pipelines
-                    </motion.p>
-
-                    {/* Stats */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="mt-12 flex flex-wrap justify-center divide-x divide-gray-800"
-                    >
-                        {[
-                            { value: "", label: "" },
-                            // { value: "Backend", label: "Coverage" },
-                            // { value: "Production", label: "Grade" },
-                        ].map((stat) => (
-                            <div key={stat.label} className="px-10 sm:px-10 py-2 text-center">
-                                <p className="text-2xl sm:text-3xl font-bold text-gray-200">
-                                    {stat.value}
-                                </p>
-                                <p className="font-mono text-[10px] sm:text-xs tracking-wider text-gray-400 uppercase mt-1">
-                                    {stat.label}
-                                </p>
+                <div className="skill-marquee relative mt-14 overflow-hidden border-y border-gray-700/20 py-4">
+                    <div className="skill-marquee-track flex w-max items-center gap-4 text-sm font-medium tracking-[-0.03em] text-white/82">
+                        {[...marqueeItems, ...marqueeItems].map((item, index) => (
+                            <div
+                                key={`${item}-${index}`}
+                                className="inline-flex items-center gap-4 whitespace-nowrap"
+                            >
+                                <span className="rounded-full border border-white/10 bg-white/4 px-4 py-2">
+                                    {item}
+                                </span>
+                                <span className="text-[#685AFF]">*</span>
                             </div>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
-
-                {/* Cards */}
-                <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    {categories.map((cat, idx) => (
-                        <motion.div
-                            key={cat.title}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            className="bg-[#0d0e0f] border border-gray-900 rounded-xl p-6 text-left flex flex-col justify-between min-h-80 hover:shadow-lg"
-                        >
-                            <div>
-                                {/* Header */}
-                                <div className="flex items-center justify-between mb-5">
-                                    <span
-                                        className={`font-mono text-[10px] tracking-wider uppercase ${cat.tagColor}`}
-                                    >
-                                        {cat.tag}
-                                    </span>
-                                    <span className="font-mono text-xs text-gray-300">
-                                        {String(idx + 1).padStart(2, "0")}
-                                    </span>
-                                </div>
-
-                                {/* Image */}
-                                <div className="flex items-center gap-4 mb-4">
-                                    {cat.image && (
-                                        <div className="w-14 h-14 mb-4 rounded-xl bg-gray-50 flex items-center justify-center">
-                                            <img
-                                                src={cat.image}
-                                                alt={cat.title}
-                                                className="w-8 h-8 object-contain"
-                                            />
-                                        </div>
-                                    )}
-
-                                    <h3 className="text-lg font-extrabold text-gray-100 tracking-tight mb-4">
-                                        {cat.title}
-                                    </h3>
-                                </div>
-
-                                {/* Skills */}
-                                <div className="space-y-2.5">
-                                    {cat.skills.map((skill) => (
-                                        <div
-                                            key={skill.name}
-                                            className="flex items-center justify-between px-3 py-2 border border-gray-900 rounded-lg"
-                                        >
-                                            <span className="font-mono text-sm text-gray-100">
-                                                {skill.name}
-                                            </span>
-                                            <span
-                                                className={`font-mono text-[10px] tracking-wider uppercase px-2 py-0.5 rounded border ${levelColor[skill.level] ||
-                                                    "text-gray-500 bg-gray-50 border-gray-200"
-                                                    }`}
-                                            >
-                                                {skill.level}
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Divider */}
-                {/* <div className="mt-16 h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent" /> */}
-
-                {/* Bottom */}
-                <p className="mt-8 font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
-                    Focused on backend systems.
-                </p>
             </div>
         </section>
     );

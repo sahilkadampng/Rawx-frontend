@@ -178,7 +178,7 @@ export default function Login() {
                         transition={{ duration: 0.5, delay: 0.5 }}
                         className="mt-6 text-center font-mono text-[10px] tracking-[0.2em] text-gray-400 uppercase"
                     >
-                        Protected by RAW
+                        Protected
                     </motion.p>
                 </div>
             </main>
