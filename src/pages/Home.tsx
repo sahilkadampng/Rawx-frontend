@@ -7,6 +7,7 @@ import Perspectives from '../components/Perspectives';
 import Skills from '../components/Skills';
 // import Donate from '../components/Donate';
 import CTA from '../components/CTA';
+import FooterReveal from '../components/FooterReveal';
 import VisibilityNotice from '../components/VisibilityNotice';
 import { FeatureGate, useFeatureFlag } from '../context/FeatureFlagContext';
 
@@ -33,7 +34,10 @@ export default function Home() {
                 <FeatureGate flagKey="content.home.platforms"><Platforms /></FeatureGate>
                 <FeatureGate flagKey="content.home.perspectives"><Perspectives /></FeatureGate>
                 <FeatureGate flagKey="content.home.skills"><Skills /></FeatureGate>
-                <FeatureGate flagKey="content.home.cta"><CTA /></FeatureGate>
+                <FeatureGate flagKey="content.home.cta">
+                    <CTA />
+                    <FooterReveal />
+                </FeatureGate>
             </main>
             <Footer />
         </>

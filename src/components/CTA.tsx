@@ -2,6 +2,22 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { API_URL } from '../config/api';
 
+function FooterRevealEdge() {
+    return (
+        <svg
+            viewBox="0 0 1440 80"
+            className="absolute inset-x-0 bottom-0 h-[28px] w-full sm:h-[40px] shadow-[0_10px_20px_-5px_rgba(0,0,0,0.4)]"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+            <path
+                d="M0,20 L30,60 L60,20 L90,60 L120,20 L150,60 L180,20 L210,60 L240,20 L270,60 L300,20 L330,60 L360,20 L390,60 L420,20 L450,60 L480,20 L510,60 L540,20 L570,60 L600,20 L630,60 L660,20 L690,60 L720,20 L750,60 L780,20 L810,60 L840,20 L870,60 L900,20 L930,60 L960,20 L990,60 L1020,20 L1050,60 L1080,20 L1110,60 L1140,20 L1170,60 L1200,20 L1230,60 L1260,20 L1290,60 L1320,20 L1350,60 L1380,20 L1410,60 L1440,20 L1440,80 L0,80 Z"
+                fill="#111214"
+            />
+        </svg>
+    );
+}
+
 export default function CTA() {
     const [email, setEmail] = useState('');
     const [submitting, setSubmitting] = useState(false);
@@ -31,8 +47,7 @@ export default function CTA() {
     };
 
     return (
-        <section id="CTA" className="w-full bg-[#f4f6fb] rounded-t-[50px] py-16 md:py-24 px-4 flex items-center justify-center scroll-mt-32
-">
+        <section id="CTA" className="relative w-full overflow-hidden rounded-t-[50px] bg-[#f4f6fb] px-4 py-16 pb-24 md:py-24 md:pb-32 flex items-center justify-center scroll-mt-32">
             <motion.div
                 initial={{ opacity: 0, y: 60, scale: 0.97 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -169,6 +184,7 @@ export default function CTA() {
                     Start shipping production-grade endpoints today.
                 </p> */}
             </motion.div>
+            <FooterRevealEdge />
         </section>
     );
 }
