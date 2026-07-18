@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiOutlineMenu, HiOutlineX } from 'react-icons/hi';
 import { useFeatureFlags } from '../context/FeatureFlagContext';
+import logo from '../assets/ChatGPT Image Jul 18, 2026, 06_54_16 PM.png'
 
 const navLinks = [
     { label: 'About', to: '/about', flag: 'nav.about' },
@@ -18,13 +19,17 @@ export default function Navbar() {
 
     return (
         <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-sm bg-black/40 border-b border-gray-600">
-            <div className="max-w-7xl mx-auto px-4 sm:px-0 lg:px-16 h-16 flex items-center justify-between">
-                {/* LEFT → LOGO */}
-                <Link to="/" className="font-arimo text-xl font-bold text-white">
-                    SAHIL
+            <div className="max-w-7xl mx-auto h-16 flex items-center justify-between lg:px-8">
+                {/*LOGO*/}
+                <Link to="/" className="flex items-center">
+                    <img
+                        src={logo}
+                        alt="RAW Logo"
+                        className="h-40 w-auto bg-transparent mt-2"
+                    />
                 </Link>
 
-                {/* CENTER → MENU (desktop) */}
+                {/*MENU*/}
                 <ul className="hidden md:flex gap-8">
                     {visibleLinks.map((link) => (
                         <li key={link.to}>
@@ -35,19 +40,19 @@ export default function Navbar() {
                     ))}
                 </ul>
 
-                {/* RIGHT → LOGIN (desktop) */}
+                {/* RIGHT */}
                 <div className="hidden md:block">
                     <Link
                         to="/login"
-                        className="text-white hover:text-gray-600 transition-colors"
+                        className="text-white hover:text-gray-600 transition-colors lg:px-8"
                     >
                         Login
                     </Link>
                 </div>
 
-                {/* MOBILE → HAMBURGER */}
+                {/*HAMBURGER */}
                 <button
-                    className="md:hidden text-white"
+                    className="md:hidden text-white px-4"
                     onClick={() => setMenuOpen(!menuOpen)}
                 >
                     {menuOpen ? <HiOutlineX size={24} /> : <HiOutlineMenu size={24} />}

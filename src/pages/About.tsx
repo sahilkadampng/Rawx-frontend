@@ -46,7 +46,7 @@ export default function About() {
                             transition={{ duration: 0.5 }}
                             className="font-mono text-[10px] sm:text-xs tracking-[0.3em] text-[#685AFF] uppercase mb-6"
                         >
-                            ● About :: Overview ●
+                             About - Overview 
                         </motion.p>
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
@@ -102,7 +102,7 @@ export default function About() {
                     >
                         <div className="flex items-center justify-between mb-6 sm:px-2">
                             <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
-                                Profile :: Summary
+                                Profile - Summary
                             </span>
                             <span className="flex items-center gap-2 text-xs font-mono text-gray-400">
                                 <span className="w-2 h-2 rounded-full bg-green-500" />
@@ -137,10 +137,10 @@ export default function About() {
                         <div className="max-w-4xl mx-auto">
                             <div className="text-center mb-12">
                                 <p className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase mb-8">
-                                    Journey :: Timeline
+                                    Journey - Timeline
                                 </p>
                                 <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-100 uppercase tracking-tight">
-                                    The Path <span className="text-[#685AFF]">So Far.</span>
+                                    The Path So <span className="text-[#685AFF]">Far.</span>
                                 </h2>
                             </div>
 
