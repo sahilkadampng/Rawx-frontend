@@ -1,5 +1,5 @@
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import Hero from '../components/Hero';
 import Workflow from '../components/Workflow';
 import Platforms from '../components/Platforms';
@@ -39,7 +39,7 @@ export default function Home() {
                     <FooterReveal />
                 </FeatureGate>
             </main>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }

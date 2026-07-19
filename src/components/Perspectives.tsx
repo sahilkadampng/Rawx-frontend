@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function Perspectives() {
     return (
-        <section className="relative overflow-hidden w-full py-20 sm:py-28 px-4 sm:px-6 bg-[#111214] -mt-28">
+        <section className="relative z-10 overflow-hidden w-full py-20 sm:py-28 px-4 sm:px-6 bg-[#111214] -mt-28">
             {/* <Noise /> */}
             <div className="max-w-6xl mx-auto">
                 {/* Top features row */}

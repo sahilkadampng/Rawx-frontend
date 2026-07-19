@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function Platforms() {
     return (
-        <section id="built-for-clients" className="relative py-20 sm:py-28 px-4 overflow-hidden w-full sm:px-6 bg-[#111214]">
+        <section id="built-for-clients" className="relative z-10 py-20 sm:py-28 px-4 overflow-hidden w-full sm:px-6 bg-[#111214]">
             <div className="max-w-6xl mx-auto text-center">
                 <div className="max-w-6xl mx-auto text-center">
                     {/* <Noise /> */}

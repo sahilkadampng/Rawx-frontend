@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import VisibilityNotice from '../components/VisibilityNotice';
 import { FeatureGate, useFeatureFlag } from '../context/FeatureFlagContext';
 
@@ -172,7 +172,7 @@ export default function About() {
 
                 {/* Values */}
             </main>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }

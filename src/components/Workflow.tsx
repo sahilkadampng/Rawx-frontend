@@ -443,7 +443,7 @@ export default function Workflow() {
     const active = stepsConfig[activeStep]
 
     return (
-        <section className="relative w-full py-16 sm:py-24 overflow-hidden bg-[#06080b]">
+        <section className="relative z-10 w-full py-16 sm:py-24 overflow-hidden bg-[#06080b]">
             {/* <Noise /> */}
             {/* 🔥 Responsive container */}
             <div className="relative z-20 max-w-350 mx-auto px-0 sm:px-6 lg:px-10 xl:px-16">

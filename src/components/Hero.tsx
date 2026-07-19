@@ -14,7 +14,7 @@ export default function Hero() {
     const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.93])
 
     return (
-        <section ref={heroRef} className="min-h-screen flex flex-col rounded-b-[50px] items-center justify-center text-center relative overflow-hidden bg-transparent px-4 sm:px-6">
+        <section ref={heroRef} className="relative z-10 min-h-screen flex flex-col rounded-b-[50px] items-center justify-center text-center overflow-hidden bg-transparent px-4 sm:px-6">
             <div className="absolute inset-0 -z-10">
                 <Silk />
             </div>

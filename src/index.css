@@ -1,29 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=BBH+Bartle&family=Bebas+Neue&family=Vend+Sans:wght@634&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Archivo+Black&family=BBH+Bartle&family=Bebas+Neue&family=Caveat:wght@400..700&family=Inter:wght@400;500;600;700;800&family=Vend+Sans:wght@634&display=swap');
 
 @import "tailwindcss";
 
-/* ✅ Set your global font */
+
+/* =========================
+   TAILWIND CUSTOM FONTS
+========================= */
+
+@theme {
+    /* Default sans font */
+    --font-sans: "Arimo", sans-serif;
+
+    /* Large bold display text */
+    --font-display: "Archivo Black", sans-serif;
+
+    /* Handwritten text */
+    --font-hand: "Caveat", cursive;
+
+    /* Additional fonts */
+    --font-bebas: "Bebas Neue", sans-serif;
+    --font-bartle: "BBH Bartle", sans-serif;
+    --font-vend: "Vend Sans", sans-serif;
+}
+
+
 :root {
     font-family: "Arimo", sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
     background-color: #111214;
+    color: white;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* optional reset */
+
 body {
     margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
 }
+
 
 .traffic-btn {
     @apply relative flex items-center justify-center w-3 h-3 rounded-full shadow-inner cursor-pointer;
 }
 
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 14s linear infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    92%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    95% {
+        transform: scaleY(0.1);
+    }
+}
+
+.animate-blink {
+    animation: blink 4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* Torn paper edge using SVG mask */
+.torn-paper {
+    --tear: 10px;
+    -webkit-mask-image:
+        radial-gradient(circle at 6px 6px, transparent 5px, #000 5.5px) top left / 12px 12px repeat-x,
+        radial-gradient(circle at 6px 6px, transparent 5px, #000 5.5px) bottom left / 12px 12px repeat-x,
+        radial-gradient(circle at 6px 6px, transparent 5px, #000 5.5px) top left / 12px 12px repeat-y,
+        radial-gradient(circle at 6px 6px, transparent 5px, #000 5.5px) top right / 12px 12px repeat-y,
+        linear-gradient(#000, #000);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    mask-image:
+        radial-gradient(circle at 6px 6px, transparent 5px, #000 5.5px) top left / 12px 12px repeat-x,
+        radial-gradient(circle at 6px 6px, transparent 5px, #000 5.5px) bottom left / 12px 12px repeat-x,
+        radial-gradient(circle at 6px 6px, transparent 5px, #000 5.5px) top left / 12px 12px repeat-y,
+        radial-gradient(circle at 6px 6px, transparent 5px, #000 5.5px) top right / 12px 12px repeat-y,
+        linear-gradient(#000, #000);
+}
+
 .traffic-icon {
     @apply text-[8px] text-black opacity-0 group-hover:opacity-100 transition;
 }
+
+
 
 html {
     scroll-behavior: smooth;
