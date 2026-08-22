@@ -6,9 +6,9 @@ import {
     type VerifyPaymentResponse,
 } from '../services/donationService';
 
-// ──────────────────────────────────────────────
-// Razorpay type declarations
-// ──────────────────────────────────────────────
+
+
+
 interface RazorpayOptions {
     key: string;
     amount: number;
@@ -40,9 +40,9 @@ declare global {
     }
 }
 
-// ──────────────────────────────────────────────
-// Hook state
-// ──────────────────────────────────────────────
+
+
+
 type PaymentStatus = 'idle' | 'loading' | 'success' | 'failed';
 
 interface UseRazorpayReturn {
@@ -53,9 +53,9 @@ interface UseRazorpayReturn {
     reset: () => void;
 }
 
-// ──────────────────────────────────────────────
-// Load Razorpay SDK script once
-// ──────────────────────────────────────────────
+
+
+
 let sdkPromise: Promise<void> | null = null;
 
 function loadRazorpaySDK(): Promise<void> {
@@ -81,9 +81,9 @@ function loadRazorpaySDK(): Promise<void> {
     return sdkPromise;
 }
 
-// ──────────────────────────────────────────────
-// Hook
-// ──────────────────────────────────────────────
+
+
+
 export function useRazorpay(): UseRazorpayReturn {
     const [status, setStatus] = useState<PaymentStatus>('idle');
     const [error, setError] = useState<string | null>(null);
@@ -106,13 +106,13 @@ export function useRazorpay(): UseRazorpayReturn {
         setSuccessData(null);
 
         try {
-            // 1. Load SDK
+            
             await loadRazorpaySDK();
 
-            // 2. Create order
+            
             const order = await createOrder(payload);
 
-            // 3. Open Razorpay checkout
+            
             await new Promise<void>((resolve, reject) => {
                 const options: RazorpayOptions = {
                     key: order.key_id,
@@ -124,7 +124,7 @@ export function useRazorpay(): UseRazorpayReturn {
                     order_id: order.order_id,
                     handler: async (response: RazorpayResponse) => {
                         try {
-                            // 4. Verify payment
+                            
                             const result = await verifyPayment({
                                 razorpay_order_id: response.razorpay_order_id,
                                 razorpay_payment_id: response.razorpay_payment_id,

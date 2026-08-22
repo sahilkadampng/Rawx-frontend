@@ -74,7 +74,7 @@ export default function Solutions() {
         <>
             <Navbar />
             <main className="bg-[#f4f6fb] min-h-screen">
-                {/* Hero */}
+                
                 <section className="pt-32 pb-16 sm:pb-20 px-4 sm:px-6 bg-[#121212]">
                     <div className="max-w-6xl mx-auto text-center">
                         <motion.p
@@ -103,7 +103,7 @@ export default function Solutions() {
                             engineered for reliability, security, and scale.
                         </motion.p>
 
-                        {/* Tags */}
+                        
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export default function Solutions() {
                     </div>
                 </section>
 
-                {/* Solutions Grid */}
+                
                 <FeatureGate flagKey="content.solutions.grid">
                     <section className="px-4 sm:px-6 pb-20 bg-[#121212]">
                         <div className="max-w-6xl mx-auto">
@@ -161,7 +161,7 @@ export default function Solutions() {
                     </section>
                 </FeatureGate>
 
-                {/* Process */}
+                
                 <FeatureGate flagKey="content.solutions.process">
                     <section className="pt-32 px-4 sm:px-6 pb-20 bg-[#181818]">
                         <div className="max-w-4xl mx-auto">
@@ -195,8 +195,8 @@ export default function Solutions() {
                                 ))}
                             </div>
 
-                            {/* Divider */}
-                            {/* <div className="mt-16 h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent" /> */}
+                            
+                            
                             <p className="mt-8 text-center font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
                                 Every layer. Production grade.
                             </p>

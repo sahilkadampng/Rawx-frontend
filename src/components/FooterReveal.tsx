@@ -8,11 +8,9 @@ import certificate2 from '../assets/Screenshot 2026-07-19 221505.png'
 import certificate3 from '../assets/Screenshot 2026-07-19 221558.png'
 import arrow from '../assets/arrow1.jpg'
 
-
-/* . Circular sticker . */
 function CircularSticker() {
     return (
-        <div className="relative h-24 w-24 sm:h-28 sm:w-28">
+        <div className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 mt-[-3rem] sm:mt-[-4.5rem]">
             <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full animate-spin-slow">
                 <defs>
                     <path
@@ -33,9 +31,9 @@ function CircularSticker() {
                     </textPath>
                 </text>
             </svg>
-            {/* Pink arrow center */}
+
             <div className="absolute inset-0 flex items-center justify-center">
-                <svg viewBox="0 0 40 40" className="h-10 w-10 -rotate-45">
+                <svg viewBox="0 0 40 40" className="h-8 w-8 sm:h-10 sm:w-10 -rotate-45">
                     <path
                         d="M6 20 L30 20 M22 12 L30 20 L22 28"
                         stroke="#f5b8d0"
@@ -50,7 +48,6 @@ function CircularSticker() {
     );
 }
 
-/* . Back To Top circular sticker */
 function BackToTop() {
     const scrollTop = () =>
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -59,7 +56,7 @@ function BackToTop() {
         <button
             onClick={scrollTop}
             aria-label="Back to top"
-            className="group relative h-24 w-24 sm:h-28 sm:w-28 cursor-pointer"
+            className="group relative h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 cursor-pointer"
         >
             <svg
                 viewBox="0 0 200 200"
@@ -84,265 +81,235 @@ function BackToTop() {
                     </textPath>
                 </text>
             </svg>
-            {/* Star burst */}
+
             <div className="absolute inset-0 flex items-center justify-center">
                 <img
                     src={logo}
                     alt="RAW Logo"
-                    className="h-40 w-auto bg-transparent mt-2"
+                    className="h-28 w-auto sm:h-32 md:h-40 bg-transparent mt-1 sm:mt-2"
                 />
-                {/* <svg viewBox="0 0 40 40" className="h-8 w-8 transition-transform group-hover:scale-110">
-                    <g fill="#1e2fd4">
-                        {Array.from({ length: 12 }).map((_, i) => (
-                            <rect
-                                key={i}
-                                x="19"
-                                y="2"
-                                width="2"
-                                height="10"
-                                rx="1"
-                                transform={`rotate(${i * 30} 20 20)`}
-                            />
-                        ))}
-                        <circle cx="20" cy="20" r="3" />
-                    </g>
-                </svg> */}
             </div>
         </button>
     );
 }
 
-/* . Cute Eyes mascot . */
-function EyesMascot() {
-    const [pos, setPos] = useState({ x: 0, y: 0 });
-    useEffect(() => {
-        const onMove = (e: MouseEvent) => {
-            const cx = window.innerWidth / 2;
-            const cy = window.innerHeight / 2;
-            const dx = (e.clientX - cx) / cx;
-            const dy = (e.clientY - cy) / cy;
-            setPos({ x: dx * 3, y: dy * 3 });
-        };
-        window.addEventListener("mousemove", onMove);
-        return () => window.removeEventListener("mousemove", onMove);
-    }, []);
-
-    return (
-        <div className="flex items-center gap-1">
-            {[0, 1].map((i) => (
-                <div
-                    key={i}
-                    className="relative flex h-9 w-9 items-center justify-center rounded-full bg-white ring-2 ring-black"
-                >
-                    <div
-                        className="h-4 w-4 rounded-full bg-black animate-blink"
-                        style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }}
-                    />
-                </div>
-            ))}
-        </div>
-    );
-}
-
-/* . Marquee "AND COUNTING..." . */
-// function TopMarquee() {
-//     const items = Array.from({ length: 8 });
-//     return (
-//         <div className="absolute inset-x-0 top-0 z-20 overflow-hidden py-3">
-//             <div className="flex animate-[marquee_28s_linear_infinite] whitespace-nowrap">
-//                 {items.map((_, i) => (
-//                     <span
-//                         key={i}
-//                         className="mx-6 font-display text-2xl uppercase tracking-widest text-white/90 sm:text-3xl"
-//                     >
-//                         WORK &nbsp;✦&nbsp;
-//                     </span>
-//                 ))}
-//             </div>
-//             <style>{`@keyframes marquee { from { transform: translateX(0);} to { transform: translateX(-50%);} }`}</style>
-//         </div>
-//     );
-// }
-
-/* . Hero with big text + bust . */
 function Hero() {
     const bigTextRef = useRef<HTMLDivElement>(null);
     const inView = useInView(bigTextRef, { amount: 0.1, once: false });
 
     return (
-        <section className="relative isolate min-h-[100svh] w-full overflow-hidden bg-black pt-16">
-            {/* Giant background poem-style text */}
+        <section className="relative isolate min-h-[60svh] sm:min-h-[80svh] md:min-h-[100svh] w-full overflow-hidden bg-black">
+
             <div
                 ref={bigTextRef}
-                className={`pointer-events-none absolute inset-x-0 top-24 z-0 mx-auto max-w-[92vw] select-none text-center font-display uppercase leading-[0.85] tracking-[-0.03em] transition-opacity duration-700 ${inView ? "opacity-100" : "opacity-40"
+                className={`pointer-events-none absolute inset-x-0 top-12 sm:top-16 md:top-24 z-0 mx-auto max-w-[92vw] select-none text-center font-bartle uppercase leading-[0.85] tracking-[-0.03em] transition-opacity duration-700 ${inView ? "opacity-100" : "opacity-40"
                     }`}
                 style={{
-                    fontSize: "clamp(3.5rem, 15vw, 15rem)",
-                    color: "#1a1a1a",
-                    textShadow: "0 2px 0 rgba(255,255,255,0.02)",
+                    fontSize: "clamp(6rem, 15vw, 15rem)",
+                    color: "#292522",
+                    textShadow: "0 2px 0 rgba(68, 68, 68, 0.02)",
                 }}
                 aria-hidden="true"
             >
-                <div>SAHIL</div>
+                <div>SAHILJUSTIGHEMLATA</div>
             </div>
 
-            {/* Bust image */}
-            <div className="relative z-10 mx-auto mt-18 flex justify-center">
+            <div className="relative z-10 mx-auto mt-15 lg:mt-38 sm:mt-20 md:mt-18 flex justify-center">
                 <img
                     src={bust}
                     alt="Classical bust with flowers blooming from the head"
-                    className="pointer-events-none w-[min(35vw,350px)] select-none drop-shadow-[0_20px_60px_rgba(0,0,0,0.9)]"
+                    className="pointer-events-none w-[60vw] sm:w-[45vw] md:w-[min(35vw,350px)] select-none drop-shadow-[0_20px_60px_rgba(0,0,0,0.9)]"
                 />
             </div>
         </section>
     );
 }
 
-/* . Torn paper note . */
 function TornPaperNote() {
-    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const [selected, setSelected] = useState<number | null>(null);
+
+    const certificates = [
+        {
+            src: certificate,
+            title: "C++ For C Programmers, Part A",
+            issuer: "UC Santa Cruz",
+            platform: "Coursera",
+            date: "Nov 2025",
+            verify: "https://coursera.org/verify/UORXSUKQ3H6G",
+        },
+        {
+            src: certificate1,
+            title: "Introduction to Front-End Development",
+            issuer: "Meta",
+            platform: "Coursera",
+            date: "Nov 2025",
+            verify: "https://coursera.org/verify/XNCKRZN1YKIW",
+        },
+        {
+            src: certificate2,
+            title: "C for Everyone: Structured Programming",
+            issuer: "UC Santa Cruz",
+            platform: "Coursera",
+            date: "Nov 2025",
+            verify: "https://coursera.org/verify/UP2MRAQ3LXQP",
+        },
+        {
+            src: certificate3,
+            title: "C for Everyone: Programming Fundamentals",
+            issuer: "UC Santa Cruz",
+            platform: "Coursera",
+            date: "Nov 2025",
+            verify: "https://coursera.org/verify/BS6DDHVJ5624",
+        },
+    ];
+
+    useEffect(() => {
+        if (selected === null) return;
+        const onKey = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setSelected(null);
+        };
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [selected]);
 
     return (
-        <section className="relative z-20 mx-auto -mt-20 max-w-3xl px-4 pb-32 sm:-mt-32">
-            {/* Tape top-left */}
-            <div className="pointer-events-none absolute ml-[-5.5rem] -top-0 z-30 h-10 w-50 -rotate-40 bg-[#e6d3a3]/80 shadow-md sm:left-8" />
+        <section className="relative z-20 mx-auto max-w-3xl px-6 sm:px-4 pb-16 sm:pb-24 md:pb-32">
 
-            {/* Tape bottom-right */}
-            <div className="pointer-events-none absolute bottom-35 mr-[-5.5rem] z-30 h-10 w-50 -rotate-40 bg-[#e6d3a3]/80 shadow-md sm:right-8" />
+            <div className="pointer-events-none absolute ml-[-2rem] sm:ml-[-4rem] md:ml-[-5.5rem] -top-0 z-30 h-6 w-24 sm:h-8 sm:w-36 md:h-10 md:w-50 -rotate-40 bg-[#e6d3a3]/80 shadow-md sm:left-8" />
 
-            {/* Circular sticker top-right */}
-            <div className="absolute -right-2 top-4 z-40 sm:-right-6 sm:top-6">
+            <div className="pointer-events-none absolute z-30 bottom-14 right-[-0.5rem] h-5 w-20 -rotate-40 bg-[#e6d3a3]/80 shadow-md sm:bottom-20 sm:right-[-2rem] sm:h-7 sm:w-32 md:bottom-34 md:right-[-5.5rem] md:h-10 md:w-50" />
+
+            <div className="absolute -right-1 top-2 z-40 sm:-right-4 sm:top-4 md:-right-6 md:top-6">
                 <CircularSticker />
             </div>
 
             <div className="relative">
-                <div
-                    className="torn-paper relative -mt-20 bg-[#f6f2e9] px-8 py-12 text-black shadow-[0_25px_80px_-20px_rgba(0,0,0,0.9)] sm:px-14 sm:py-16"
-                >
-                    <svg
-                        className="absolute left-0 top-0 h-full w-6 -translate-x-full"
-                        preserveAspectRatio="none"
-                        viewBox="0 0 24 300"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M0 0 Q 7 25 0 50 L 16 56 L 1 63 Q 8 105 0 145 L 10 150 L 0 156 Q 9 208 0 260 L 15 266 L 0 274 Q 6 287 0 300 L24 300 L24 0 Z"
-                            fill="#f6f2e9"
-                        />
+                <div className="torn-paper relative lg:-mt-10 bg-[#f6f2e9] px-3 py-6 sm:px-8 sm:py-10 md:px-12 md:py-14 lg:px-20 lg:py-20 text-black shadow-[0_25px_80px_-20px_rgba(0,0,0,0.9)]">
+
+                    <svg className="absolute left-2 top-0 h-full w-6 -translate-x-full" preserveAspectRatio="none" viewBox="0 0 24 300" aria-hidden="true">
+                        <path d="M0 0 Q 7 25 0 50 L 16 56 L 1 63 Q 8 105 0 145 L 10 150 L 0 156 Q 9 208 0 260 L 15 266 L 0 274 Q 6 287 0 300 L24 300 L24 0 Z" fill="#f6f2e9" />
                     </svg>
 
-                    {/* Right Edge: 3 random cuts at y=40 (shallow), y=137 (deep), y=225 (shallow) */}
-                    <svg
-                        className="absolute right-0 top-0 h-full w-6 translate-x-full"
-                        preserveAspectRatio="none"
-                        viewBox="0 0 24 300"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M24 0 Q 17 17 24 35 L 14 40 L 24 46 Q 15 88 24 130 L 8 137 L 23 145 Q 16 182 24 220 L 14 225 L 24 232 Q 16 266 24 300 L0 300 L0 0 Z"
-                            fill="#f6f2e9"
-                        />
+                    <svg className="absolute right-2 top-0 h-full w-6 translate-x-full" preserveAspectRatio="none" viewBox="0 0 24 300" aria-hidden="true">
+                        <path d="M24 0 Q 17 17 24 35 L 14 40 L 24 46 Q 15 88 24 130 L 8 137 L 23 145 Q 16 182 24 220 L 14 225 L 24 232 Q 16 266 24 300 L0 300 L0 0 Z" fill="#f6f2e9" />
                     </svg>
 
-                    {/* Top Edge: 3 random cuts at x=50 (shallow), x=167 (deep), x=256 (medium) */}
-                    <svg
-                        className="absolute top-0 left-0 w-full h-6 -translate-y-full"
-                        preserveAspectRatio="none"
-                        viewBox="0 0 300 24"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M0 0 Q 22 7 45 0 L 50 10 L 56 0 Q 108 9 160 0 L 167 16 L 175 1 Q 212 6 250 0 L 256 15 L 264 0 Q 282 6 300 0 L300 24 L0 24 Z"
-                            fill="#f6f2e9"
-                        />
+                    <svg className="absolute top-2 left-0 w-full h-6 -translate-y-full" preserveAspectRatio="none" viewBox="0 0 300 24" aria-hidden="true">
+                        <path d="M0 0 Q 22 7 45 0 L 50 10 L 56 0 Q 108 9 160 0 L 167 16 L 175 1 Q 212 6 250 0 L 256 15 L 264 0 Q 282 6 300 0 L300 24 L0 24 Z" fill="#f6f2e9" />
                     </svg>
 
-                    {/* Bottom Edge: 3 random cuts at x=91 (medium), x=190 (shallow), x=282 (deep) */}
-                    <svg
-                        className="absolute bottom-0 left-0 w-full h-6 translate-y-full"
-                        preserveAspectRatio="none"
-                        viewBox="0 0 300 24"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M0 24 Q 42 16 85 24 L 91 11 L 99 24 Q 142 17 185 24 L 190 14 L 196 24 Q 235 15 275 24 L 282 8 L 290 23 Q 295 18 300 24 L300 0 L0 0 Z"
-                            fill="#f6f2e9"
-                        />
+                    <svg className="absolute bottom-2 left-0 w-full h-6 translate-y-full" preserveAspectRatio="none" viewBox="0 0 300 24" aria-hidden="true">
+                        <path d="M0 24 Q 42 16 85 24 L 91 11 L 99 24 Q 142 17 185 24 L 190 14 L 196 24 Q 235 15 275 24 L 282 8 L 290 23 Q 295 18 300 24 L300 0 L0 0 Z" fill="#f6f2e9" />
                     </svg>
-                    <div className="flex gap-[9rem]">
-                        <p className="font-hand">20/04/2026</p>
-                        <h2 className="mb-6 font-hand text-4xl font-bold leading-tight sm:text-5xl">
+
+                    <div className="relative flex items-center justify-center">
+                        <p className="absolute -top-10 left-0 font-hand text-xs sm:text-sm md:text-base">
+                            20/04/2026
+                        </p>
+                        <h2 className="mb-4 font-bartle text-md font-bold leading-tight sm:mb-6 sm:text-3xl md:text-4xl lg:text-3xl">
                             Certifications
                         </h2>
                     </div>
-                    <div className="flex justify-center lg:justify-start">
-                        <img
-                            src={certificate}
-                            alt="Certificate 1"
-                            onClick={() => setSelectedImage(certificate)}
-                            className="mt-2 h-50 w-auto cursor-pointer transition-transform duration-300 hover:scale-105"
-                        />
+
+                    <div className="mt-1 flex items-end justify-between gap-4 border-b border-[#2a2418]/20 pb-3">
+                        <p className="font-hand text-base text-[#5c4d38] sm:text-lg">
+                            Filed documents — originals on request
+                        </p>
+                        <span className="hidden shrink-0 font-mono text-[10px] tracking-[0.22em] text-[#8a7a62] uppercase sm:inline">
+                            04 records
+                        </span>
                     </div>
-                    <img
-                        src={arrow}
-                        alt="Arrow"
-                        className="h-30 w-auto mt-2 ml-20 rotate-2 hidden sm:block"
-                    />
-                    <div className="flex justify-center lg:justify-end">
-                        <img
-                            src={certificate1}
-                            alt="Certificate 2"
-                            onClick={() => setSelectedImage(certificate1)}
-                            className="mt-2 h-50 w-auto cursor-pointer transition-transform duration-300 hover:scale-105 mt-[-9rem]"
-                        />
+
+                    <ul className="mt-6 divide-y divide-[#2a2418]/12">
+                        {certificates.map((item, index) => {
+                            const n = String(index + 1).padStart(2, "0");
+                            return (
+                                <li key={item.verify} className="group">
+                                    <button
+                                        type="button"
+                                        onClick={() => setSelected(index)}
+                                        className="grid w-full cursor-pointer grid-cols-[auto_1fr] items-start gap-4 py-5 text-left sm:grid-cols-[3.25rem_7.5rem_1fr] sm:items-center sm:gap-6"
+                                    >
+                                        <span className="pt-0.5 font-hand text-xl leading-none text-[#8a7a62] sm:pt-0 sm:text-2xl">
+                                            {n}
+                                        </span>
+
+                                        <span className="hidden overflow-hidden border border-[#2a2418]/18 bg-[#fffdf8] shadow-[2px_3px_0_rgba(42,36,24,0.08)] sm:block">
+                                            <img
+                                                src={item.src}
+                                                alt=""
+                                                className="h-[4.4rem] w-full object-cover object-top"
+                                            />
+                                        </span>
+
+                                        <span className="min-w-0">
+                                            <span className="block font-arimo text-[0.95rem] font-semibold leading-snug tracking-[-0.02em] text-[#1c1812] sm:text-[1.05rem]">
+                                                {item.title}
+                                            </span>
+                                            <span className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 text-[12px] leading-relaxed text-[#6b5d48]">
+                                                <span>{item.issuer}</span>
+                                                <span className="text-[#c4b59a]">·</span>
+                                                <span>{item.platform}</span>
+                                                <span className="text-[#c4b59a]">·</span>
+                                                <span>{item.date}</span>
+                                            </span>
+                                            <span className="mt-2 inline-flex items-center gap-1 font-hand text-sm text-[#5c4d38] underline decoration-[#c4b59a] decoration-1 underline-offset-4 transition-colors group-hover:text-[#1c1812]">
+                                                Open original
+                                                <span aria-hidden="true">→</span>
+                                            </span>
+                                        </span>
+                                    </button>
+                                </li>
+                            );
+                        })}
+                    </ul>
+
+                    <div className="mt-6 sm:mt-8">
+                        <p className="text-black font-hand text-lg sm:text-xl md:text-2xl flex justify-end">Adding more...</p>
+                        <p className="text-black font-hand text-lg sm:text-xl md:text-2xl flex justify-center mt-4 sm:mt-6">01</p>
                     </div>
-                    <img
-                        src={arrow}
-                        alt="Arrow"
-                        className="h-40 w-auto mt-2 ml-60 scale-x-[-1] rotate-2 hidden sm:block"
-                    />
-                    <div className="flex justify-center lg:justify-start">
-                        <img
-                            src={certificate2}
-                            alt="Certificate 3"
-                            onClick={() => setSelectedImage(certificate2)}
-                            className="mt-2 h-50 w-auto cursor-pointer transition-transform duration-300 hover:scale-105 mt-[-9rem]"
-                        />
-                    </div>
-                    <img
-                        src={arrow}
-                        alt="Arrow"
-                        className="h-50 w-auto mt-2 ml-20 rotate-2 hidden sm:block"
-                    />
-                    <div className="flex justify-center lg:justify-end">
-                        <img
-                            src={certificate3}
-                            alt="Certificate 4"
-                            onClick={() => setSelectedImage(certificate3)}
-                            className="mt-2 h-50 w-auto cursor-pointer transition-transform duration-300 hover:scale-105 mt-[-9rem] mb-10"
-                        />
-                    </div>
-                    <p className="text-black font-hand text-2xl">Adding more</p>
                 </div>
             </div>
 
-            {/* Floating Image Preview */}
-            {selectedImage && (
+            {selected !== null && (
                 <div
-                    className="fixed mt-14 inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
-                    onClick={() => setSelectedImage(null)}
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0c0b09]/86 p-3 backdrop-blur-[2px] sm:p-6"
+                    onClick={() => setSelected(null)}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={certificates[selected].title}
                 >
-                    <img
-                        src={selectedImage}
-                        alt="Certificate Preview"
-                        className="max-h-[90vh] max-w-[90vw] object-contain shadow-2xl"
+                    <div
+                        className="relative w-full max-w-5xl"
                         onClick={(e) => e.stopPropagation()}
-                    />
-
-                    {/* Close Button */}
+                    >
+                        <div className="mb-3 flex items-end justify-between gap-4 px-1 text-[#f6f2e9]">
+                            <div>
+                                <p className="font-bebas text-xl sm:text-2xl">{certificates[selected].title}</p>
+                                <p className="mt-0.5 font-bebas text-[10px] tracking-[0.18em] uppercase text-[#f6f2e9]/55">
+                                    {certificates[selected].issuer} · {certificates[selected].date}
+                                </p>
+                            </div>
+                            <a
+                                href={certificates[selected].verify}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="hidden shrink-0 font-bebas text-lg underline decoration-[#f6f2e9]/35 underline-offset-4 sm:inline"
+                            >
+                                Verify on Coursera
+                            </a>
+                        </div>
+                        <img
+                            src={certificates[selected].src}
+                            alt={certificates[selected].title}
+                            className="max-h-[70vh] w-full object-contain bg-[#0c0b09]/86 shadow-[0_24px_80px_rgba(0,0,0,0.45)]"
+                        />
+                    </div>
                     <button
-                        onClick={() => setSelectedImage(null)}
-                        className="absolute right-6 top-6 text-4xl text-white transition hover:scale-110"
+                        type="button"
+                        onClick={() => setSelected(null)}
+                        className="absolute right-3 top-3 font-hand text-3xl leading-none text-[#f6f2e9] sm:right-6 sm:top-6 sm:text-4xl"
+                        aria-label="Close preview"
                     >
                         ×
                     </button>
@@ -352,23 +319,20 @@ function TornPaperNote() {
     );
 }
 
-/* . Footer . */
 function Footer() {
     return (
         <footer className="relative z-20 bg-black">
-            {/* Back to top absolute right */}
-            <div className="absolute right-4 -top-16 sm:right-10">
+
+            <div className="absolute right-2 top-12 sm:right-6 sm:-top-14 md:right-10 md:-top-16">
                 <BackToTop />
             </div>
         </footer>
     );
 }
 
-/* . App . */
 export default function App() {
     return (
-        <main className="relative min-h-screen w-full overflow-x-clip bg-black text-white">
-            {/* <TopMarquee /> */}
+        <main className="relative min-h-[180vh] w-full overflow-x-clip bg-black text-white">
             <Hero />
             <TornPaperNote />
             <Footer />

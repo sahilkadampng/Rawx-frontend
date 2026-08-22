@@ -49,7 +49,7 @@ export default function Architecture() {
     return (
         <section className="py-20 sm:py-28 px-4 sm:px-6 bg-[#f4f6fb] -mt-36">
             <div className="max-w-6xl mx-auto text-center">
-                {/* Top badge row */}
+                
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ export default function Architecture() {
                     </span>
                 </motion.div>
 
-                {/* Heading */}
+                
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -79,7 +79,7 @@ export default function Architecture() {
                     <span className="text-blue-600 italic">Skills</span>
                 </motion.h2>
 
-                {/* Description */}
+                
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -92,7 +92,7 @@ export default function Architecture() {
                 </motion.p>
                 <hr className="mt-9 text-gray-300" />
 
-                {/* Stats row */}
+                
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +110,7 @@ export default function Architecture() {
                     ))}
                 </motion.div>
 
-                {/* Layer cards */}
+                
                 <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                     {layers.map((layer, idx) => (
                         <motion.div
@@ -122,7 +122,7 @@ export default function Architecture() {
                             className="bg-white border border-gray-200 rounded-xl p-6 text-left flex flex-col justify-between min-h-65 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                         >
                             <div>
-                                {/* Top row */}
+                                
                                 <div className="flex items-center justify-between mb-5">
                                     <span
                                         className={`font-mono text-[10px] tracking-wider uppercase ${layer.tagColor}`}
@@ -136,16 +136,16 @@ export default function Architecture() {
                                     </span>
                                 </div>
 
-                                {/* Title */}
+                                
                                 <h3 className="text-lg font-extrabold text-gray-900 tracking-tight mb-2">
                                     {layer.title}
                                 </h3>
 
-                                {/* Desc */}
+                                
                                 <p className="text-gray-500 text-sm leading-relaxed">{layer.desc}</p>
                             </div>
 
-                            {/* Badge */}
+                            
                             <span className="mt-5 inline-block self-start px-3 py-1 border border-gray-200 rounded-md font-mono text-[10px] tracking-wider text-gray-500 uppercase">
                                 {layer.badge}
                             </span>
@@ -153,10 +153,10 @@ export default function Architecture() {
                     ))}
                 </div>
 
-                {/* Divider */}
+                
                 <div className="mt-16 h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent" />
 
-                {/* Bottom tagline */}
+                
                 <p className="mt-8 font-mono text-[10px] sm:text-xs tracking-[0.2em] text-blue-600 uppercase">
                     ..
                 </p>

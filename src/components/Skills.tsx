@@ -105,15 +105,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
                         {service.description}
                     </p>
 
-                    {/* <a
-                        href="#contact"
-                        className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/78 transition-colors group-hover:text-[#685AFF]"
-                    >
-                        Learn more
-                        <span className="text-[#685AFF] transition-transform duration-300 group-hover:translate-x-1">
-                            →
-                        </span>
-                    </a> */}
+                    
                 </div>
             </div>
         </motion.article>
@@ -123,8 +115,8 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 export default function Skills() {
     return (
         <section className="relative z-10 overflow-hidden bg-[#050505] px-4 py-20 text-white sm:px-6 sm:py-28">
-            {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(80,255,59,0.14),transparent_34%),radial-gradient(circle_at_bottom,rgba(80,255,59,0.09),transparent_22%),linear-gradient(to_bottom,rgba(255,255,255,0.03),transparent_18%)]" /> */}
-            {/* <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[90px_90px] opacity-[0.12]" /> */}
+            
+            
 
             <div className="relative mx-auto max-w-6xl">
                 <motion.div

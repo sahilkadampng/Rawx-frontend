@@ -4,17 +4,33 @@ import { API_URL } from '../config/api';
 
 function FooterRevealEdge() {
     return (
-        <svg
-            viewBox="0 0 1440 80"
-            className="absolute inset-x-0 bottom-0 h-[28px] w-full sm:h-[40px]"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-        >
-            <path
-                d="M0,20 L30,60 L60,20 L90,60 L120,20 L150,60 L180,20 L210,60 L240,20 L270,60 L300,20 L330,60 L360,20 L390,60 L420,20 L450,60 L480,20 L510,60 L540,20 L570,60 L600,20 L630,60 L660,20 L690,60 L720,20 L750,60 L780,20 L810,60 L840,20 L870,60 L900,20 L930,60 L960,20 L990,60 L1020,20 L1050,60 L1080,20 L1110,60 L1140,20 L1170,60 L1200,20 L1230,60 L1260,20 L1290,60 L1320,20 L1350,60 L1380,20 L1410,60 L1440,20 L1440,80 L0,80 Z"
-                fill="bg-transparent"
-            />
-        </svg>
+        <>
+            
+            <svg
+                viewBox="0 0 1440 80"
+                className="absolute inset-x-0 bottom-0 h-[28px] w-full sm:hidden"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+            >
+                <path
+                    d="M0,20 L120,60 L240,20 L360,60 L480,20 L600,60 L720,20 L840,60 L960,20 L1080,60 L1200,20 L1320,60 L1440,20 L1440,80 L0,80 Z"
+                    fill="#000000"
+                />
+            </svg>
+
+            
+            <svg
+                viewBox="0 0 1440 80"
+                className="absolute inset-x-0 bottom-0 hidden h-[40px] w-full sm:block"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+            >
+                <path
+                    d="M0,20 L30,60 L60,20 L90,60 L120,20 L150,60 L180,20 L210,60 L240,20 L270,60 L300,20 L330,60 L360,20 L390,60 L420,20 L450,60 L480,20 L510,60 L540,20 L570,60 L600,20 L630,60 L660,20 L690,60 L720,20 L750,60 L780,20 L810,60 L840,20 L870,60 L900,20 L930,60 L960,20 L990,60 L1020,20 L1050,60 L1080,20 L1110,60 L1140,20 L1170,60 L1200,20 L1230,60 L1260,20 L1290,60 L1320,20 L1350,60 L1380,20 L1410,60 L1440,20 L1440,80 L0,80 Z"
+                    fill="#000000"
+                />
+            </svg>
+        </>
     );
 }
 
@@ -55,7 +71,7 @@ export default function CTA() {
                 transition={{ duration: 0.7 }}
                 className="w-full max-w-3xl bg-[#eceef4]/40 rounded-3xl border border-gray-200/60 shadow-sm px-6 sm:px-12 md:px-16 py-14 md:py-20 flex flex-col items-center text-center"
             >
-                {/* Heading */}
+                
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +91,7 @@ export default function CTA() {
                     Let's Talk
                 </motion.h2>
 
-                {/* Subtitle */}
+                
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -86,23 +102,11 @@ export default function CTA() {
                     Step into your power and build your empire with unwavering confidence.
                 </motion.p>
 
-                {/* Feature badges */}
-                {/* <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-mono text-gray-700 tracking-wide">
-                    <span className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-700" />
-                        Think
-                    </span>
-                    <span className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-700" />
-                        Act
-                    </span>
-                    <span className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-gray-700" />
-                        Grow
-                    </span>
-                </div> */}
+                
 
-                {/* Email input + button */}
+
+
+                
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -133,14 +137,14 @@ export default function CTA() {
                     </button>
                 </motion.div>
 
-                {/* Status message */}
+                
                 {message && (
                     <p className={`mt-3 text-sm font-arimo ${messageType === 'success' ? 'text-green-600' : 'text-red-500'}`}>
                         {message}
                     </p>
                 )}
 
-                {/* Explore link */}
+                
                 <motion.a
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -153,36 +157,13 @@ export default function CTA() {
                     <span className="text-xs">→</span>
                 </motion.a>
 
-                {/* Progress stepper */}
-                {/* <div className="mt-10 flex items-center justify-center gap-0 w-full max-w-sm">
-                    {steps.map((step, i) => (
-                        <div key={step.key} className="flex items-center">
-                            <div className="flex flex-col items-center">
-                                <span
-                                    className={`w-2.5 h-2.5 rounded-full ${i <= activeStep ? 'bg-[#3b5bdb]' : 'bg-gray-300'
-                                        }`}
-                                />
-                                <span
-                                    className={`mt-2 text-[10px] sm:text-xs font-mono tracking-wider whitespace-nowrap ${i <= activeStep ? 'text-gray-800' : 'text-gray-400'
-                                        }`}
-                                >
-                                    {step.label}
-                                </span>
-                            </div>
-                            {i < steps.length - 1 && (
-                                <div
-                                    className={`w-12 sm:w-16 h-px mx-1 -mt-4.5 ${i < activeStep ? 'bg-[#3b5bdb]' : 'bg-gray-300'
-                                        }`}
-                                />
-                            )}
-                        </div>
-                    ))}
-                </div> */}
+                
 
-                {/* Bottom text */}
-                {/* <p className="mt-8 text-gray-500 text-sm font-arimo">
-                    Start shipping production-grade endpoints today.
-                </p> */}
+
+
+                
+
+
             </motion.div>
             <FooterRevealEdge />
         </section>

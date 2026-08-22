@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import VisibilityNotice from '../components/VisibilityNotice';
 import { FeatureGate, useFeatureFlag } from '../context/FeatureFlagContext';
 
-// ─── Reusable scroll-reveal wrapper ───────────────────
+
 function Reveal({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -23,7 +23,7 @@ function Reveal({ children, className = '', delay = 0 }: { children: React.React
     );
 }
 
-// ─── Terminal code block component ────────────────────
+
 function CodeBlock({ title, code, lang = 'bash' }: { title: string; code: string; lang?: string }) {
 
     const [closed, setClosed] = useState(false)
@@ -68,18 +68,18 @@ function CodeBlock({ title, code, lang = 'bash' }: { title: string; code: string
                 className="rounded-xl border border-gray-700/50 shadow-xl bg-[#0d1117] overflow-hidden flex flex-col"
             >
                 <div className="rounded-xl border border-gray-700/50 shadow-2xl bg-[#0d1117] flex flex-col h-full">
-                    {/* Title bar */}
+                    
                     <div className="flex items-center justify-between px-4 py-2.5 bg-[#121212] border-b border-gray-700/50">
                         <div className="flex items-center gap-2">
-                            {/* CLOSE */}
+                            
                             <span onClick={() => setClosed(true)} className="group traffic-btn bg-[#ff5f57]">
                                 <span className="traffic-icon">✕</span>
                             </span>
-                            {/* MINIMIZE */}
+                            
                             <span onClick={() => setMinimized(!minimized)} className="group traffic-btn bg-[#febc2e]">
                                 <span className="traffic-icon">-</span>
                             </span>
-                            {/* FULLSCREEN */}
+                            
                             <span onClick={() => setFullscreen(!fullscreen)} className="group traffic-btn bg-[#28c840]">
                                 <span className="traffic-icon">⤢</span>
                             </span>
@@ -89,19 +89,19 @@ function CodeBlock({ title, code, lang = 'bash' }: { title: string; code: string
                         </div>
                         <span className="font-mono text-[10px] text-gray-600 uppercase tracking-wider">{lang}</span>
                     </div>
-                    {/* Code with line numbers */}
+                    
                     {!minimized && (
                         <>
-                            {/* SCROLLABLE CODE AREA */}
+                            
                             <div className="flex-1 overflow-auto p-3 sm:p-5">
                                 <div className="flex">
-                                    {/* LINE NUMBERS */}
+                                    
                                     <div className="mr-3 text-right select-none text-gray-500 text-[11px] sm:text-[13px] font-mono leading-5 sm:leading-6">
                                         {code.split("\n").map((_, i) => (
                                             <div key={i}>{i + 1}</div>
                                         ))}
                                     </div>
-                                    {/* CODE */}
+                                    
                                     <pre className="flex-1 min-w-0">
                                         <code className="text-[11px] sm:text-[13px] font-mono leading-5 sm:leading-6 text-gray-300 whitespace-pre">
                                             {code.split('\n').map((line, i) => {
@@ -151,7 +151,7 @@ function CodeBlock({ title, code, lang = 'bash' }: { title: string; code: string
                                     </pre>
                                 </div>
                             </div>
-                            {/* STATUS BAR */}
+                            
                             <div className="h-7 px-3 flex items-center justify-between bg-[#121212] border-t border-white/10 text-[11px] font-mono shrink-0 rounded-b-xl">
                                 <span className="text-gray-600 lowercase">
                                     {lang}
@@ -169,7 +169,7 @@ function CodeBlock({ title, code, lang = 'bash' }: { title: string; code: string
     );
 }
 
-// ─── Data ────────────────────────────────────────────
+
 const stackLayers = [
     {
         tag: 'Layer 01',
@@ -177,7 +177,7 @@ const stackLayers = [
         title: 'API Gateway',
         desc: 'Express.js REST API with versioned routes, JSON schema validation, and structured error handling. Every request is authenticated, rate-limited, and logged.',
         features: ['Express.js v5', 'JWT Auth', 'Rate Limiting', 'CORS'],
-        code: `// Express API Gateway — index.js
+        code: `
 
             import express from 'express';
             import cors from 'cors';
@@ -185,10 +185,10 @@ const stackLayers = [
 
             const app = express();
 
-            // Trust proxy for real IP behind reverse proxy
+            
             app.set('trust proxy', true);
 
-            // CORS — allow frontend origins
+            
             app.use(cors({
                 origin: ['https:/abc.app', 'http://localhost:-0000'],
             credentials: true
@@ -197,7 +197,7 @@ const stackLayers = [
             app.use(express.json());
             app.use(checkBlocked);
 
-            // Route-specific rate limiters
+            
             app.use('/api/v1/auth', auth);
             app.use('/api/v1/emails', public);
             app.use('/api/v1/visitors', publicLimiter);`,
@@ -210,7 +210,7 @@ const stackLayers = [
         title: 'Authentication',
         desc: 'JWT-based auth with bcrypt password hashing, token refresh, and role-based access control. Auto-blocks brute-force attempts.',
         features: ['JWT Tokens', 'bcrypt', 'RBAC', 'Auto-Block'],
-        code: `// Auth middleware — protect.js
+        code: `
             import jwt from 'jsonwebtoken';
             import Admin from '../models/Admin.js';
 
@@ -244,7 +244,7 @@ const protect = async (req, res, next) => {
         title: 'Data Layer',
         desc: 'MongoDB with Mongoose ODM — schema-first design with strategic indexing, validation, and aggregation pipelines for complex queries.',
         features: ['MongoDB', 'Mongoose ODM', 'Indexes', 'Aggregation'],
-        code: `// Visitor Schema — models/Visitor.js
+        code: `
             import mongoose from 'mongoose';
 
             const visitorSchema = new mongoose.Schema({
@@ -258,7 +258,7 @@ const protect = async (req, res, next) => {
             region:   {type: String, default: 'Unknown' },
 }, {timestamps: true });
 
-            // Compound indexes for fast lookups
+            
             visitorSchema.index({ip: 1 });
             visitorSchema.index({createdAt: -1 });
 
@@ -272,10 +272,10 @@ const protect = async (req, res, next) => {
         title: 'Rate Limiting',
         desc: 'Tiered rate limiting per endpoint type using express-rate-limit. Auth abuse auto-blocks IPs. Returns structured 429 responses.',
         features: ['Public: 100/min', 'Auth: 10/min', 'Admin: 20/min', 'Auto-Block'],
-        code: `// Rate limiter config — rateLimiter.js
+        code: `
             import rateLimit from 'express-rate-limit';
 
-            // Public endpoints — 100 req/min
+            
             export const publicLimiter = rateLimit({
                 windowMs: 60 * 1000,
             max: 100,
@@ -286,7 +286,7 @@ const protect = async (req, res, next) => {
   }
 });
 
-            // Auth endpoints — 10 req/min (strict)
+            
             export const authLimiter = rateLimit({
                 windowMs: 60 * 1000,
             max: 10,
@@ -297,7 +297,7 @@ const protect = async (req, res, next) => {
   }
 });
 
-            // Admin endpoints — 20 req/min
+            
             export const adminLimiter = rateLimit({
                 windowMs: 60 * 1000,
             max: 20,
@@ -316,7 +316,7 @@ const protect = async (req, res, next) => {
         title: 'Frontend Client',
         desc: 'React 19 with TypeScript, Tailwind CSS, Framer Motion animations, and a visitor tracking hook. Deployed on Vercel with edge caching.',
         features: ['React 19', 'TypeScript', 'Tailwind v4', 'Framer Motion'],
-        code: `// Visitor tracker hook — useVisitorTracker.ts
+        code: `
             import {useEffect} from 'react';
             import {useLocation} from 'react-router-dom';
             import {API_URL} from '../config/api';

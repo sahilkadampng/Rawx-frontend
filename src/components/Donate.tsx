@@ -7,14 +7,14 @@ import { getDonationTotal, getRecentSupporters, type Supporter, type DonationSta
 import VisibilityNotice from './VisibilityNotice';
 import { FeatureGate, useFeatureFlag } from '../context/FeatureFlagContext';
 
-// ──────────────────────────────────────────────
-// Constants
-// ──────────────────────────────────────────────
+
+
+
 const PRESET_AMOUNTS = [10, 20, 30, 40] as const;
 
-// ──────────────────────────────────────────────
-// Animated counter hook
-// ──────────────────────────────────────────────
+
+
+
 function useAnimatedCounter(target: number, duration = 1200) {
     const [value, setValue] = useState(0);
 
@@ -27,7 +27,7 @@ function useAnimatedCounter(target: number, duration = 1200) {
         const step = (now: number) => {
             const elapsed = now - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            // easeOutExpo
+            
             const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
             const current = Math.round(start + (target - start) * eased);
             setValue(current);
@@ -40,9 +40,9 @@ function useAnimatedCounter(target: number, duration = 1200) {
     return value;
 }
 
-// ──────────────────────────────────────────────
-// Confetti canvas
-// ──────────────────────────────────────────────
+
+
+
 function ConfettiEffect() {
     useEffect(() => {
         const canvas = document.createElement('canvas');
@@ -112,9 +112,9 @@ function ConfettiEffect() {
     return null;
 }
 
-// ──────────────────────────────────────────────
-// Supporter ticker
-// ──────────────────────────────────────────────
+
+
+
 function SupporterTicker({ supporters }: { supporters: Supporter[] }) {
     const [index, setIndex] = useState(0);
 
@@ -164,9 +164,9 @@ function getTimeAgo(dateStr: string): string {
     return `${days}d ago`;
 }
 
-// ──────────────────────────────────────────────
-// Success modal
-// ──────────────────────────────────────────────
+
+
+
 function SuccessModal({ name, amount, onClose }: { name: string; amount: number; onClose: () => void }) {
     return (
         <motion.div
@@ -185,7 +185,7 @@ function SuccessModal({ name, amount, onClose }: { name: string; amount: number;
                 onClick={(e) => e.stopPropagation()}
                 className="relative w-full max-w-2xl rounded-xl border border-white/10 bg-[#ffffff] shadow-2xl overflow-hidden"
             >
-                {/* TOP BAR */}
+                
                 <div className="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-[#161b22]">
                     <div className="flex gap-2">
                         <span className="w-3 h-3 rounded-full bg-red-500" />
@@ -196,7 +196,7 @@ function SuccessModal({ name, amount, onClose }: { name: string; amount: number;
                         donation_success.log
                     </p>
                 </div>
-                {/* TERMINAL BODY */}
+                
                 <div className="font-mono text-sm text-[#685AFF] p-6 space-y-2">
                     <p>
                         <span className="text-gray-500">$</span> initiating payment verification...
@@ -212,7 +212,7 @@ function SuccessModal({ name, amount, onClose }: { name: string; amount: number;
                     </p>
                     <br />
                     <p className="text-gray-500">
-        // API RESPONSE
+        
                     </p>
                     <pre className="text-sm leading-relaxed">
                         {`{
@@ -231,7 +231,7 @@ function SuccessModal({ name, amount, onClose }: { name: string; amount: number;
                         $ awaiting next command...
                     </p>
                 </div>
-                {/* CLOSE BUTTON */}
+                
                 <div className="px-6 pb-6">
                     <button
                         onClick={onClose}
@@ -245,9 +245,9 @@ function SuccessModal({ name, amount, onClose }: { name: string; amount: number;
     );
 }
 
-// ──────────────────────────────────────────────
-// Spinner
-// ──────────────────────────────────────────────
+
+
+
 function Spinner() {
     return (
         <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -257,27 +257,27 @@ function Spinner() {
     );
 }
 
-// ──────────────────────────────────────────────
-// Main Donate Component
-// ──────────────────────────────────────────────
+
+
+
 export default function Donate() {
     const pageVisible = useFeatureFlag('page.support');
-    // Form state
+    
     const [selectedAmount, setSelectedAmount] = useState<number>(10);
     const [customAmount, setCustomAmount] = useState('');
     const [isCustom, setIsCustom] = useState(false);
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
 
-    // Stats
+    
     const [stats, setStats] = useState<DonationStats>({ total: 0, count: 0 });
     const [supporters, setSupporters] = useState<Supporter[]>([]);
     const animatedTotal = useAnimatedCounter(stats.total);
 
-    // Razorpay
+    
     const { status, error, successData, initiate, reset } = useRazorpay();
 
-    // Fetch stats on mount
+    
     useEffect(() => {
         const load = async () => {
             try {
@@ -291,7 +291,7 @@ export default function Donate() {
         load();
     }, []);
 
-    // Refresh after success
+    
     useEffect(() => {
         if (status === 'success') {
             getDonationTotal().then(setStats).catch(() => { });
@@ -344,10 +344,10 @@ export default function Donate() {
                     backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)',
                     backgroundSize: '60px 60px'
                 }} />
-                {/* Background glow */}
+                
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 rounded-full bg-blue-600/5 blur-3xl pointer-events-none" />
 
-                {/* Heading */}
+                
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -366,7 +366,7 @@ export default function Donate() {
                         If my work has helped you, consider buying me a coffee. Every contribution fuels the next build.
                     </p>
 
-                    {/* Total raised */}
+                    
                     {stats.count > 0 && (
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
@@ -380,7 +380,7 @@ export default function Donate() {
                     )}
                 </motion.div>
 
-                {/* Glass card */}
+                
                 <motion.div
                     initial={{ opacity: 0, y: 50, scale: 0.96 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -388,13 +388,13 @@ export default function Donate() {
                     transition={{ duration: 0.7, delay: 0.1 }}
                     className="relative w-full max-w-lg z-10"
                 >
-                    {/* Gradient border glow */}
-                    {/* <div className="absolute -inset-px rounded-3xl bg-linear-to-br from-blue-500/30 via-purple-500/20 to-emerald-500/30 blur-sm -z-10" />
-                <div className="absolute -inset-px rounded-3xl bg-linear-to-br from-blue-500/40 via-purple-500/30 to-emerald-500/40 -z-10" /> */}
+                    
 
-                    {/* Terminal window */}
+
+
+                    
                     <div className="rounded-2xl overflow-hidden border border-gray-700/60 ">
-                        {/* Title bar */}
+                        
                         <div className="flex items-center gap-2 bg-[#202020] px-4 py-3 border-b border-gray-700/50">
                             <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
                             <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
@@ -402,25 +402,25 @@ export default function Donate() {
                             <span className="ml-3 text-xs text-gray-500 font-mono tracking-wide select-none">~/support — donate.sh</span>
                         </div>
 
-                        {/* Editor body */}
+                        
                         <div className="bg-[#0d1117] px-6 sm:px-8 py-7 font-mono text-[13px] leading-relaxed">
-                            {/* Line numbers gutter + code */}
+                            
                             <div className="flex gap-5">
-                                {/* Line numbers */}
+                                
                                 <div className="select-none text-gray-300 text-right text-xs leading-relaxed pt-px hidden sm:block">
                                     {Array.from({ length: isCustom ? 17 : 15 }, (_, i) => (
                                         <div key={i} className="h-6.5 flex items-center justify-end">{i + 1}</div>
                                     ))}
                                 </div>
 
-                                {/* Code content */}
+                                
                                 <div className="flex-1 min-w-0">
-                                    {/* Line 1: comment */}
+                                    
                                     <p className="text-gray-400 italic h-6.5 flex items-center">
                                         <span className="text-gray-400">{'//'}</span> support configuration
                                     </p>
 
-                                    {/* Line 2: import */}
+                                    
                                     <p className="h-6.5 flex items-center">
                                         <span className="text-purple-400">import</span>
                                         <span className="text-gray-800 ml-1"> {' { '}</span>
@@ -431,10 +431,10 @@ export default function Donate() {
                                         <span className="text-gray-400">;</span>
                                     </p>
 
-                                    {/* Line 3: blank */}
+                                    
                                     <div className="h-6.5" />
 
-                                    {/* Line 4: const amount label */}
+                                    
                                     <p className="h-6.5 flex items-center">
                                         <span className="text-purple-400"> const </span>
                                         <span className="text-blue-400 ml-1"> amount </span>
@@ -444,7 +444,7 @@ export default function Donate() {
                                         <span className="text-gray-400 ml-3 text-xs italic">{'// ₹ INR'}</span>
                                     </p>
 
-                                    {/* Amount buttons */}
+                                    
                                     <div className="grid grid-cols-5 gap-2 my-3">
                                         {PRESET_AMOUNTS.map((amt) => (
                                             <motion.button
@@ -473,7 +473,7 @@ export default function Donate() {
                                         </motion.button>
                                     </div>
 
-                                    {/* Custom amount input */}
+                                    
                                     <AnimatePresence>
                                         {isCustom && (
                                             <motion.div
@@ -501,15 +501,15 @@ export default function Donate() {
                                         )}
                                     </AnimatePresence>
 
-                                    {/* Line 5: blank */}
+                                    
                                     <div className="h-6.5" />
 
-                                    {/* Line 6: donor object comment */}
+                                    
                                     <p className="text-gray-400 italic h-6.5 flex items-center">
                                         <span className="text-gray-400">{'//'}</span> donor details
                                     </p>
 
-                                    {/* Line 7: const donor = { */}
+                                    
                                     <p className="h-6.5 flex items-center">
                                         <span className="text-purple-400">const</span>
                                         <span className="text-blue-400 ml-1"> donor</span>
@@ -517,7 +517,7 @@ export default function Donate() {
                                         <span className="text-gray-800 ml-1">{'{'}</span>
                                     </p>
 
-                                    {/* Line 8: name field */}
+                                    
                                     <div className="pl-5 mb-1">
                                         <p className="h-6.5 flex items-center">
                                             <span className="text-blue-400">name</span>
@@ -533,7 +533,7 @@ export default function Donate() {
                                         />
                                     </div>
 
-                                    {/* Line 9: message field */}
+                                    
                                     <div className="pl-5 mt-2 mb-1">
                                         <p className="h-6.5 flex items-center">
                                             <span className="text-blue-400">message</span>
@@ -549,16 +549,16 @@ export default function Donate() {
                                         />
                                     </div>
 
-                                    {/* Line 10: closing brace */}
+                                    
                                     <p className="h-6.5 flex items-center">
                                         <span className="text-gray-800">{'}'}</span>
                                         <span className="text-gray-400">;</span>
                                     </p>
 
-                                    {/* Line 11: blank */}
+                                    
                                     <div className="h-6.5" />
 
-                                    {/* Error */}
+                                    
                                     <AnimatePresence>
                                         {error && (
                                             <motion.p
@@ -572,7 +572,7 @@ export default function Donate() {
                                         )}
                                     </AnimatePresence>
 
-                                    {/* Line 12: function call = pay button */}
+                                    
                                     <motion.button
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
@@ -599,15 +599,15 @@ export default function Donate() {
                                         )}
                                     </motion.button>
 
-                                    {/* Line 13: blank */}
+                                    
                                     <div className="h-6.5" />
 
-                                    {/* Line 14: secured comment */}
+                                    
                                     <p className="text-gray-400 text-xs italic h-6.5 flex items-center">
                                         {'// '} secured by razorpay · encrypted
                                     </p>
 
-                                    {/* Recent supporters ticker */}
+                                    
                                     {supporters.length > 0 && (
                                         <div className="mt-4 pt-4 border-t border-gray-100">
                                             <p className="text-gray-600 text-xs italic flex items-center mb-1">
@@ -622,7 +622,7 @@ export default function Donate() {
                     </div>
                 </motion.div>
 
-                {/* Success Modal */}
+                
                 <AnimatePresence>
                     {status === 'success' && successData && (
                         <SuccessModal

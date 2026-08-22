@@ -41,7 +41,7 @@ export default function Login() {
         <>
             <main className="bg-[#f4f6fb] min-h-screen flex items-center justify-center px-4 sm:px-6">
                 <div className="w-full max-w-md">
-                    {/* Header */}
+                    
                     <div className="text-center mb-10">
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
@@ -69,14 +69,14 @@ export default function Login() {
                         </motion.p>
                     </div>
 
-                    {/* Login card */}
+                    
                     <motion.div
                         initial={{ opacity: 0, y: 40, scale: 0.97 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="bg-white border border-gray-200 rounded-xl p-8 sm:p-10 shadow-sm"
                     >
-                        {/* Status bar */}
+                        
                         <div className="flex items-center justify-between mb-8">
                             <button
                                 onClick={() => window.location.href = '/'}
@@ -95,7 +95,7 @@ export default function Login() {
                             </span>
                         </div>
                         <form onSubmit={handleSubmit} className="space-y-5">
-                            {/* Email */}
+                            
                             <div>
                                 <label className="block font-mono text-[10px] tracking-[0.15em] text-gray-500 uppercase mb-2">
                                     Email Address
@@ -110,7 +110,7 @@ export default function Login() {
                                 />
                             </div>
 
-                            {/* Password */}
+                            
                             <div>
                                 <label className="block font-mono text-[10px] tracking-[0.15em] text-gray-500 uppercase mb-2">
                                     Password
@@ -134,14 +134,14 @@ export default function Login() {
                                 </div>
                             </div>
 
-                            {/* Error */}
+                            
                             {error && (
                                 <div className="px-4 py-3 bg-red-50 border border-red-200 rounded-lg">
                                     <p className="font-mono text-xs text-red-600">{error}</p>
                                 </div>
                             )}
 
-                            {/* Submit */}
+                            
                             <button
                                 type="submit"
                                 disabled={loading}
@@ -158,7 +158,7 @@ export default function Login() {
                             </button>
                         </form>
 
-                        {/* Footer info */}
+                        
                         <div className="mt-8 pt-6 border-t border-gray-100">
                             <div className="flex items-center justify-between">
                                 <span className="font-mono text-[10px] tracking-wider text-gray-400 uppercase">
@@ -171,7 +171,7 @@ export default function Login() {
                         </div>
                     </motion.div>
 
-                    {/* Bottom text */}
+                    
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}

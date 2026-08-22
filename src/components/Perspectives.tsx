@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-// import Noise from '../components/noise'
+
 
 export default function Perspectives() {
     return (
         <section className="relative z-10 overflow-hidden w-full py-20 sm:py-28 px-4 sm:px-6 bg-[#111214] -mt-28">
-            {/* <Noise /> */}
+            
             <div className="max-w-6xl mx-auto">
-                {/* Top features row */}
+                
                 <div className="border-t border-gray-700 pt-8 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-0 md:divide-x divide-gray-600">
                     {[
                         { num: '01', title: 'Structured Ingest', desc: 'Seamless, organized, and ready to scale.' },
@@ -35,7 +35,7 @@ export default function Perspectives() {
                 </div>
                 <div className="border-t mt-8 border-gray-700 pt-8 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-0 md:divide-x divide-gray-200" />
 
-                {/* Section subtitle */}
+                
                 <motion.p
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -46,7 +46,7 @@ export default function Perspectives() {
                     <span className='text-[#685AFF]'>Two perspectives</span>: backend config vs. the consumer's experience.
                 </motion.p>
 
-                {/* Two-panel split */}
+                
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -54,16 +54,16 @@ export default function Perspectives() {
                     transition={{ duration: 0.7, delay: 0.15 }}
                     className="mt-10 grid grid-cols-1 md:grid-cols-2 border border-gray-900 rounded-xl overflow-hidden bg-[#685AFF]"
                 >
-                    {/* Developer View */}
+                    
                     <div className="p-6 sm:p-10 border-b md:border-b-0 md:border-r border-gray-200 flex flex-col justify-between">
                         <div>
                             <span className="inline-block px-3 py-1 border border-gray-900 text-[10px] sm:text-xs font-bold tracking-wider uppercase text-gray-900 rounded mb-8">
                                 Developer View
                             </span>
 
-                            {/* Code block */}
+                            
                             <div className="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden max-w-sm mx-auto mt-4">
-                                {/* Mini top bar */}
+                                
                                 <div className="px-4 py-2 flex items-center justify-between border-b border-gray-100">
                                     <div className="flex gap-1">
                                         <span className="w-2 h-2 rounded-full bg-red-400" />
@@ -73,7 +73,7 @@ export default function Perspectives() {
                                     <div className="w-12 h-1 bg-gray-200 rounded-full" />
                                 </div>
 
-                                {/* Terminal content */}
+                                
                                 <div className="p-4 font-mono text-sm leading-loose text-gray-700 text-left">
                                     <p>
                                         <span className="text-blue-600">const</span> endpoint = {'{'}
@@ -97,7 +97,7 @@ export default function Perspectives() {
                             </div>
                         </div>
 
-                        {/* Bottom text */}
+                        
                         <div className="mt-10">
                             <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-2">
                                 Total Control
@@ -110,17 +110,17 @@ export default function Perspectives() {
                         </div>
                     </div>
 
-                    {/* Consumer View */}
+                    
                     <div className="p-6 sm:p-10 flex flex-col justify-between">
                         <div>
                             <span className="inline-block px-3 py-1 border border-gray-300 text-[10px] sm:text-xs font-bold tracking-wider uppercase text-white rounded mb-8">
                                 Consumer View
                             </span>
 
-                            {/* Response card */}
+                            
                             <div className="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden max-w-sm mx-auto mt-4">
 
-                                {/* Mini top bar */}
+                                
                                 <div className="px-4 py-2 flex items-center justify-between border-b border-gray-100">
                                     <div className="flex gap-1">
                                         <span className="w-2 h-2 rounded-full bg-red-400" />
@@ -131,7 +131,7 @@ export default function Perspectives() {
                                     <div className="w-12 h-1 bg-gray-200 rounded-full" />
                                 </div>
 
-                                {/* JSON response */}
+                                
                                 <div className="px-4 py-4 font-mono text-xs leading-relaxed text-left">
                                     <p>{'{'}</p>
                                     <div className="ml-4 space-y-1">
@@ -169,7 +169,7 @@ export default function Perspectives() {
                                     <p>{'}'}</p>
                                 </div>
 
-                                {/* Footer */}
+                                
                                 <div className="px-4 py-2 border-t border-gray-100 flex items-center justify-between">
                                     <span className="font-mono text-[10px] text-gray-400">Latency: 42ms</span>
                                     <span className="font-mono text-[10px] text-green-600 font-bold">200 OK</span>
@@ -177,7 +177,7 @@ export default function Perspectives() {
                             </div>
                         </div>
 
-                        {/* Bottom text */}
+                        
                         <div className="mt-10">
                             <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900 uppercase tracking-tight mb-2">
                                 Predictable Response
@@ -190,7 +190,7 @@ export default function Perspectives() {
                     </div>
                 </motion.div>
 
-                {/* Bottom tagline */}
+                
                 <p className="text-center font-mono text-[10px] sm:text-xs tracking-[0.2em] text-gray-400 uppercase">
                     ...
                 </p>

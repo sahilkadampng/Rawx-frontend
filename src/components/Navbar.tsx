@@ -20,7 +20,7 @@ export default function Navbar() {
     return (
         <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-sm bg-black/40 border-b border-gray-600">
             <div className="max-w-7xl mx-auto h-16 flex items-center justify-between lg:px-8">
-                {/*LOGO*/}
+                
                 <Link to="/" className="flex items-center">
                     <img
                         src={logo}
@@ -29,7 +29,7 @@ export default function Navbar() {
                     />
                 </Link>
 
-                {/*MENU*/}
+                
                 <ul className="hidden md:flex gap-8">
                     {visibleLinks.map((link) => (
                         <li key={link.to}>
@@ -40,7 +40,7 @@ export default function Navbar() {
                     ))}
                 </ul>
 
-                {/* RIGHT */}
+                
                 <div className="hidden md:block">
                     <Link
                         to="/login"
@@ -50,7 +50,7 @@ export default function Navbar() {
                     </Link>
                 </div>
 
-                {/*HAMBURGER */}
+                
                 <button
                     className="md:hidden text-white px-4"
                     onClick={() => setMenuOpen(!menuOpen)}
@@ -59,7 +59,7 @@ export default function Navbar() {
                 </button>
             </div>
 
-            {/* MOBILE MENU */}
+            
             {menuOpen && (
                 <div className="md:hidden backdrop-blur-sm">
                     <ul className="flex flex-col gap-4 px-6 py-4">

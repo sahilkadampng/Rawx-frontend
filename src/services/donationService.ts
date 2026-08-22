@@ -1,8 +1,8 @@
 import { API_URL } from '../config/api';
 
-// ──────────────────────────────────────────────
-// Types
-// ──────────────────────────────────────────────
+
+
+
 export interface CreateOrderPayload {
     amount: number;
     name?: string;
@@ -47,9 +47,9 @@ interface ApiResponse<T> {
     data: T;
 }
 
-// ──────────────────────────────────────────────
-// Helper
-// ──────────────────────────────────────────────
+
+
+
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
     const res = await fetch(url, {
         headers: { 'Content-Type': 'application/json' },
@@ -65,9 +65,9 @@ async function request<T>(url: string, options?: RequestInit): Promise<T> {
     return json.data;
 }
 
-// ──────────────────────────────────────────────
-// API calls
-// ──────────────────────────────────────────────
+
+
+
 export async function createOrder(payload: CreateOrderPayload): Promise<CreateOrderResponse> {
     return request<CreateOrderResponse>(`${API_URL}/donate/create-order`, {
         method: 'POST',

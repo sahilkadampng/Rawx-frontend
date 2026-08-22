@@ -41,7 +41,7 @@ export function FeatureFlagProvider({ children }: { children: React.ReactNode })
         } catch (error) {
             console.error('Feature flag fetch error:', error);
             setError(error as Error);
-            // Set default flags so app doesn't break
+            
             setFlags([]);
         } finally {
             setLoading(false);
@@ -74,7 +74,7 @@ export function FeatureFlagProvider({ children }: { children: React.ReactNode })
         refreshFlags,
     }), [flags, loading, isEnabled, refreshFlags]);
 
-    // Show error notification but still render children
+    
     if (error) {
         console.warn('Feature flags failed to load, using defaults:', error.message);
     }

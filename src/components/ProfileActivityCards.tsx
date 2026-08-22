@@ -292,8 +292,8 @@ export default function ProfileActivityCards({ githubUsername, leetcodeUsername 
                 setLeetcode(payload?.data?.leetcode || null);
             } catch (error) {
                 if ((error as Error).name !== 'AbortError') {
-                    setGithub({ username: githubUsername, source: `https://github.com/${githubUsername}`, error: 'Unable to load GitHub activity right now.' });
-                    setLeetcode(leetcodeUsername ? { username: leetcodeUsername, source: `https://leetcode.com/u/${leetcodeUsername}`, error: 'Unable to load LeetCode activity right now.' } : null);
+                    setGithub({ username: githubUsername, source: `https:
+                    setLeetcode(leetcodeUsername ? { username: leetcodeUsername, source: `https:
                 }
             } finally {
                 setLoading(false);
@@ -328,7 +328,7 @@ export default function ProfileActivityCards({ githubUsername, leetcodeUsername 
                             title="GitHub Activity"
                             subtitle={loading ? 'Loading live activity' : 'Recent public activity'}
                             tone="github"
-                            href={github?.source || `https://github.com/${githubUsername}`}
+                            href={github?.source || `https:
                             data={github}
                             fallback="Set the GitHub username to see a live contribution grid."
                             kind="github"

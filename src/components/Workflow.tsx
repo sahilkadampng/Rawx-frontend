@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-// import Noise from '../components/noise'
 
-// ─── Types ────────────────────────────────────────────────────────────
+
+
 type StepKey = 'discover' | 'architect' | 'build'
 
 interface ValidationItem {
@@ -41,7 +41,7 @@ interface StepConfig {
     }
 }
 
-// ─── Step Configuration ───────────────────────────────────────────────
+
 const stepsConfig: Record<StepKey, StepConfig> = {
     discover: {
         title: 'Problem Understanding',
@@ -154,7 +154,7 @@ const stepsConfig: Record<StepKey, StepConfig> = {
 
 const stepOrder: StepKey[] = ['discover', 'architect', 'build']
 
-// ─── Animation Variants ──────────────────────────────────────────────
+
 const contentVariants = {
     initial: { opacity: 0, y: 18, filter: 'blur(4px)' },
     animate: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const } },
@@ -176,7 +176,7 @@ const statusColors: Record<string, { bg: string; dot: string; text: string }> = 
     amber: { bg: 'bg-transparent', dot: 'bg-amber-500', text: 'text-[#685AFF]' },
 }
 
-// ─── Sub-components ──────────────────────────────────────────────────
+
 
 function BlinkingCursor() {
     return (
@@ -249,7 +249,7 @@ function TimelineStep({
 function TerminalPanel({ config, activeStep }: { config: StepConfig['terminal']; activeStep: StepKey }) {
     return (
         <div className="font-arimo mt-20 bg-[#06080b]/20 border border-gray-800 rounded-md overflow-hidden w-full">
-            {/* Top bar */}
+            
             <div className="px-3 bg-[#121212] sm:px-6 py-3 sm:py-4 flex flex-col max-w-7xl sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 border-b border-[#121212">
                 <div className="flex items-center gap-3">
                     <div className="flex gap-1.5">
@@ -272,14 +272,14 @@ function TerminalPanel({ config, activeStep }: { config: StepConfig['terminal'];
                 </motion.span>
             </div>
 
-            {/* Grid decoration */}
+            
             <div className="h-2 bg-[#121212] border-b border-[#121212] flex">
                 {[...Array(12)].map((_, i) => (
                     <div key={i} className="flex-1 border-r border-[#121212]" />
                 ))}
             </div>
 
-            {/* Parsing header */}
+            
             <div className="px-3 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <motion.span
@@ -297,7 +297,7 @@ function TerminalPanel({ config, activeStep }: { config: StepConfig['terminal'];
                 </span>
             </div>
 
-            {/* Content area */}
+            
             <AnimatePresence mode="wait">
                 <motion.div
                     key={activeStep}
@@ -308,9 +308,9 @@ function TerminalPanel({ config, activeStep }: { config: StepConfig['terminal'];
                     className="px-3 sm:px-6 pb-4 sm:pb-6 min-h-0 sm:min-h-80"
                 >
                     <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 max-w-7xl">
-                        {/* Left panel — validation + processing */}
-                        <div className="flex flex-col gap-4 sm:gap-6 w-full sm:w-1/2"> {/* use 1/2 instead of 5/5 */}
-                            {/* Validation items */}
+                        
+                        <div className="flex flex-col gap-4 sm:gap-6 w-full sm:w-1/2"> 
+                            
                             <div>
                                 <p className="font-bebas text-[10px] tracking-wider text-gray-200 uppercase mb-3">
                                     {config.leftTitle}
@@ -339,7 +339,7 @@ function TerminalPanel({ config, activeStep }: { config: StepConfig['terminal'];
                                 </div>
                             </div>
 
-                            {/* Processing steps */}
+                            
                             <div>
                                 <p className="font-bebas text-[10px] tracking-wider text-gray-200 uppercase mb-3">
                                     {config.rightTitle}
@@ -364,12 +364,12 @@ function TerminalPanel({ config, activeStep }: { config: StepConfig['terminal'];
                             </div>
                         </div>
 
-                        {/* Divider */}
+                        
                         <div className="hidden sm:block w-px bg-[#685AFF]" />
 
-                        {/* Right panel — code snippet */}
-                        <div className="flex-1 min-w-0 w-full sm:w-1/2"> {/* ensure right panel doesn't overflow */}
-                            {/* header */}
+                        
+                        <div className="flex-1 min-w-0 w-full sm:w-1/2"> 
+                            
                             <div className="flex items-center justify-between mb-3">
                                 <p className="font-bebas text-[10px] tracking-wider text-gray-200 uppercase">
                                     Source Preview
@@ -377,7 +377,7 @@ function TerminalPanel({ config, activeStep }: { config: StepConfig['terminal'];
                                 <span className="font-bebas text-[10px] text-pink-500">.ts</span>
                             </div>
 
-                            {/* code container */}
+                            
                             <div className="w-full bg-gray-50 border border-gray-100 rounded-md p-4 font-mono text-xs leading-relaxed overflow-x-auto">
                                 <div className="min-w-max">
                                     {config.codeSnippet.map((line, i) => (
@@ -388,9 +388,9 @@ function TerminalPanel({ config, activeStep }: { config: StepConfig['terminal'];
                                             transition={{ delay: 0 * i, duration: 0.25 }}
                                             className="flex"
                                         >
-                                            {/* indent spacer */}
+                                            
                                             <div style={{ width: (line.indent ?? 0) * 16 }} />
-                                            {/* code text */}
+                                            
                                             <span className={`${line.color ?? 'text-gray-700'} whitespace-pre`}>
                                                 {line.text}
                                             </span>
@@ -404,7 +404,7 @@ function TerminalPanel({ config, activeStep }: { config: StepConfig['terminal'];
                 </motion.div>
             </AnimatePresence>
 
-            {/* Bottom status bar */}
+            
             <div className="font-arimo px-3 bg-gray-600/20 sm:px-6 py-3 border-t border-gray-100 flex flex-wrap items-center gap-3 sm:gap-4">
                 <p className="font-bebas text-[10px] tracking-wider text-gray-400 uppercase mr-2">
                     Status
@@ -437,20 +437,20 @@ function TerminalPanel({ config, activeStep }: { config: StepConfig['terminal'];
     )
 }
 
-// ─── Main Component ──────────────────────────────────────────────────
+
 export default function Workflow() {
     const [activeStep, setActiveStep] = useState<StepKey>('discover')
     const active = stepsConfig[activeStep]
 
     return (
         <section className="relative z-10 w-full py-16 sm:py-24 overflow-hidden bg-[#06080b]">
-            {/* <Noise /> */}
-            {/* 🔥 Responsive container */}
+            
+            
             <div className="relative z-20 max-w-350 mx-auto px-0 sm:px-6 lg:px-10 xl:px-16">
 
                 <div className="flex flex-col lg:flex-row gap-0 xl:gap-16 items-start px-4 lg:px-16">
 
-                    {/* LEFT */}
+                    
                     <div className="w-full lg:w-1/2">
                         <p className="font-mono text-xs tracking-[0.2em] text-[#685AFF] uppercase mb-6">
                             Workflow V2.0
@@ -471,7 +471,7 @@ export default function Workflow() {
                             Shipping scalable backend systems for real-world products.
                         </p>
 
-                        {/* Timeline */}
+                        
                         <div className="mt-12 relative border-l-2 border-white space-y-2 pr-4">
                             <motion.div
                                 className="absolute -left-px w-0.5 bg-[#685AFF] rounded-full"
@@ -493,7 +493,7 @@ export default function Workflow() {
                         </div>
                     </div>
 
-                    {/* RIGHT */}
+                    
                     <div className="w-full lg:w-1/2">
                         <TerminalPanel
                             config={active.terminal}
@@ -503,8 +503,8 @@ export default function Workflow() {
 
                 </div>
 
-                {/* bottom divider */}
-                {/* <div className="mt-16 h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent" /> */}
+                
+                
             </div>
         </section>
     )

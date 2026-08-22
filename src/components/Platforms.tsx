@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
-// import Noise from '../components/noise'
+
 
 export default function Platforms() {
     return (
         <section id="built-for-clients" className="relative z-10 py-20 sm:py-28 px-4 overflow-hidden w-full sm:px-6 bg-[#111214]">
             <div className="max-w-6xl mx-auto text-center">
                 <div className="max-w-6xl mx-auto text-center">
-                    {/* <Noise /> */}
-                    {/* Badge */}
+                    
+                    
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -18,7 +18,7 @@ export default function Platforms() {
                         ● WHO I BUILD FOR ●
                     </motion.p>
 
-                    {/* Heading */}
+                    
                     <motion.h2
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function Platforms() {
                         <span className="text-[#685AFF]">Growth.</span>
                     </motion.h2>
 
-                    {/* Description */}
+                    
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ export default function Platforms() {
                         Clean architecture, secure APIs, and scalable systems built with modern technologies to support products from MVP to production.
                     </motion.p>
 
-                    {/* Subtitle */}
+                    
                     <motion.p
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -53,7 +53,7 @@ export default function Platforms() {
                         Because great products deserve infrastructure that grows with them.
                     </motion.p>
 
-                    {/* Tags */}
+                    
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -72,9 +72,9 @@ export default function Platforms() {
                     </motion.div>
                 </div>
 
-                {/* Cards */}
+                
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 lg:mb-0">
-                    {/* Card 1 */}
+                    
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ export default function Platforms() {
                         </a>
                     </motion.div>
 
-                    {/* Card 2 */}
+                    
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -120,7 +120,7 @@ export default function Platforms() {
                                 INVENTOXPRO
                             </h3>
                             <p className="text-gray-400 text-sm leading-relaxed">
-                                a smart business engine. Scan, track, update, and manage your entire stock in <span className="text-[#685AFF]">real-time</span> using your phone and laptop together. Built for speed, accuracy, and modern businesses.
+                                A smart business engine. Scan, track, update, and manage your entire stock in <span className="text-[#685AFF]">real-time</span> using your phone and laptop together. Built for speed, accuracy, and modern businesses.
                             </p>
                         </div>
                         <a href="https://inventoxpro.vercel.app/" className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
@@ -128,7 +128,7 @@ export default function Platforms() {
                         </a>
                     </motion.div>
 
-                    {/* Card 3 */}
+                    
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -139,19 +139,19 @@ export default function Platforms() {
                         <div>
                             <div className="flex items-center justify-between mb-6">
                                 <span className="font-mono text-[10px] sm:text-xs tracking-wider text-gray-500 uppercase">
-                                    N/A
+                                    Platform
                                 </span>
                                 <span className="font-mono text-xs text-gray-300">03</span>
                             </div>
                             <h3 className="text-xl sm:text-2xl font-extrabold text-white uppercase tracking-tight mb-3">
-                                coming soon
+                                RICKSHAWGNG
                             </h3>
                             <p className="text-gray-400 text-sm leading-relaxed">
-                                N/A.
+                                A website that feels like taking a <span className="text-[#685AFF]">nostalgic rickshaw ride </span> while listening to old-school Bollywood music.
                             </p>
                         </div>
-                        <a href="#" className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
-                            N/A <span>→</span>
+                        <a href="https://rickshawgng.xyz/" className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
+                            View site <span>→</span>
                         </a>
                     </motion.div>
                 </div>

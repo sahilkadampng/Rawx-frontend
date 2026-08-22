@@ -1,11 +1,11 @@
 import Navbar from '../components/Navbar';
-// import Footer from '../components/Footer';
+
 import Hero from '../components/Hero';
 import Workflow from '../components/Workflow';
 import Platforms from '../components/Platforms';
 import Perspectives from '../components/Perspectives';
 import Skills from '../components/Skills';
-// import Donate from '../components/Donate';
+
 import CTA from '../components/CTA';
 import FooterReveal from '../components/FooterReveal';
 import VisibilityNotice from '../components/VisibilityNotice';
@@ -39,7 +39,7 @@ export default function Home() {
                     <FooterReveal />
                 </FeatureGate>
             </main>
-            {/* <Footer /> */}
+            
         </>
     );
 }

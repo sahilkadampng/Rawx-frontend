@@ -27,7 +27,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         <AnimatePresence>
             {isOpen && (
                 <>
-                    {/* Backdrop */}
+                    
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -36,7 +36,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
                         className="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-10000"
                     />
 
-                    {/* Modal */}
+                    
                     <div className="fixed inset-0 flex items-center justify-center z-10001 p-4 pointer-events-none">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}

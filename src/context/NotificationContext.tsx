@@ -30,7 +30,7 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
         const id = Math.random().toString(36).substr(2, 9);
         setNotifications((prev) => [...prev, { id, message, type }]);
 
-        // Auto remove after 5 seconds
+        
         setTimeout(() => removeNotification(id), 5000);
     }, [removeNotification]);
 
@@ -49,7 +49,7 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
         <NotificationContext.Provider value={contextValue}>
             {children}
 
-            {/* Toast Container */}
+            
             <div className="fixed bottom-6 right-6 z-9999 flex flex-col gap-3 pointer-events-none">
                 <AnimatePresence>
                     {notifications.map((n) => (

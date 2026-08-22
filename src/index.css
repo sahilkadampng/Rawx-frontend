@@ -2,27 +2,18 @@
 
 @import "tailwindcss";
 
-
-/* =========================
-   TAILWIND CUSTOM FONTS
-========================= */
-
 @theme {
-    /* Default sans font */
+
     --font-sans: "Arimo", sans-serif;
 
-    /* Large bold display text */
     --font-display: "Archivo Black", sans-serif;
 
-    /* Handwritten text */
     --font-hand: "Caveat", cursive;
 
-    /* Additional fonts */
     --font-bebas: "Bebas Neue", sans-serif;
     --font-bartle: "BBH Bartle", sans-serif;
     --font-vend: "Vend Sans", sans-serif;
 }
-
 
 :root {
     font-family: "Arimo", sans-serif;
@@ -38,13 +29,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-
 body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
 }
-
 
 .traffic-btn {
     @apply relative flex items-center justify-center w-3 h-3 rounded-full shadow-inner cursor-pointer;
@@ -82,7 +71,6 @@ body {
     transform-origin: center;
 }
 
-/* Torn paper edge using SVG mask */
 .torn-paper {
     --tear: 10px;
     -webkit-mask-image:
@@ -104,8 +92,6 @@ body {
 .traffic-icon {
     @apply text-[8px] text-black opacity-0 group-hover:opacity-100 transition;
 }
-
-
 
 html {
     scroll-behavior: smooth;

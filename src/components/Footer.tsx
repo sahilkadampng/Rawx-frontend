@@ -1,20 +1,9 @@
 import React from "react";
 
-/**
- * Leeuwarder Golfclub — Footer (React + TypeScript + Tailwind CSS)
- * -----------------------------------------------------------------
- * Extra-compact variant: reduced height and smaller type.
- * Self-contained: logo, contour lines and icons are inline SVG,
- * every style is a Tailwind class — no CSS file needed.
- *
- * Usage (wrap it so the cream band shows above the rounded panel):
- *
- *   <div className="bg-[#FFF7D2] pt-[80px] lg:pt-[90px] px-2 pb-2 min-h-screen">
- *     <Footer />
- *   </div>
- */
 
-/* ---------------------------------- icons ---------------------------------- */
+
+
+
 
 const DiagonalArrow: React.FC = () => (
     <svg viewBox="0 0 12 12" fill="none" aria-hidden="true" className="w-[9px] h-[9px]">
@@ -39,9 +28,9 @@ const RightArrow: React.FC<{ stroke: string }> = ({ stroke }) => (
     </svg>
 );
 
-/* ----------------------------- svg decorations ----------------------------- */
 
-/** Faint contour-line artwork clipped to the rounded panel. */
+
+
 const ContourLines: React.FC = () => (
     <div aria-hidden="true" className="absolute inset-0 rounded-[28px] sm:rounded-[40px] overflow-hidden pointer-events-none">
         <svg viewBox="0 0 1440 520" preserveAspectRatio="none" className="w-full h-full block">
@@ -56,7 +45,7 @@ const ContourLines: React.FC = () => (
     </div>
 );
 
-/** Green zebra-striped asterisk brand mark straddling the top edge. */
+
 const AsteriskLogo: React.FC = () => {
     const arms: string[] = [
         "rotate(330) scale(1 .90)",
@@ -96,21 +85,21 @@ const AsteriskLogo: React.FC = () => {
                 />
             </defs>
 
-            {/* dark silhouette */}
+            
             <g fill="#131413">
                 {arms.map((t) => (
                     <use key={`sil-${t}`} href="#arm" transform={t} />
                 ))}
             </g>
 
-            {/* wavy green stripes running through the whole mark */}
+            
             <g fill="url(#zstripes)">
                 {arms.map((t) => (
                     <use key={`str-${t}`} href="#arm" transform={t} />
                 ))}
             </g>
 
-            {/* small fleck below the legs */}
+            
             <path
                 d="M-4 88 q6 5 10 1"
                 stroke="#14C968"
@@ -122,7 +111,7 @@ const AsteriskLogo: React.FC = () => {
     );
 };
 
-/* --------------------------------- content --------------------------------- */
+
 
 interface LinkItem {
     label: string;
@@ -173,9 +162,9 @@ const Footer: React.FC<FooterProps> = ({
             <AsteriskLogo />
 
             <div className="relative z-[2] px-8 lg:px-11 pt-[72px] lg:pt-[78px] pb-[18px]">
-                {/* ------------------------------ main row ------------------------------ */}
+                
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-center gap-x-7 gap-y-7 text-center lg:text-left">
-                    {/* contact + socials */}
+                    
                     <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-7">
                         <div className="text-left">
                             <h3 className={headingCls}>Contact</h3>
@@ -211,7 +200,7 @@ const Footer: React.FC<FooterProps> = ({
                         </div>
                     </div>
 
-                    {/* headline + CTAs */}
+                    
                     <div className="text-center">
                         <h1 className="font-serif font-bold text-[#FFF7DC] text-[24px] lg:text-[30px] leading-[1.05] tracking-[-1.2px]">
                             Leeuwarder
@@ -244,7 +233,7 @@ const Footer: React.FC<FooterProps> = ({
                         </div>
                     </div>
 
-                    {/* quick links */}
+                    
                     <div className="justify-self-center lg:justify-self-end text-left">
                         <h3 className={headingCls}>Snel naar</h3>
                         <div className="flex gap-6 min-[561px]:gap-8">
@@ -276,7 +265,7 @@ const Footer: React.FC<FooterProps> = ({
                     </div>
                 </div>
 
-                {/* ----------------------------- bottom row ----------------------------- */}
+                
                 <div className="mt-7 flex flex-col items-center gap-4 lg:flex-row lg:items-end lg:justify-between">
                     <div className="flex flex-col items-center lg:items-start">
                         <span className="inline-flex items-center gap-1.5 bg-[#131312] border border-[#2C2C29] rounded-full pl-[2px] pr-2.5 py-[2px]">

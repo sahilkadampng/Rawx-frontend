@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
-// import Footer from '../components/Footer';
+
 import VisibilityNotice from '../components/VisibilityNotice';
 import { FeatureGate, useFeatureFlag } from '../context/FeatureFlagContext';
 
@@ -12,12 +12,12 @@ const timeline = [
     { year: '2026', title: 'logic building', desc: 'Started learning data structures, algorithms, and computer science fundamentals to build scalable and efficient systems.' },
 ];
 
-// const values = [
-//     { label: 'Simplicity First', desc: 'Clean architecture over clever hacks. Every system should be readable and maintainable.' },
-//     { label: 'Ship & Iterate', desc: 'Launch early, learn fast. Production feedback beats theoretical perfection.' },
-//     { label: 'Security by Default', desc: 'Auth, validation, and encryption aren\'t afterthoughts — they\'re built into the foundation.' },
-//     { label: 'Scale-Ready', desc: 'From day one, code is structured for growth. Microservices, modular design, clean separation.' },
-// ];
+
+
+
+
+
+
 
 export default function About() {
     const pageVisible = useFeatureFlag('page.about');
@@ -37,7 +37,7 @@ export default function About() {
         <>
             <Navbar />
             <main className="bg-[#f4f6fb] min-h-screen">
-                {/* Hero section */}
+                
                 <section className="pt-32 pb-16 sm:pb-20 px-4 sm:px-6 bg-[#121212]">
                     <div className="max-w-6xl mx-auto text-cente">
                         <motion.p
@@ -67,7 +67,7 @@ export default function About() {
                             Engineering scalable backend systems and modern APIs that power reliable, high-performance web applications.
                         </motion.p>
 
-                        {/* Stats */}
+                        
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -75,8 +75,8 @@ export default function About() {
                             className="mt-12 flex flex-wrap justify-center divide-x divide-gray-200"
                         >
                             {[
-                                // { value: '19', label: 'Years Old' },
-                                // { value: 'India', label: 'Location' },
+                                
+                                
                                 { value: 'SDE', label: 'Focus' },
                                 { value: '2024', label: 'Started' },
                             ].map((stat) => (
@@ -91,7 +91,7 @@ export default function About() {
                     </div>
                 </section>
 
-                {/* Bio card */}
+                
                 <section className="px-4 sm:px-6 pb-16 bg-[#121212]">
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
@@ -121,17 +121,11 @@ export default function About() {
                             When I'm not coding, I'm studying system design patterns, exploring new technologies,
                             and working toward becoming a production-grade engineer who ships with confidence.
                         </p>
-                        {/* <div className="mt-6 flex flex-wrap gap-2">
-                            {['Node.js', 'Express', 'MongoDB', 'React', 'TypeScript', 'Tailwind CSS', 'Git'].map((tag) => (
-                                <span key={tag} className="px-3 py-1 border border-gray-600 rounded-md font-mono text-[10px] sm:text-xs tracking-wider text-gray-600 uppercase">
-                                    {tag}
-                                </span>
-                            ))}
-                        </div> */}
+                        
                     </motion.div>
                 </section>
 
-                {/* Timeline */}
+                
                 <FeatureGate flagKey="content.about.timeline">
                     <section className="pt-32 px-4 sm:px-6 pb-20 bg-[#1c1c1c]">
                         <div className="max-w-4xl mx-auto">
@@ -170,9 +164,9 @@ export default function About() {
                     </section>
                 </FeatureGate>
 
-                {/* Values */}
+                
             </main>
-            {/* <Footer /> */}
+            
         </>
     );
 }
