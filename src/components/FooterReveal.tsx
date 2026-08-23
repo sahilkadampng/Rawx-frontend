@@ -6,7 +6,7 @@ import certificate from '../assets/Screenshot 2026-07-19 213221.png'
 import certificate1 from '../assets/Screenshot 2026-07-19 221351.png'
 import certificate2 from '../assets/Screenshot 2026-07-19 221505.png'
 import certificate3 from '../assets/Screenshot 2026-07-19 221558.png'
-import arrow from '../assets/arrow1.jpg'
+// import arrow from '../assets/arrow1.jpg'
 
 function CircularSticker() {
     return (

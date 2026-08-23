@@ -263,7 +263,7 @@ export default function ProfileActivityCards({ githubUsername, leetcodeUsername 
     const [loading, setLoading] = useState(true);
     const githubVisible = useFeatureFlag('content.footer.githubActivity');
     const leetcodeVisible = useFeatureFlag('content.footer.leetcodeActivity');
-    const visibleCardCount = Number(githubVisible) + Number(leetcodeVisible);
+    const visibleCardCount = Number(Boolean(githubVisible)) + Number(Boolean(leetcodeVisible));
 
     useEffect(() => {
         const controller = new AbortController();
@@ -292,8 +292,18 @@ export default function ProfileActivityCards({ githubUsername, leetcodeUsername 
                 setLeetcode(payload?.data?.leetcode || null);
             } catch (error) {
                 if ((error as Error).name !== 'AbortError') {
-                    setGithub({ username: githubUsername, source: `https:
-                    setLeetcode(leetcodeUsername ? { username: leetcodeUsername, source: `https:
+                    setGithub({
+                        username: githubUsername,
+                        source: `https://github.com/${githubUsername}`,
+                    });
+                    setLeetcode(
+                        leetcodeUsername
+                            ? {
+                                username: leetcodeUsername,
+                                source: `https://leetcode.com/u/${leetcodeUsername}`,
+                            }
+                            : null
+                    );
                 }
             } finally {
                 setLoading(false);
@@ -328,7 +338,7 @@ export default function ProfileActivityCards({ githubUsername, leetcodeUsername 
                             title="GitHub Activity"
                             subtitle={loading ? 'Loading live activity' : 'Recent public activity'}
                             tone="github"
-                            href={github?.source || `https:
+                            href={github?.source || `https://github.com/${githubUsername}`}
                             data={github}
                             fallback="Set the GitHub username to see a live contribution grid."
                             kind="github"
