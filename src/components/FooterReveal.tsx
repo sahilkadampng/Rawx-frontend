@@ -113,7 +113,7 @@ function Hero() {
             >
                 <div>
                     <img
-                        src="/ChatGPT Image Aug 23, 2026, 10_38_57 AM.png"
+                        src="/sahil.png"
                         alt="Sahil Logo"
                         className="mx-auto w-[85vw] max-w-[1200px] h-auto object-contain"
                     />
