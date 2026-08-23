@@ -5,6 +5,7 @@ import {
     FiCode,
     FiCpu,
     FiDatabase,
+    FiDownload,
     FiGlobe,
     FiLayers,
     FiMonitor,
@@ -104,8 +105,6 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
                     <p className="mt-2 text-[13px] leading-6 text-white/58 font-michroma">
                         {service.description}
                     </p>
-
-
                 </div>
             </div>
         </motion.article>
@@ -115,9 +114,6 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 export default function Skills() {
     return (
         <section className="relative z-10 overflow-hidden bg-[#050505] px-4 py-20 text-white sm:px-6 sm:py-28">
-
-
-
             <div className="relative mx-auto max-w-6xl">
                 <motion.div
                     initial={{ opacity: 0, y: 14 }}
@@ -182,17 +178,33 @@ export default function Skills() {
                         <span className="text-[#685AFF]">Project Together!</span>
                     </motion.h3>
 
-                    <motion.a
-                        id="contact"
-                        initial={{ opacity: 0, y: 14 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.08 }}
-                        href="#CTA"
-                        className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-black"
-                    >
-                        Contact Us
-                    </motion.a>
+                    {/* CTA Buttons */}
+                    <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+                        <motion.a
+                            id="contact"
+                            initial={{ opacity: 0, y: 14 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.08 }}
+                            href="#CTA"
+                            className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-semibold text-black transition-all duration-200 hover:bg-white/90"
+                        >
+                            Contact Us
+                        </motion.a>
+
+                        <motion.a
+                            initial={{ opacity: 0, y: 14 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.12 }}
+                            href="/resume.pdf"
+                            download="resume.pdf"
+                            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-[#161616] px-8 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-[#685AFF]/60 hover:bg-[#1d1d1d] hover:text-[#685AFF]"
+                        >
+                            <FiDownload className="text-base" />
+                            <span>Download CV</span>
+                        </motion.a>
+                    </div>
                 </div>
 
                 <div className="skill-marquee relative mt-14 overflow-hidden border-y border-gray-700/20 py-4">
