@@ -61,7 +61,7 @@ export default function Hero() {
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className="mt-20 text-[10px] tracking-[0.3em] text-gray-500 mb-6 uppercase"
                 >
-                    ● Infrastructure for Modern SaaS ●
+                    ●  ●
                 </motion.p>
 
                 {/* Main heading */}
@@ -69,7 +69,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    className="text-3xl sm:text-5xl md:text-7xl font-extrabold leading-tight text-white tracking-tight"
+                    className="text-xl sm:text-5xl md:text-6xl font-bartle leading-tight text-white tracking-tight"
                 >
                     BACKEND
                     <br />
@@ -107,7 +107,7 @@ export default function Hero() {
                         onClick={() =>
                             document.getElementById("CTA")?.scrollIntoView({ behavior: "smooth" })
                         }
-                        className="px-8 py-3 rounded-lg bg-[#685AFF] text-white font-medium hover:bg-[#5040ff] transition shadow-lg cursor-pointer"
+                        className="px-8 py-3 rounded-lg bg-[#685AFF] text-white font-michroma hover:bg-[#5040ff] transition shadow-lg cursor-pointer"
                     >
                         Get in touch
                     </button>
@@ -115,7 +115,7 @@ export default function Hero() {
                         onClick={() => {
                             document.getElementById('built-for-clients')?.scrollIntoView({ behavior: 'smooth' });
                         }}
-                        className="px-8 py-3 rounded-lg bg-white text-gray-800 font-medium border border-gray-300 hover:bg-gray-100 transition cursor-pointer"
+                        className="px-8 py-3 rounded-lg bg-white text-gray-800 font-michroma border border-gray-300 hover:bg-gray-100 transition cursor-pointer"
                     >
                         View Projects
                     </button>
@@ -141,7 +141,7 @@ export default function Hero() {
                         }}
                     />
                     {/* Top bar */}
-                    <div className="px-3 sm:px-6 py-3 sm:py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 border-b border-gray-100">
+                    <div className="px-3 sm:px-6 py-3 sm:py-4 flex font-russo flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 border-b border-gray-100">
                         {/* <Noise /> */}
                         <div className="flex items-center gap-3">
                             {/* Window dots */}
@@ -157,14 +157,14 @@ export default function Hero() {
                         <div className="flex gap-2 w-full sm:w-auto justify-center sm:justify-end">
                             <button
                                 onClick={() => setActiveTab('input')}
-                                className={`px-4 py-1.5 text-sm font-medium border border-gray-300 rounded-md transition cursor-pointer ${activeTab === 'input' ? 'bg-gray-900 text-white border-gray-900' : 'hover:bg-gray-50'
+                                className={`px-4 py-1.5 text-sm font-medium border border-gray-300 rounded-md transition cursor-pointer ${activeTab === 'input' ? 'bg-gray-900 text-white border-gray-900' : 'hover:bg-[#685AFF]'
                                     }`}
                             >
                                 REQUEST
                             </button>
                             <button
                                 onClick={() => setActiveTab('output')}
-                                className={`px-4 py-1.5 text-sm font-medium border border-gray-300 rounded-md transition cursor-pointer ${activeTab === 'output' ? 'bg-gray-900 text-white border-gray-900' : 'hover:bg-gray-50'
+                                className={`px-4 py-1.5 text-sm font-medium border border-gray-300 rounded-md transition cursor-pointer ${activeTab === 'output' ? 'bg-gray-900 text-white border-gray-900' : 'hover:bg-[#685AFF]'
                                     }`}
                             >
                                 RESPONSE
@@ -222,7 +222,7 @@ export default function Hero() {
                                     </p>
                                     <p>
                                         <span className="text-pink-500">"message"</span> :{' '}
-                                        <span className="text-green-600">"Developer profile loaded successfully"</span>,
+                                        <span className="text-green-600">"profile loaded successfully"</span>,
                                     </p>
                                     <p>
                                         <span className="text-pink-600">"data"</span> : {'{'}

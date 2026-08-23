@@ -98,14 +98,14 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
                 </div>
 
                 <div className="min-w-0 flex-1">
-                    <h3 className="text-[1.05rem] font-semibold tracking-tight text-white">
+                    <h3 className="text-[1.05rem] font-michroma tracking-tight text-[#685AFF]">
                         {service.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-white/58">
+                    <p className="mt-2 text-[13px] leading-6 text-white/58 font-michroma">
                         {service.description}
                     </p>
 
-                    
+
                 </div>
             </div>
         </motion.article>
@@ -115,8 +115,8 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 export default function Skills() {
     return (
         <section className="relative z-10 overflow-hidden bg-[#050505] px-4 py-20 text-white sm:px-6 sm:py-28">
-            
-            
+
+
 
             <div className="relative mx-auto max-w-6xl">
                 <motion.div
@@ -127,7 +127,7 @@ export default function Skills() {
                     className="flex items-center justify-center gap-3 text-center"
                 >
                     <span className="h-px w-10 bg-[#685AFF]" />
-                    <span className="text-[10px] font-medium uppercase tracking-[0.34em] text-white/85 sm:text-xs">
+                    <span className="text-[10px] font-michroma uppercase tracking-[0.34em] text-white/85 sm:text-xs">
                         My Specialization
                     </span>
                     <span className="h-px w-10 bg-[#685AFF]" />
@@ -143,10 +143,10 @@ export default function Skills() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.05 }}
-                        className="relative text-[clamp(2.2rem,5vw,4.2rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-white"
+                        className="relative text-[clamp(2.2rem,5vw,4.2rem)] font-russo leading-[0.95] tracking-[-0.04em] text-white"
                     >
-                        <span className="text-[#685AFF]">Skills</span>{' '}
-                        <span className="text-white">I Have</span>
+                        <span className="text-[#685AFF]">SKILLS</span>{' '}
+                        <span className="text-white">I HAVE</span>
                     </motion.h2>
 
                     <motion.p
@@ -162,7 +162,11 @@ export default function Skills() {
 
                 <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
                     {services.map((service, index) => (
-                        <ServiceCard key={service.title} service={service} index={index} />
+                        <ServiceCard
+                            key={service.title}
+                            service={service}
+                            index={index}
+                        />
                     ))}
                 </div>
 

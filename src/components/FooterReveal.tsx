@@ -102,7 +102,7 @@ function Hero() {
 
             <div
                 ref={bigTextRef}
-                className={`pointer-events-none absolute inset-x-0 top-12 sm:top-16 md:top-24 z-0 mx-auto max-w-[92vw] select-none text-center font-bartle uppercase leading-[0.85] tracking-[-0.03em] transition-opacity duration-700 ${inView ? "opacity-100" : "opacity-40"
+                className={`pointer-events-none absolute inset-x-0 top-12 sm:top-16 md:top-0 z-0 mx-auto max-w-[92vw] select-none text-center font-sans uppercase leading-[0.85] tracking-[-0.03em] transition-opacity duration-700 ${inView ? "opacity-100" : "opacity-40"
                     }`}
                 style={{
                     fontSize: "clamp(6rem, 15vw, 15rem)",
@@ -111,7 +111,13 @@ function Hero() {
                 }}
                 aria-hidden="true"
             >
-                <div>SAHILJUSTIGHEMLATA</div>
+                <div>
+                    <img
+                        src="/ChatGPT Image Aug 23, 2026, 10_38_57 AM.png"
+                        alt="Sahil Logo"
+                        className="mx-auto w-[85vw] max-w-[1200px] h-auto object-contain"
+                    />
+                </div>
             </div>
 
             <div className="relative z-10 mx-auto mt-15 lg:mt-38 sm:mt-20 md:mt-18 flex justify-center">

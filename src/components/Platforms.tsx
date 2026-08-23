@@ -24,7 +24,7 @@ export default function Platforms() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.1 }}
-                        className="text-xl sm:text-xl md:text-2xl xl:text-6xl font-arimo font-arimo text-white uppercase leading-tight tracking-tight"
+                        className="text-xl sm:text-xl md:text-2xl xl:text-6xl font-russo text-white uppercase leading-tight tracking-tight"
                     >
                         Engineered For{' '}
                         <span className="text-gray-400 text-3xl sm:text-5xl md:text-6xl">→</span>{' '}
@@ -84,19 +84,19 @@ export default function Platforms() {
                     ><div className="-mt-6 lg:-mt-8 h-px w-full bg-linear-to-r from-transparent via-[#685AFF] to-transparent" />
                         <div>
                             <div className="flex items-center justify-between mb-6">
-                                <span className="font-mono text-[10px] sm:text-xs tracking-wider text-gray-500 uppercase">
+                                <span className="font-russo text-[10px] sm:text-xs tracking-wider text-gray-500 uppercase">
                                     SaaS Platforms
                                 </span>
                                 <span className="font-mono text-xs text-gray-300">01</span>
                             </div>
-                            <h3 className="text-xl sm:text-2xl font-extrabold text-white uppercase tracking-tight mb-3">
+                            <h3 className="text-xl sm:text-2xl font-michroma text-white uppercase tracking-tight mb-3">
                                 ResolvexPro
                             </h3>
-                            <p className="text-gray-400 text-sm leading-relaxed">
+                            <p className="text-gray-400 text-[13px] leading-relaxed">
                                 A secure platform I built to manage <span className="text-[#685AFF]">college complaints</span> effortlessly.
                             </p>
                         </div>
-                        <a href="https://resolvexpro.vercel.app/" className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
+                        <a href="https://resolvexpro.vercel.app/" className="mt-6 inline-flex items-center gap-2 font-russo text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
                             View site <span>→</span>
                         </a>
                     </motion.div>
@@ -111,19 +111,19 @@ export default function Platforms() {
                     >
                         <div>
                             <div className="flex items-center justify-between mb-6">
-                                <span className="font-mono text-[10px] sm:text-xs tracking-wider text-gray-500 uppercase">
+                                <span className="font-russo text-[10px] sm:text-xs tracking-wider text-gray-500 uppercase">
                                     SaaS Platforms
                                 </span>
                                 <span className="font-mono text-xs text-gray-300">02</span>
                             </div>
-                            <h3 className="text-xl sm:text-2xl font-extrabold text-white uppercase tracking-tight mb-3">
+                            <h3 className="text-xl sm:text-2xl font-michroma text-white uppercase tracking-tight mb-3">
                                 INVENTOXPRO
                             </h3>
-                            <p className="text-gray-400 text-sm leading-relaxed">
+                            <p className="text-gray-400 text-[13px] leading-relaxed">
                                 A smart business engine. Scan, track, update, and manage your entire stock in <span className="text-[#685AFF]">real-time</span> using your phone and laptop together. Built for speed, accuracy, and modern businesses.
                             </p>
                         </div>
-                        <a href="https://inventoxpro.vercel.app/" className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
+                        <a href="https://inventoxpro.vercel.app/" className="mt-6 inline-flex items-center gap-2 font-russo text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
                             View site <span>→</span>
                         </a>
                     </motion.div>
@@ -138,19 +138,19 @@ export default function Platforms() {
                     >
                         <div>
                             <div className="flex items-center justify-between mb-6">
-                                <span className="font-mono text-[10px] sm:text-xs tracking-wider text-gray-500 uppercase">
+                                <span className="font-russo text-[10px] sm:text-xs tracking-wider text-gray-500 uppercase">
                                     Platform
                                 </span>
                                 <span className="font-mono text-xs text-gray-300">03</span>
                             </div>
-                            <h3 className="text-xl sm:text-2xl font-extrabold text-white uppercase tracking-tight mb-3">
+                            <h3 className="text-xl sm:text-2xl font-michroma text-white uppercase tracking-tight mb-3">
                                 RICKSHAWGNG
                             </h3>
-                            <p className="text-gray-400 text-sm leading-relaxed">
+                            <p className="text-gray-400 text-[13px] leading-relaxed">
                                 A website that feels like taking a <span className="text-[#685AFF]">nostalgic rickshaw ride </span> while listening to old-school Bollywood music.
                             </p>
                         </div>
-                        <a href="https://rickshawgng.xyz/" className="mt-6 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
+                        <a href="https://rickshawgng.xyz/" className="mt-6 inline-flex items-center gap-2 font-russo text-xs tracking-wider text-white uppercase hover:text-[#685AFF] transition-colors">
                             View site <span>→</span>
                         </a>
                     </motion.div>

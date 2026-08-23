@@ -14,11 +14,6 @@ const timeline = [
 
 
 
-
-
-
-
-
 export default function About() {
     const pageVisible = useFeatureFlag('page.about');
 
@@ -52,7 +47,7 @@ export default function About() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.1 }}
-                            className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-gray-100 uppercase leading-tight tracking-tight"
+                            className="text-4xl sm:text-6xl md:text-7xl font-russo text-gray-100 uppercase leading-tight tracking-tight"
                         >
                             The Developer
                             <br />
@@ -104,10 +99,10 @@ export default function About() {
                             <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
                                 Profile - Summary
                             </span>
-                            <span className="flex items-center gap-2 text-xs font-mono text-gray-400">
+                            {/* <span className="flex items-center gap-2 text-xs font-mono text-gray-400">
                                 <span className="w-2 h-2 rounded-full bg-green-500" />
                                 AVAILABLE FOR WORK
-                            </span>
+                            </span> */}
                         </div>
                         <h3 className="text-xl sm:text-2xl font-extrabold text-[#685AFF] uppercase tracking-tight mb-4">
                             Sahil Kadam
@@ -133,7 +128,7 @@ export default function About() {
                                 <p className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase mb-8">
                                     Journey - Timeline
                                 </p>
-                                <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-100 uppercase tracking-tight">
+                                <h2 className="text-3xl sm:text-5xl font-russo text-gray-100 uppercase tracking-tight">
                                     The Path So <span className="text-[#685AFF]">Far.</span>
                                 </h2>
                             </div>
