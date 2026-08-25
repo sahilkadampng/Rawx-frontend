@@ -8,6 +8,7 @@ import Skills from '../components/Skills';
 
 import CTA from '../components/CTA';
 import FooterReveal from '../components/FooterReveal';
+import Footer from '../components/Footer';
 import VisibilityNotice from '../components/VisibilityNotice';
 import { FeatureGate, useFeatureFlag } from '../context/FeatureFlagContext';
 
@@ -39,7 +40,7 @@ export default function Home() {
                     <FooterReveal />
                 </FeatureGate>
             </main>
-            
+            <Footer />
         </>
     );
 }

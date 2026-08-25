@@ -86,7 +86,7 @@ function BackToTop() {
                 <img
                     src={logo}
                     alt="RAW Logo"
-                    className="h-28 w-auto sm:h-32 md:h-40 bg-transparent mt-1 sm:mt-2"
+                    className="h-28 w-auto sm:h-32 md:h-40 bg-transparent mt-2 sm:mt-3"
                 />
             </div>
         </button>
