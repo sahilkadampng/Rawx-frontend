@@ -9,7 +9,7 @@ interface NoiseProps {
 }
 
 const Noise: React.FC<NoiseProps> = ({
-    patternSize = 250,
+    patternSize = 128, // Reduced size for much better performance
     patternScaleX = 1,
     patternScaleY = 1,
     patternRefreshInterval = 2,
@@ -27,30 +27,45 @@ const Noise: React.FC<NoiseProps> = ({
         let frame = 0;
         let animationId: number;
 
-        const canvasSize = 1024;
-
-        const resize = () => {
-            if (!canvas) return;
-            canvas.width = canvasSize;
-            canvas.height = canvasSize;
-
-            canvas.style.width = '100vw';
-            canvas.style.height = '200vh';
-        };
-
-        const drawGrain = () => {
-            const imageData = ctx.createImageData(canvasSize, canvasSize);
+        // Create an offscreen canvas to hold the noise pattern
+        const offscreen = document.createElement('canvas');
+        offscreen.width = patternSize;
+        offscreen.height = patternSize;
+        const offCtx = offscreen.getContext('2d');
+        
+        if (offCtx) {
+            // Generate the noise exactly once
+            const imageData = offCtx.createImageData(patternSize, patternSize);
             const data = imageData.data;
-
             for (let i = 0; i < data.length; i += 4) {
-                const value = Math.random() * 100;
+                const value = Math.random() * 255;
                 data[i] = value;
                 data[i + 1] = value;
                 data[i + 2] = value;
                 data[i + 3] = patternAlpha;
             }
+            offCtx.putImageData(imageData, 0, 0);
+        }
 
-            ctx.putImageData(imageData, 0, 0);
+        const resize = () => {
+            if (!canvas) return;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+
+        const drawGrain = () => {
+            if (!offCtx) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = ctx.createPattern(offscreen, 'repeat') as CanvasPattern;
+            
+            // Randomly offset the pattern to create the static effect
+            const offsetX = Math.random() * patternSize;
+            const offsetY = Math.random() * patternSize;
+            
+            ctx.translate(offsetX, offsetY);
+            ctx.fillRect(-offsetX, -offsetY, canvas.width + patternSize, canvas.height + patternSize);
+            ctx.translate(-offsetX, -offsetY);
         };
 
         const loop = () => {
@@ -73,7 +88,7 @@ const Noise: React.FC<NoiseProps> = ({
 
     return (
         <canvas
-            className="pointer-events-none absolute top-0 left-0 h-screen w-screen"
+            className="pointer-events-none fixed top-0 left-0 h-full w-full z-50"
             ref={grainRef}
             style={{
                 imageRendering: 'pixelated'

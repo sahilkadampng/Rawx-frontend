@@ -154,6 +154,7 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
         context.fillStyle = "#999999"
         const dotSize = 2.4 * scaleFactor
 
+        context.beginPath()
         allDots.forEach((dot) => {
           const projected = projection([dot.lng, dot.lat])
           if (
@@ -163,9 +164,10 @@ export default function RotatingEarth({ width = 800, height = 600, className = "
             projected[1] >= 0 &&
             projected[1] <= containerHeight
           ) {
-            context.fillRect(projected[0] - dotSize / 2, projected[1] - dotSize / 2, dotSize, dotSize)
+            context.rect(projected[0] - dotSize / 2, projected[1] - dotSize / 2, dotSize, dotSize)
           }
         })
+        context.fill()
       }
     }
 

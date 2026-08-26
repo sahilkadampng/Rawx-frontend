@@ -77,21 +77,24 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-24 sm:mt-36 md:mt-56"
+                    className="flex flex-row gap-3 sm:gap-4 justify-center mt-40 sm:mt-36 md:mt-56 lg:mt-67"
                 >
                     <button
                         onClick={() =>
                             document.getElementById("CTA")?.scrollIntoView({ behavior: "smooth" })
                         }
-                        className="px-8 py-3 rounded-lg bg-[#685AFF] text-white font-michroma hover:bg-[#5040ff] transition shadow-lg cursor-pointer"
+                        className="px-5 sm:px-8 py-3 rounded-lg bg-[#685AFF] text-white font-michroma hover:bg-[#5040ff] transition shadow-lg cursor-pointer whitespace-nowrap"
                     >
                         Get in touch
                     </button>
+
                     <button
                         onClick={() => {
-                            document.getElementById('built-for-clients')?.scrollIntoView({ behavior: 'smooth' });
+                            document
+                                .getElementById("built-for-clients")
+                                ?.scrollIntoView({ behavior: "smooth" });
                         }}
-                        className="px-8 py-3 rounded-lg bg-white text-gray-800 font-michroma border border-gray-300 hover:bg-gray-100 transition cursor-pointer"
+                        className="px-5 sm:px-8 py-3 rounded-lg bg-white text-gray-800 font-michroma border border-gray-300 hover:bg-gray-100 transition cursor-pointer whitespace-nowrap"
                     >
                         View Projects
                     </button>
