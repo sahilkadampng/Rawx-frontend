@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 
 import VisibilityNotice from '../components/VisibilityNotice';
 import { FeatureGate, useFeatureFlag } from '../context/FeatureFlagContext';
+import laptop from '../assets/LAPTOP2.png'
 
 const timeline = [
     { year: '2024', title: 'Started Web Development', desc: 'Began learning JavaScript, HTML & CSS — built first static sites and explored the fundamentals of frontend development.' },
@@ -11,8 +12,6 @@ const timeline = [
     { year: '2025', title: 'Second Full-Stack Project', desc: 'Shipped Inventoxpro — a stock management system with inventory tracking, barcode scanning, and real-time updates.' },
     { year: '2026', title: 'logic building', desc: 'Started learning data structures, algorithms, and computer science fundamentals to build scalable and efficient systems.' },
 ];
-
-
 
 export default function About() {
     const pageVisible = useFeatureFlag('page.about');
@@ -32,16 +31,15 @@ export default function About() {
         <>
             <Navbar />
             <main className="bg-[#f4f6fb] min-h-screen">
-                
                 <section className="pt-32 pb-16 sm:pb-20 px-4 sm:px-6 bg-[#121212]">
-                    <div className="max-w-6xl mx-auto text-cente">
+                    <div className="max-w-6xl mx-auto text-center">
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                             className="font-mono text-[10px] sm:text-xs tracking-[0.3em] text-[#685AFF] uppercase mb-6"
                         >
-                             About - Overview 
+                            About - Overview
                         </motion.p>
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
@@ -62,7 +60,6 @@ export default function About() {
                             Engineering scalable backend systems and modern APIs that power reliable, high-performance web applications.
                         </motion.p>
 
-                        
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -70,8 +67,6 @@ export default function About() {
                             className="mt-12 flex flex-wrap justify-center divide-x divide-gray-200"
                         >
                             {[
-                                
-                                
                                 { value: 'SDE', label: 'Focus' },
                                 { value: '2024', label: 'Started' },
                             ].map((stat) => (
@@ -86,41 +81,65 @@ export default function About() {
                     </div>
                 </section>
 
-                
+                {/* Profile + image */}
                 <section className="px-4 sm:px-6 pb-16 bg-[#121212]">
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7 }}
-                        className="max-w-4xl mx-auto bg-[#181818] border border-gray-600 rounded-xl p-8 sm:p-12"
+                        className="max-w-5xl mx-auto bg-[#0d0d0d] border border-gray-600 rounded-xl p-8 sm:p-10 lg:p-12"
                     >
-                        <div className="flex items-center justify-between mb-6 sm:px-2">
-                            <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
-                                Profile - Summary
-                            </span>
-                            {/* <span className="flex items-center gap-2 text-xs font-mono text-gray-400">
-                                <span className="w-2 h-2 rounded-full bg-green-500" />
-                                AVAILABLE FOR WORK
-                            </span> */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+                            {/* Copy */}
+                            <div className="order-2 lg:order-1">
+                                <div className="flex items-center justify-between mb-6">
+                                    <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[#685AFF] uppercase">
+                                        Profile - Summary
+                                    </span>
+                                </div>
+                                <h3 className="text-xl sm:text-2xl font-extrabold text-[#685AFF] uppercase tracking-tight mb-4">
+                                    Sahil Kadam
+                                </h3>
+                                <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-4">
+                                    I'm a self-taught developer who started from YouTube video's and built my way into backend engineering.
+                                    I think in systems — databases, APIs, auth layers, and deployment pipelines. My goal isn't
+                                    just to write code, but to build infrastructure that scales and lasts.
+                                </p>
+                                <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
+                                    When I'm not coding, I'm studying system design patterns, exploring new technologies,
+                                    and working toward becoming a production-grade engineer who ships with confidence.
+                                </p>
+                            </div>
+
+                            {/* Visual */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.96 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.15 }}
+                                className="order-1 lg:order-2 relative"
+                            >
+                                <div className="relative rounded-xl overflow-hidden bg-[#0d0d0d]">
+                                    <div className="pointer-events-none absolute inset-0 via-transparent to-transparent z-10" />
+                                    <img
+                                        src={laptop}
+                                        alt="Backend development workspace — Express.js API on a purple workstation"
+                                        className="w-full h-auto object-cover object-center"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </div>
+                                {/* Soft glow behind frame */}
+                                <div
+                                    aria-hidden
+                                    className="absolute -inset-4 -z-10 rounded-2xl bg-[#685AFF]/10 blur-2xl"
+                                />
+                            </motion.div>
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-extrabold text-[#685AFF] uppercase tracking-tight mb-4">
-                            Sahil Kadam
-                        </h3>
-                        <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-4">
-                            I'm a self-taught developer who started from YouTube video's and built my way into backend engineering.
-                            I think in systems — databases, APIs, auth layers, and deployment pipelines. My goal isn't
-                            just to write code, but to build infrastructure that scales and lasts.
-                        </p>
-                        <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
-                            When I'm not coding, I'm studying system design patterns, exploring new technologies,
-                            and working toward becoming a production-grade engineer who ships with confidence.
-                        </p>
-                        
                     </motion.div>
                 </section>
 
-                
                 <FeatureGate flagKey="content.about.timeline">
                     <section className="pt-32 px-4 sm:px-6 pb-20 bg-[#1c1c1c]">
                         <div className="max-w-4xl mx-auto">
@@ -158,10 +177,7 @@ export default function About() {
                         </div>
                     </section>
                 </FeatureGate>
-
-                
             </main>
-            
         </>
     );
 }

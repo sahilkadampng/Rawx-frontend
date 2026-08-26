@@ -28,7 +28,7 @@ function CircularSticker() {
                     style={{ fontFamily: "Inter, sans-serif" }}
                 >
                     <textPath href="#circlePath" startOffset="0">
-                        FOUNDERS BELIEFS • FOUNDERS BELIEFS •&nbsp;
+                        ---• CERTIFICATION •----• CERTIFICATION •&nbsp;
                     </textPath>
                 </text>
             </svg>
@@ -348,7 +348,7 @@ function TornPaperNote() {
 function Footer() {
     return (
         <footer className="relative z-20 bg-black">
-            <div className="absolute right-2 top-12 sm:right-6 sm:-top-14 md:right-10 md:-top-16">
+            <div className="absolute right-2 top-17 sm:right-6 sm:top-18 md:right-10 md:top-13.5 lg:-top-15">
                 <BackToTop />
             </div>
         </footer>
@@ -357,7 +357,7 @@ function Footer() {
 
 export default function App() {
     return (
-        <main className="relative min-h-[180vh] w-full overflow-x-clip bg-black text-white">
+        <main className="relative min-h-[158.5vh] w-full overflow-x-clip bg-black text-white">
             <Hero />
             <TornPaperNote />
             <Footer />
