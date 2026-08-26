@@ -56,7 +56,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-start">
 
                     {/* Navigation (Left) & Connect (Right) on Mobile | Stacked on Desktop */}
-                    <div className="grid grid-cols-2 md:grid-cols-1 gap-38 sm:gap-10 w-full text-left">
+                    <div className="grid grid-cols-2 md:grid-cols-1 gap-8 sm:gap-10 w-full text-left">
                         {/* Navigation Section */}
                         <div className="flex flex-col items-start">
                             <h3 className="text-[11px] tracking-[0.25em] text-gray-500 uppercase mb-5">

@@ -19,10 +19,10 @@ export default function Hero() {
                 <Silk />
             </div>
             {/* Image background — behind everything */}
-            
+
 
             {/* Globe background */}
-            <div className="absolute left-1/2 -translate-x-1/2 -translate-y-[40%] z-0 opacity-80 flex items-center justify-center mix-blend-screen pointer-events-none sm:pointer-events-auto">
+            <div className="absolute top-40 sm:top-auto left-1/2 -translate-x-1/2 -translate-y-[40%] z-0 opacity-80 flex items-center justify-center mix-blend-screen pointer-events-none sm:pointer-events-auto scale-50 sm:scale-75 md:scale-100 origin-center">
                 <RotatingEarth width={650} height={650} />
             </div>
 
@@ -45,7 +45,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    className="text-xl sm:text-5xl md:text-6xl font-bartle leading-tight text-white tracking-tight"
+                    className="text-3xl sm:text-5xl md:text-6xl font-bartle leading-tight text-white tracking-tight"
                 >
                     BACKEND
                     <br />
@@ -77,7 +77,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-56"
+                    className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-24 sm:mt-36 md:mt-56"
                 >
                     <button
                         onClick={() =>
@@ -150,7 +150,7 @@ export default function Hero() {
 
                     {/* Code content (fixed height & scrollable) */}
                     {/* Code content (fixed height & scrollable) */}
-                    <div className="relative px-4 sm:px-8 py-4 sm:py-6 font-mono text-xs sm:text-sm leading-relaxed text-gray-800 w-full h-100 sm:h-112.5 overflow-auto text-left">
+                    <div className="relative px-4 sm:px-8 py-4 sm:py-6 font-mono text-xs sm:text-sm leading-relaxed text-gray-800 w-full h-72 sm:h-100 md:h-112.5 overflow-auto text-left">
                         {activeTab === 'input' ? (
                             <div className="text-left">
                                 <p className='text-white'>

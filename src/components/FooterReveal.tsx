@@ -121,7 +121,7 @@ function Hero() {
                 </div>
             </div>
 
-            <div className="relative z-10 mx-auto mt-15 lg:mt-38 sm:mt-20 md:mt-18 flex justify-center">
+            <div className="relative z-10 mx-auto mt-10 sm:mt-16 md:mt-24 lg:mt-38 flex justify-center">
                 <img
                     src={bust}
                     alt="Classical bust with flowers blooming from the head"
@@ -348,7 +348,7 @@ function TornPaperNote() {
 function Footer() {
     return (
         <footer className="relative z-20 bg-black">
-            <div className="absolute right-2 top-17 sm:right-6 sm:top-18 md:right-10 md:top-13.5 lg:-top-15">
+            <div className="absolute right-2 -top-15 sm:right-6 md:right-10">
                 <BackToTop />
             </div>
         </footer>
@@ -357,7 +357,7 @@ function Footer() {
 
 export default function App() {
     return (
-        <main className="relative min-h-[158.5vh] w-full overflow-x-clip bg-black text-white">
+        <main className="relative min-h-screen md:min-h-[158.5vh] w-full overflow-x-clip bg-black text-white">
             <Hero />
             <TornPaperNote />
             <Footer />

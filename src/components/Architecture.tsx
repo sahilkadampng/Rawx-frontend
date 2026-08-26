@@ -47,7 +47,7 @@ export default function Architecture() {
     ]
 
     return (
-        <section className="py-20 sm:py-28 px-4 sm:px-6 bg-[#f4f6fb] -mt-36">
+        <section className="py-20 sm:py-28 px-4 sm:px-6 bg-[#f4f6fb] -mt-12 sm:-mt-20 md:-mt-36">
             <div className="max-w-6xl mx-auto text-center">
                 
                 <motion.div
@@ -57,7 +57,7 @@ export default function Architecture() {
                     transition={{ duration: 0.6 }}
                     className="flex items-center justify-center gap-3 mb-8"
                 >
-                    <span className="font-mono sm:text-[10px] tracking-[0.2em] text-gray-500 uppercase">
+                    <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.2em] text-gray-500 uppercase">
                         Architecture :: Core
                     </span>
                     <span className="w-12 h-px bg-gray-300" />

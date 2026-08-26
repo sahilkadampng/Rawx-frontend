@@ -445,7 +445,7 @@ export default function Donate() {
                                     </p>
 
                                     
-                                    <div className="grid grid-cols-5 gap-2 my-3">
+                                    <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 my-3">
                                         {PRESET_AMOUNTS.map((amt) => (
                                             <motion.button
                                                 key={amt}

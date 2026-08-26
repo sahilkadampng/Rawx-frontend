@@ -46,14 +46,26 @@ body {
     @apply relative flex items-center justify-center w-3 h-3 rounded-full shadow-inner cursor-pointer;
 }
 
-/* Hide scrollbar on all devices */
+/* Completely hide scrollbar + track on all devices */
 html {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
     display: none;
+}
+
+html::-webkit-scrollbar-track {
+    display: none;
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    display: none;
+    background: transparent;
 }
 
 @keyframes spin-slow {

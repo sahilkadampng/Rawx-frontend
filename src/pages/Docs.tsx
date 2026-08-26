@@ -511,7 +511,7 @@ export default function Docs() {
                     {/* Mobile sidebar toggle */}
                     <button
                         onClick={() => setSidebarOpen(!sidebarOpen)}
-                        className="md:hidden w-full mb-4 px-4 py-3 bg-[#121212] border border-gray-200 rounded-xl font-mono text-sm text-gray-700 flex items-center justify-between"
+                        className="md:hidden w-full mb-4 px-4 py-3 bg-[#121212] border border-gray-700 rounded-xl font-mono text-sm text-gray-300 flex items-center justify-between"
                     >
                         <span>{section.title}</span>
                         <span className="text-gray-400">{sidebarOpen ? '▲' : '▼'}</span>

@@ -25,7 +25,7 @@ export default function Navbar() {
                     <img
                         src={logo}
                         alt="RAW Logo"
-                        className="h-40 w-auto bg-transparent mt-2"
+                        className="h-24 sm:h-32 md:h-40 w-auto bg-transparent mt-2"
                     />
                 </Link>
 

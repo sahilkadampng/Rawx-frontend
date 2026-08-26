@@ -142,12 +142,12 @@ const Heatmap = ({
                 <span>Newer</span>
             </div>
 
-            <div className="mt-4 grid grid-flow-col grid-rows-7 gap-1 overflow-hidden">
+            <div className="mt-4 grid grid-flow-col grid-rows-7 gap-1 overflow-x-auto overflow-y-hidden pb-2 scrollbar-hide">
                 {data.map((point, index) => (
                     <span
                         key={point.date}
                         title={`${point.date} · ${point.count} activity`}
-                        className={`relative h-4 w-4 rounded-md border ${buildLevel(point.count, peak, tone)} transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_16px_rgba(0,0,0,0.22)]`}
+                        className={`relative h-3 w-3 sm:h-4 sm:w-4 rounded-md shrink-0 border ${buildLevel(point.count, peak, tone)} transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_16px_rgba(0,0,0,0.22)]`}
                     >
                         {monthMarkers.has(index) ? (
                             <span className="absolute -top-4 left-0 text-[9px] font-mono uppercase tracking-[0.18em] text-slate-500">

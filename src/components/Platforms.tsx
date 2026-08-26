@@ -24,10 +24,10 @@ export default function Platforms() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.1 }}
-                        className="text-xl sm:text-xl md:text-2xl xl:text-6xl font-russo text-white uppercase leading-tight tracking-tight"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-russo text-white uppercase leading-tight tracking-tight"
                     >
                         Engineered For{' '}
-                        <span className="text-gray-400 text-3xl sm:text-5xl md:text-6xl">→</span>{' '}
+                        <span className="text-gray-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">→</span>{' '}
                         <span className="text-[#685AFF]">Growth.</span>
                     </motion.h2>
 

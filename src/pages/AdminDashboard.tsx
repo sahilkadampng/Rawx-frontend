@@ -682,7 +682,7 @@ export default function AdminDashboard() {
                 {/* ============ VISITORS TAB ============ */}
                 {activeTab === 'visitors' && (
                     <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                        <div className="grid grid-cols-3 gap-6 mb-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
                             {[
                                 { value: visitorStats.total, label: 'Accumulated Hits', color: 'text-gray-900', icon: IoTrendingUpOutline },
                                 { value: visitorStats.unique, label: 'Distinct Source IPs', color: 'text-blue-600', icon: IoPeopleOutline },

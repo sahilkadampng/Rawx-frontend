@@ -446,7 +446,7 @@ export default function Workflow() {
         <section className="relative z-10 w-full py-16 sm:py-24 overflow-hidden bg-[#06080b]">
             
             
-            <div className="relative z-20 max-w-350 mx-auto px-0 sm:px-6 lg:px-10 xl:px-16">
+            <div className="relative z-20 max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-350 mx-auto px-0 sm:px-6 lg:px-10 xl:px-16">
 
                 <div className="flex flex-col lg:flex-row gap-0 xl:gap-16 items-start px-4 lg:px-16">
 
@@ -456,7 +456,7 @@ export default function Workflow() {
                             Workflow V2.0
                         </p>
 
-                        <h2 className="text-xl justify-start sm:text-xl md:text-2xl xl:text-5xl font-arimo text-white uppercase leading-tight tracking-tight">
+                        <h2 className="text-2xl justify-start sm:text-3xl md:text-4xl lg:text-5xl font-arimo text-white uppercase leading-tight tracking-tight">
                             <p className='-mb-6 lg:-mb-16 flex justify-start'>
                                 Request
                             </p>
