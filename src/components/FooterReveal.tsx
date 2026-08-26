@@ -130,13 +130,13 @@ function Hero() {
             </div>
 
             {/* Broken column — mobile: sits under bust, smaller */}
-            <div className="pointer-events-none relative z-[5] mx-auto -mt-6 flex justify-center sm:hidden">
+            {/* <div className="pointer-events-none relative z-[5] mx-auto -mt-6 flex justify-center sm:hidden">
                 <img
                     src={pillar}
                     alt="Fractured classical column"
                     className="w-[55vw] max-w-[220px] h-auto select-none object-contain opacity-95 drop-shadow-[0_0_40px_rgba(140,80,255,0.5)]"
                 />
-            </div>
+            </div> */}
         </section>
     );
 }
