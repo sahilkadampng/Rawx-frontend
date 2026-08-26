@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Silk from '../components/silkbg'
 // import Noise from '../components/noise'
 
-const image = '/download.png'
+import RotatingEarth from './ui/wireframe-dotted-globe'
 
 export default function Hero() {
     const [activeTab, setActiveTab] = useState<'input' | 'output'>('input')
@@ -19,35 +19,11 @@ export default function Hero() {
                 <Silk />
             </div>
             {/* Image background — behind everything */}
-            <img
-                src={image}
-                alt="Dashboard preview"
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-xl max-w-none opacity-80 pointer-events-none z-0 -mt-48"
-            />
+            
 
             {/* Globe background */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 width-[650px] height-[650px] rounded-full from-blue-400/60 via-blue-500/40 to-blue-300/20 blur-sm opacity-80 pointer-events-none z-0">
-                {/* Globe grid lines */}
-                <div className="absolute inset-0 rounded-full overflow-hidden">
-                    {/* Horizontal lines */}
-                    {[...Array(8)].map((_, i) => (
-                        <div
-                            key={`h-${i}`}
-                            className="absolute w-full border-t border-blue-300/30"
-                            style={{ top: `${(i + 1) * 11}%` }}
-                        />
-                    ))}
-                    /* Vertical curved lines */
-                    {[...Array(6)].map((_, i) => (
-                        <div
-                            key={`v-${i}`}
-                            className="absolute h-full border-l border-blue-300/30 rounded-full"
-                            style={{ left: `${(i + 1) * 14}%` }}
-                        />
-                    ))}
-                    {/* Globe highlight */}
-                    <div className="absolute top-[10%] left-[15%] w-[40%] h-[40%] rounded-full bg-white/20 blur-2xl" />
-                </div>
+            <div className="absolute left-1/2 -translate-x-1/2 -translate-y-[40%] z-0 opacity-80 flex items-center justify-center mix-blend-screen pointer-events-none sm:pointer-events-auto">
+                <RotatingEarth width={650} height={650} />
             </div>
 
             <motion.div

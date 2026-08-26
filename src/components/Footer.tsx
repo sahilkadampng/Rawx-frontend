@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiGithub, FiLinkedin, FiMail, FiArrowUpRight } from "react-icons/fi";
 import { useFeatureFlags } from "../context/FeatureFlagContext";
-// import logo from "../assets/ChatGPT Image Jul 18, 2026, 06_54_16 PM.png";
+import footerImage from "../assets/mobile2.png";
 
 const EVOLVE_ASCII = `  _____   _____ | |_   _____ 
   / _ \\ \\ / / _ \\| \\ \\ / / _ \\
@@ -48,7 +48,6 @@ export default function Footer() {
             "color: #685AFF; font-family: monospace; font-weight: bold; font-size: 13px;"
         );
     }, []);
-
 
     return (
         <footer className="z-20 bg-[#111214] border-t border-white/[0.06] text-white font-michroma">
@@ -113,8 +112,14 @@ export default function Footer() {
                         </pre>
                     </div>
 
-                    {/* RIGHT: Empty placeholder to keep center mathematically aligned on desktop */}
-                    <div className="hidden md:block" />
+                    {/* RIGHT: Image */}
+                    <div className="flex items-center justify-center md:justify-end">
+                        <img
+                            src={footerImage}
+                            alt="EVOLVE — Backend Developer"
+                            className="w-full max-w-[280px] h-auto object-contain select-none pointer-events-none bg-transparent"
+                        />
+                    </div>
 
                 </div>
 

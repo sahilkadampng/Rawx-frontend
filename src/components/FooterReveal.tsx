@@ -6,6 +6,7 @@ import certificate from '../assets/Screenshot 2026-07-19 213221.png'
 import certificate1 from '../assets/Screenshot 2026-07-19 221351.png'
 import certificate2 from '../assets/Screenshot 2026-07-19 221505.png'
 import certificate3 from '../assets/Screenshot 2026-07-19 221558.png'
+import pillar from '../assets/pillar1.png'
 // import arrow from '../assets/arrow1.jpg'
 
 function CircularSticker() {
@@ -127,6 +128,15 @@ function Hero() {
                     className="pointer-events-none w-[60vw] sm:w-[45vw] md:w-[min(35vw,350px)] select-none drop-shadow-[0_20px_60px_rgba(0,0,0,0.9)]"
                 />
             </div>
+
+            {/* Broken column — mobile: sits under bust, smaller */}
+            <div className="pointer-events-none relative z-[5] mx-auto -mt-6 flex justify-center sm:hidden">
+                <img
+                    src={pillar}
+                    alt="Fractured classical column"
+                    className="w-[55vw] max-w-[220px] h-auto select-none object-contain opacity-95 drop-shadow-[0_0_40px_rgba(140,80,255,0.5)]"
+                />
+            </div>
         </section>
     );
 }
@@ -181,6 +191,16 @@ function TornPaperNote() {
     return (
         <section className="relative z-20 mx-auto max-w-3xl px-6 sm:px-4 pb-16 sm:pb-24 md:pb-32">
 
+            {/* Pillar — outside the note, middle-right */}
+            {/* <div className="pointer-events-none absolute right-[-12%] top-[28rem] z-[5] hidden -translate-y-1/2 sm:block md:right-[-18%] lg:right-[-46.5%]">
+                <img
+                    src={pillar}
+                    alt="pillar"
+                    aria-hidden="true"
+                    className="w-[44vw] max-w-[360px] h-auto select-none object-contain opacity-95"
+                />
+            </div> */}
+
             <div className="pointer-events-none absolute ml-[-2rem] sm:ml-[-4rem] md:ml-[-5.5rem] -top-0 z-30 h-6 w-24 sm:h-8 sm:w-36 md:h-10 md:w-50 -rotate-40 bg-[#e6d3a3]/80 shadow-md sm:left-8" />
 
             <div className="pointer-events-none absolute z-30 bottom-14 right-[-0.5rem] h-5 w-20 -rotate-40 bg-[#e6d3a3]/80 shadow-md sm:bottom-20 sm:right-[-2rem] sm:h-7 sm:w-32 md:bottom-34 md:right-[-5.5rem] md:h-10 md:w-50" />
@@ -190,7 +210,7 @@ function TornPaperNote() {
             </div>
 
             <div className="relative">
-                <div className="torn-paper relative lg:-mt-10 bg-[#f6f2e9] px-3 py-6 sm:px-8 sm:py-10 md:px-12 md:py-14 lg:px-20 lg:py-20 text-black shadow-[0_25px_80px_-20px_rgba(0,0,0,0.9)]">
+                <div className="torn-paper relative lg:-mt-[5rem] bg-[#f6f2e9] px-3 py-6 sm:px-8 sm:py-10 md:px-12 md:py-14 lg:px-20 lg:py-20 text-black shadow-[0_25px_80px_-20px_rgba(0,0,0,0.9)]">
 
                     <svg className="absolute left-2 top-0 h-full w-6 -translate-x-full" preserveAspectRatio="none" viewBox="0 0 24 300" aria-hidden="true">
                         <path d="M0 0 Q 7 25 0 50 L 16 56 L 1 63 Q 8 105 0 145 L 10 150 L 0 156 Q 9 208 0 260 L 15 266 L 0 274 Q 6 287 0 300 L24 300 L24 0 Z" fill="#f6f2e9" />
@@ -328,7 +348,6 @@ function TornPaperNote() {
 function Footer() {
     return (
         <footer className="relative z-20 bg-black">
-
             <div className="absolute right-2 top-12 sm:right-6 sm:-top-14 md:right-10 md:-top-16">
                 <BackToTop />
             </div>
