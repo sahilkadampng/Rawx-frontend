@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 import {
     FiBox,
+    FiChevronDown,
     FiCode,
     FiCpu,
     FiDatabase,
@@ -16,6 +18,7 @@ type Service = {
     title: string;
     description: string;
     icon: ReactNode;
+    topics: string[];
 };
 
 const services: Service[] = [
@@ -23,46 +26,112 @@ const services: Service[] = [
         title: 'React / Next.js',
         description: 'Building modern, responsive interfaces and full-stack web applications with component-driven architecture.',
         icon: <FiMonitor />,
+        topics: [
+            'Functional components & hooks',
+            'Client / server components',
+            'App Router & routing',
+            'State (Context, Zustand)',
+            'API routes & data fetching',
+            'Tailwind UI & responsive layout',
+        ],
     },
     {
         title: 'TypeScript',
         description: 'Writing safer, more maintainable code with strong typing and scalable application architecture.',
         icon: <FiCode />,
+        topics: [
+            'Types, interfaces & unions',
+            'Generics',
+            'Utility types',
+            'Typing APIs & props',
+            'Strict mode & narrowing',
+        ],
     },
     {
         title: 'Node.js / Express',
         description: 'Building scalable backend systems, REST APIs, authentication flows, and server-side applications.',
         icon: <FiServer />,
+        topics: [
+            'REST API design',
+            'Middleware pipelines',
+            'JWT / session auth',
+            'Error handling',
+            'File uploads & env config',
+        ],
     },
     {
         title: 'MongoDB',
         description: 'Designing flexible database structures and efficient data models for modern applications.',
         icon: <FiDatabase />,
+        topics: [
+            'Schema & document modeling',
+            'Mongoose',
+            'CRUD & aggregations',
+            'Indexes',
+            'Relationships & population',
+        ],
     },
     {
         title: 'Python',
         description: 'Using Python for backend development, automation, scripting, and problem-solving.',
         icon: <FiCode />,
+        topics: [
+            'Core syntax & data types',
+            'OOP in Python',
+            'Data structures & algorithms',
+            'File I/O & scripting',
+            'APIs (FastAPI / Flask)',
+            'Automation & problem solving',
+        ],
     },
     {
         title: 'Docker / Kubernetes',
         description: 'Containerizing applications and understanding the infrastructure behind scalable deployments.',
         icon: <FiBox />,
+        topics: [
+            'Dockerfiles & images',
+            'Volumes & networking',
+            'Docker Compose',
+            'Pods, services & deployments',
+            'Basic cluster concepts',
+        ],
     },
     {
         title: 'DSA (C++)',
         description: 'Solving problems using efficient algorithms, data structures, and optimized approaches.',
         icon: <FiCpu />,
+        topics: [
+            'Arrays, strings & hashing',
+            'Linked lists & stacks / queues',
+            'Trees & graphs',
+            'Sorting & searching',
+            'Recursion & dynamic programming',
+            'STL basics',
+        ],
     },
     {
         title: 'OOP',
         description: 'Designing modular, reusable, and maintainable software using object-oriented principles.',
         icon: <FiLayers />,
+        topics: [
+            'Encapsulation',
+            'Inheritance',
+            'Polymorphism',
+            'Abstraction',
+            'SOLID principles',
+        ],
     },
     {
         title: 'Computer Networking',
         description: 'Understanding the protocols and architecture behind communication between clients, servers, and modern applications.',
         icon: <FiGlobe />,
+        topics: [
+            'OSI & TCP/IP models',
+            'HTTP / HTTPS',
+            'DNS',
+            'IP, ports & sockets',
+            'REST vs WebSockets',
+        ],
     },
 ];
 
@@ -81,37 +150,91 @@ const marqueeItems = [
     'CN',
 ];
 
-function ServiceCard({ service, index }: { service: Service; index: number }) {
+function ServiceCard({
+    service,
+    index,
+    expanded,
+    onToggle,
+}: {
+    service: Service;
+    index: number;
+    expanded: boolean;
+    onToggle: () => void;
+}) {
     return (
         <motion.article
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.55, delay: index * 0.06 }}
-            className="group relative overflow-hidden rounded-[11px] border border-white/10 bg-[#161616] px-6 py-6 text-left transition-transform duration-300 hover:border-[#685AFF]/30"
+            className={`group relative h-fit overflow-hidden rounded-[11px] border bg-[#161616] px-6 py-6 text-left transition-colors duration-300 ${
+                expanded
+                    ? 'border-[#685AFF]/55'
+                    : 'border-white/10 hover:border-[#685AFF]/30'
+            }`}
         >
             <span className="absolute left-0 top-5 h-12 w-1 rounded-r-full bg-[#685AFF]" />
             <div className="absolute inset-0 bg-linear-to-br from-white/[0.035] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-            <div className="relative flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#1d1d1d] text-xl text-white">
+            <button
+                type="button"
+                onClick={onToggle}
+                aria-expanded={expanded}
+                className="relative flex w-full cursor-pointer items-start gap-4 text-left"
+            >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/10 bg-[#1d1d1d] text-xl text-white">
                     {service.icon}
                 </div>
 
                 <div className="min-w-0 flex-1">
-                    <h3 className="text-[1.05rem] font-michroma tracking-tight text-[#685AFF]">
-                        {service.title}
-                    </h3>
-                    <p className="mt-2 text-[13px] leading-6 text-white/58 font-michroma">
-                        {service.description}
+                    <div className="flex items-start justify-between gap-3">
+                        <h3 className="text-[1.05rem] font-michroma tracking-tight text-[#FFFFFF]">
+                            {service.title}
+                        </h3>
+                        <FiChevronDown
+                            className={`mt-1 shrink-0 text-lg text-[#685AFF] transition-transform duration-300 ${
+                                expanded ? 'rotate-180' : ''
+                            }`}
+                        />
+                    </div>
+                    <p className="mt-2 text-[12px] leading-5 text-white/45 font-michroma">
+                        What I know
                     </p>
                 </div>
-            </div>
+            </button>
+
+            <AnimatePresence initial={false}>
+                {expanded && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: 'easeOut' }}
+                        className="relative overflow-hidden"
+                    >
+                        <p className="mt-4 text-[13px] leading-6 text-white/58 font-michroma">
+                            {service.description}
+                        </p>
+                        <ul className="mt-4 flex flex-wrap gap-2">
+                            {service.topics.map((topic) => (
+                                <li
+                                    key={topic}
+                                    className="rounded-full border border-[#685AFF]/35 bg-[#685AFF]/10 px-3 py-1.5 text-[11px] font-michroma tracking-wide text-[#c8c3ff]"
+                                >
+                                    {topic}
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.article>
     );
 }
 
 export default function Skills() {
+    const [openTitle, setOpenTitle] = useState<string | null>(null);
+
     return (
         <section className="relative z-10 overflow-hidden bg-[#050505] px-4 py-20 text-white sm:px-6 sm:py-28">
             <div className="relative mx-auto max-w-6xl">
@@ -156,12 +279,18 @@ export default function Skills() {
                     </motion.p>
                 </div>
 
-                <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                <div className="mt-12 grid items-start gap-5 sm:grid-cols-2 xl:grid-cols-3">
                     {services.map((service, index) => (
                         <ServiceCard
                             key={service.title}
                             service={service}
                             index={index}
+                            expanded={openTitle === service.title}
+                            onToggle={() =>
+                                setOpenTitle((current) =>
+                                    current === service.title ? null : service.title,
+                                )
+                            }
                         />
                     ))}
                 </div>
@@ -178,7 +307,6 @@ export default function Skills() {
                         <span className="text-[#685AFF]">Project Together!</span>
                     </motion.h3>
 
-                    {/* CTA Buttons */}
                     <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
                         <motion.a
                             id="contact"

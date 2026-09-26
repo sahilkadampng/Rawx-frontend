@@ -49,7 +49,7 @@ export default function Login() {
                             transition={{ duration: 0.5 }}
                             className="font-mono text-[10px] sm:text-xs tracking-[0.3em] text-blue-600 uppercase mb-4"
                         >
-                            ● Admin :: Access ●
+                            ● Admin : Access ●
                         </motion.p>
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}

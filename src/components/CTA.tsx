@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { API_URL } from '../config/api';
+import manImg from '../assets/man.png';
 
 function FooterRevealEdge() {
     return (
         <>
-            
             <svg
                 viewBox="0 0 1440 80"
                 className="absolute inset-x-0 bottom-0 h-[28px] w-full sm:hidden"
@@ -18,7 +18,6 @@ function FooterRevealEdge() {
                 />
             </svg>
 
-            
             <svg
                 viewBox="0 0 1440 80"
                 className="absolute inset-x-0 bottom-0 hidden h-[40px] w-full sm:block"
@@ -63,15 +62,14 @@ export default function CTA() {
     };
 
     return (
-        <section id="CTA" className="relative z-10 w-full overflow-hidden rounded-t-[50px] bg-[#f4f6fb] px-4 py-16 pb-24 md:py-24 md:pb-32 flex items-center justify-center scroll-mt-32">
+        <section id="CTA" className="relative z-10 w-full overflow-hidden rounded-t-[50px] bg-[#f4f6fb] px-4 py-16 pb-10 md:py-24 md:pb-12 flex flex-col items-center justify-center scroll-mt-32">
             <motion.div
                 initial={{ opacity: 0, y: 60, scale: 0.97 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
-                className="w-full max-w-3xl bg-[#eceef4]/40 rounded-3xl border border-gray-200/60 shadow-sm px-6 sm:px-12 md:px-16 py-14 md:py-20 flex flex-col items-center text-center"
+                className="relative w-full max-w-3xl overflow-hidden bg-[#eceef4]/40 rounded-3xl border border-gray-200/60 shadow-sm px-6 sm:px-12 md:px-16 pt-14 md:pt-20 pb-0 flex flex-col items-center text-center"
             >
-                
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -81,6 +79,7 @@ export default function CTA() {
                 >
                     Have a project in mind?
                 </motion.h2>
+
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +90,6 @@ export default function CTA() {
                     Let's Talk
                 </motion.h2>
 
-                
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -102,17 +100,12 @@ export default function CTA() {
                     Step into your power and build your empire with unwavering confidence.
                 </motion.p>
 
-                
-
-
-
-                
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="mt-10 flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg"
+                    className="mt-10 flex flex-col sm:flex-row items-center gap-3 w-full max-w-lg z-20"
                 >
                     <input
                         type="email"
@@ -137,33 +130,45 @@ export default function CTA() {
                     </button>
                 </motion.div>
 
-                
                 {message && (
                     <p className={`mt-3 text-sm font-arimo ${messageType === 'success' ? 'text-green-600' : 'text-red-500'}`}>
                         {message}
                     </p>
                 )}
 
-                
                 <motion.a
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.5 }}
                     href="/about"
-                    className="mt-5 text-[#685AFF] text-sm font-medium font-arimo hover:underline flex items-center gap-1 transition"
+                    className="mt-5 text-[#685AFF] text-sm font-medium font-arimo hover:underline flex items-center gap-1 transition z-20"
                 >
                     Explore About me
                     <span className="text-xs">→</span>
                 </motion.a>
 
-                
+                <div className="w-full flex justify-between items-end mt-2 pointer-events-none select-none">
+                    <motion.img
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.2 }}
+                        src={manImg}
+                        alt="Classical statue looking right"
+                        className="relative z-10 w-20 sm:w-24 md:w-32 h-auto object-contain -ml-10 sm:-ml-12 md:-ml-14"
+                    />
 
-
-
-                
-
-
+                    <motion.img
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.3 }}
+                        src={manImg}
+                        alt="Classical statue looking left"
+                        className="relative z-10 w-20 sm:w-24 md:w-32 h-auto object-contain -scale-x-100 -mr-10 sm:-mr-12 md:-mr-14"
+                    />
+                </div>
             </motion.div>
             <FooterRevealEdge />
         </section>
